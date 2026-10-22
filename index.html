@@ -1,0 +1,748 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Funkcje sklejane i ich własności</title>
+  <meta name="description" content="Interaktywna prezentacja o funkcjach sklejanych: historia, matematyka, informatyka i zastosowania. Seminarium dyplomowe 1, MiNI PW.">
+  <meta name="author" content="Wojciech Jasiński">
+  <link rel="stylesheet" href="vendor/reveal/reset.css">
+  <link rel="stylesheet" href="vendor/reveal/reveal.css">
+  <link rel="stylesheet" href="vendor/katex/katex.min.css">
+  <link rel="stylesheet" href="css/theme.css">
+  <script>
+    // tryb ciemny przed pierwszym malowaniem; ?print-pdf zawsze jasny
+    try { if (/[?&]dark/.test(location.search) || (localStorage.getItem('spl-theme') === 'dark' && !/print-pdf/.test(location.search))) document.documentElement.classList.add('dark'); } catch (e) {}
+  </script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+
+<!-- ============================================================ 1. TYTUŁ -->
+<section class="title-slide" data-state="title">
+  <div class="demo bare hero" data-demo="hero" data-w="1280" data-h="720"></div>
+  <div class="title-wrap">
+    <p class="kicker">Seminarium dyplomowe 1 · MiNI PW</p>
+    <h1>Funkcje sklejane<br>i&nbsp;ich własności</h1>
+    <p class="subtitle">od listwy szkutnika do sieci Kołmogorowa–Arnolda</p>
+    <p class="author">Wojciech Jasiński <span class="muted">· 2 listopada 2026 · prowadzący: prof. Bohdan Macukow</span></p>
+  </div>
+  <p class="keys"><kbd>→</kbd> dalej · <kbd>↓</kbd> dodatki · <kbd>S</kbd> notatki · <kbd>D</kbd> tryb ciemny · <kbd>O</kbd> przegląd · krzywą w tle można chwytać</p>
+  <aside class="notes">
+    ≈0:20. Dzień dobry. Temat: funkcje sklejane i ich własności. Plan: skąd się wzięły, trochę matematyki
+    (dlaczego działają), trochę informatyki (jak się je liczy) i gdzie dziś są — aż po sieci neuronowe.
+    Prezentacja jest interaktywna — wszystko, co widać, liczy się na żywo w przeglądarce.
+  </aside>
+</section>
+
+<!-- ============================================================ 2. GDZIE SĄ SPLAJNY -->
+<section class="std">
+  <div class="slide-head"><h2>Ile funkcji sklejanych widzieliście dziś rano?</h2><span class="tag fun">rozgrzewka</span></div>
+  <div class="tiles">
+    <div class="tile">
+      <svg viewBox="0 0 240 92" aria-hidden="true" class="glyph-s"><path d="M142.5,9.9 L142.5,20.1 Q136.6,17.3 131.3,15.9 Q126.0,14.5 121.1,14.5 Q112.6,14.5 107.9,17.8 Q103.3,21.1 103.3,27.2 Q103.3,32.3 106.4,34.9 Q109.5,37.5 118.1,39.1 L124.4,40.4 Q136.0,42.6 141.6,48.2 Q147.1,53.8 147.1,63.2 Q147.1,74.4 139.6,80.2 Q132.1,86.0 117.6,86.0 Q112.1,86.0 105.9,84.8 Q99.8,83.5 93.2,81.1 L93.2,70.4 Q99.5,73.9 105.6,75.7 Q111.7,77.5 117.6,77.5 Q126.5,77.5 131.3,74.0 Q136.2,70.5 136.2,64.0 Q136.2,58.3 132.8,55.1 Q129.3,51.9 121.3,50.3 L115.0,49.1 Q103.3,46.7 98.1,41.8 Q92.9,36.8 92.9,28.0 Q92.9,17.8 100.1,11.9 Q107.3,6.0 119.9,6.0 Q125.3,6.0 130.9,7.0 Q136.6,8.0 142.5,9.9 Z" fill="currentColor" fill-opacity=".12" stroke="currentColor" stroke-width="1.6"/><g class="pts"><circle cx="142.5" cy="9.9" r="2.2" class="on"/> <circle cx="142.5" cy="20.1" r="2.2" class="on"/> <circle cx="136.6" cy="17.3" r="1.8" class="off"/> <circle cx="126.0" cy="14.5" r="1.8" class="off"/> <circle cx="121.1" cy="14.5" r="2.2" class="on"/> <circle cx="112.6" cy="14.5" r="1.8" class="off"/> <circle cx="103.3" cy="21.1" r="1.8" class="off"/> <circle cx="103.3" cy="27.2" r="2.2" class="on"/> <circle cx="103.3" cy="32.3" r="1.8" class="off"/> <circle cx="109.5" cy="37.5" r="1.8" class="off"/> <circle cx="118.1" cy="39.1" r="2.2" class="on"/> <circle cx="124.4" cy="40.4" r="2.2" class="on"/> <circle cx="136.0" cy="42.6" r="1.8" class="off"/> <circle cx="147.1" cy="53.8" r="1.8" class="off"/> <circle cx="147.1" cy="63.2" r="2.2" class="on"/> <circle cx="147.1" cy="74.4" r="1.8" class="off"/> <circle cx="132.1" cy="86.0" r="1.8" class="off"/> <circle cx="117.6" cy="86.0" r="2.2" class="on"/> <circle cx="112.1" cy="86.0" r="1.8" class="off"/> <circle cx="99.8" cy="83.5" r="1.8" class="off"/> <circle cx="93.2" cy="81.1" r="2.2" class="on"/> <circle cx="93.2" cy="70.4" r="2.2" class="on"/> <circle cx="99.5" cy="73.9" r="1.8" class="off"/> <circle cx="111.7" cy="77.5" r="1.8" class="off"/> <circle cx="117.6" cy="77.5" r="2.2" class="on"/> <circle cx="126.5" cy="77.5" r="1.8" class="off"/> <circle cx="136.2" cy="70.5" r="1.8" class="off"/> <circle cx="136.2" cy="64.0" r="2.2" class="on"/> <circle cx="136.2" cy="58.3" r="1.8" class="off"/> <circle cx="129.3" cy="51.9" r="1.8" class="off"/> <circle cx="121.3" cy="50.3" r="2.2" class="on"/> <circle cx="115.0" cy="49.1" r="2.2" class="on"/> <circle cx="103.3" cy="46.7" r="1.8" class="off"/> <circle cx="92.9" cy="36.8" r="1.8" class="off"/> <circle cx="92.9" cy="28.0" r="2.2" class="on"/> <circle cx="92.9" cy="17.8" r="1.8" class="off"/> <circle cx="107.3" cy="6.0" r="1.8" class="off"/> <circle cx="119.9" cy="6.0" r="2.2" class="on"/> <circle cx="125.3" cy="6.0" r="1.8" class="off"/> <circle cx="136.6" cy="8.0" r="1.8" class="off"/></g></svg>
+      <h3>Czcionki</h3>
+      <p>Każda litera na tym ekranie to krzywe Béziera: TrueType — 2. stopnia, OpenType/CFF — 3. stopnia.</p>
+    </div>
+    <div class="tile">
+      <svg viewBox="0 0 240 92" aria-hidden="true"><path d="M12 70 C 26 68, 36 52, 70 46 C 92 26, 140 18, 170 34 C 196 38, 222 46, 228 66 L 228 70 L 12 70 Z" fill="currentColor" fill-opacity=".1" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/><circle cx="62" cy="72" r="11" fill="var(--card)" stroke="currentColor" stroke-width="2.4"/><circle cx="190" cy="72" r="11" fill="var(--card)" stroke="currentColor" stroke-width="2.4"/><path d="M70 46 L92 26 M170 34 L196 38" stroke="var(--orange)" stroke-width="1.4" stroke-dasharray="3 3"/><circle cx="92" cy="26" r="3" fill="var(--orange)"/><circle cx="196" cy="38" r="3" fill="var(--orange)"/></svg>
+      <h3>CAD i przemysł</h3>
+      <p>Karoserie, kadłuby, skrzydła, turbiny: krzywe i powierzchnie NURBS (formaty IGES, STEP).</p>
+    </div>
+    <div class="tile">
+      <svg viewBox="0 0 240 92" aria-hidden="true"><path d="M20 82 C 70 82, 60 10, 110 10" fill="none" stroke="currentColor" stroke-width="2.6"/><path d="M20 82 L 20 8 M20 82 L 116 82" stroke="var(--faint)" stroke-width="1.2"/><path d="M20 82 L58 82 M110 10 L72 10" stroke="var(--orange)" stroke-width="1.4" stroke-dasharray="3 3"/><circle cx="58" cy="82" r="3.2" fill="var(--orange)"/><circle cx="72" cy="10" r="3.2" fill="var(--orange)"/><g fill="currentColor"><circle cx="140" cy="46" r="5" opacity=".25"/><circle cx="146" cy="46" r="5" opacity=".3"/><circle cx="158" cy="46" r="5" opacity=".4"/><circle cx="178" cy="46" r="5" opacity=".55"/><circle cx="200" cy="46" r="5" opacity=".7"/><circle cx="214" cy="46" r="5" opacity=".85"/><circle cx="222" cy="46" r="5"/></g></svg>
+      <h3>Animacja i UI</h3>
+      <p><code style="white-space:nowrap">cubic-bezier(.65,0,.35,1)</code> w CSS, klatki kluczowe w Blenderze i After Effects.</p>
+    </div>
+    <div class="tile">
+      <svg viewBox="0 0 240 92" aria-hidden="true"><path d="M20 70 C 50 10, 90 10, 120 46 S 190 82, 220 22" fill="none" stroke="currentColor" stroke-width="2.6"/><g fill="var(--card)" stroke="currentColor" stroke-width="2"><circle cx="20" cy="70" r="4.5"/><circle cx="70" cy="22" r="4.5"/><circle cx="120" cy="46" r="4.5"/><circle cx="172" cy="72" r="4.5"/><circle cx="220" cy="22" r="4.5"/></g><g stroke="var(--orange)" stroke-width="2"><path d="M212 14 l16 16 M228 14 l-16 16"/></g></svg>
+      <h3>Robotyka</h3>
+      <p>Trajektorie ramion i dronów: wielomiany kawałkami, minimalizacja szarpnięcia (<i>jerk</i>, <i>snap</i>).</p>
+    </div>
+    <div class="tile">
+      <svg viewBox="0 0 240 92" aria-hidden="true"><g fill="var(--faint)"><circle cx="16" cy="60" r="3"/><circle cx="30" cy="44" r="3"/><circle cx="42" cy="52" r="3"/><circle cx="56" cy="30" r="3"/><circle cx="70" cy="26" r="3"/><circle cx="84" cy="38" r="3"/><circle cx="98" cy="30" r="3"/><circle cx="112" cy="52" r="3"/><circle cx="126" cy="60" r="3"/><circle cx="140" cy="72" r="3"/><circle cx="154" cy="62" r="3"/><circle cx="168" cy="76" r="3"/><circle cx="182" cy="58" r="3"/><circle cx="196" cy="50" r="3"/><circle cx="210" cy="34" r="3"/><circle cx="224" cy="30" r="3"/></g><path d="M12 58 C 40 30, 70 18, 100 36 S 150 82, 180 64 S 215 28, 230 28" fill="none" stroke="currentColor" stroke-width="2.6"/></svg>
+      <h3>Statystyka i ML</h3>
+      <p>Wygładzanie, modele addytywne (GAM), sieci KAN — a każda sieć ReLU to splajn liniowy.</p>
+    </div>
+    <div class="tile">
+      <svg viewBox="0 0 240 92" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.6"><path d="M60 8 C 70 30, 50 60, 62 86"/><path d="M95 8 C 108 30, 92 60, 100 86"/><path d="M130 8 C 146 32, 132 60, 138 86"/><path d="M165 8 C 178 30, 170 60, 176 86"/><path d="M50 14 C 90 24, 140 4, 186 16"/><path d="M50 36 C 96 50, 140 24, 186 38"/><path d="M50 60 C 96 72, 140 50, 186 62"/><path d="M50 82 C 92 88, 140 76, 186 84"/></g></svg>
+      <h3>Obrazy i sygnały</h3>
+      <p>Skalowanie zdjęć (bicubic), rejestracja obrazów medycznych, morfing twarzy (<i>thin-plate splines</i>).</p>
+    </div>
+  </div>
+  <aside class="notes">
+    ≈0:40. Zanim definicje — zagadka: gdzie dziś rano widzieliście funkcję sklejaną? Odpowiedź: wszędzie.
+    Litery na ekranie telefonu, kształt samochodu, płynna animacja przewijania, trajektoria drona,
+    wygładzona krzywa w Excelu, powiększanie zdjęcia. Wspólna idea: kawałki wielomianów niskiego stopnia,
+    sklejone tak gładko, jak się da. Po tej prezentacji będziecie je widzieć wszędzie.
+  </aside>
+</section>
+
+<!-- ============================================================ 3. LISTWA I KACZKI -->
+<section class="std">
+  <div class="slide-head"><h2>Skąd nazwa? Listwa i&nbsp;kaczki</h2><span class="tag hist">historia</span></div>
+  <div class="cols l35">
+    <div class="col-text">
+      <p><b><i>spline</i></b> (ang.) — giętka listwa kreślarska z drewna lub metalu.</p>
+      <ul>
+        <li>Dociskana ołowianymi ciężarkami — <b>„kaczkami”</b> (<i>ducks</i>, <i>whales</i>).</li>
+        <li>Szkutnictwo, potem lotnictwo i motoryzacja: wykreślanie kształtów w skali 1:1 (<i>lofting</i>).</li>
+        <li>Listwa sama „wybiera” kształt: <b>minimalizuje energię zginania</b>
+          $$E \;\propto\; \int \kappa(s)^2\,ds$$</li>
+      </ul>
+      <div class="box idea"><p>Zaraz zobaczymy, że dla małych ugięć to <b>dokładnie</b> naturalna sześcienna funkcja sklejana.</p></div>
+    </div>
+    <div class="demo" data-demo="ducks" data-w="736" data-h="440"></div>
+  </div>
+  <aside class="notes">
+    ≈1:00. Słowo „spline” jest starsze od matematyki. To giętka listwa, którą szkutnicy i kreślarze
+    dociskali ciężarkami zwanymi kaczkami — kształty kadłubów rysowano w skali 1:1 na podłodze hali (lofting).
+    [DEMO: przeciągnąć kaczkę.] Listwa sama układa się w kształt o najmniejszej energii zginania —
+    całka z kwadratu krzywizny. Za kilka slajdów udowodnimy, że matematyczna funkcja sklejana robi dokładnie to samo.
+    Zwróćcie uwagę: za ostatnią kaczką listwa jest prosta — to będą „naturalne” warunki brzegowe.
+  </aside>
+</section>
+
+<!-- ============================================================ 4. OŚ CZASU -->
+<section class="std">
+  <div class="slide-head"><h2>Od krzywej sprężystej do sieci neuronowych</h2><span class="tag hist">historia</span></div>
+  <div class="legend"><span style="--c: var(--blue)">matematyka</span><span style="--c: var(--orange)">przemysł</span><span style="--c: var(--purple)">informatyka i ML</span></div>
+  <div class="timeline">
+    <div class="axis"></div>
+    <div class="ev m up" style="left:7%"><span class="pin"></span><div class="yr">1691–1744</div><div class="who">J. Bernoulli, L. Euler</div><div class="what">krzywa sprężysta (<i>elastica</i>) — matematyka giętkiej listwy</div></div>
+    <div class="ev m down" style="left:14.8%"><span class="pin"></span><div class="yr">1901</div><div class="who">C. Runge</div><div class="what">interpolacja wielomianem może się rozbiegać</div></div>
+    <div class="ev m up fragment" data-fragment-index="1" style="left:22.6%"><span class="pin"></span><div class="yr">1912</div><div class="who">S. Bernstein</div><div class="what">wielomiany Bernsteina — konstruktywny dowód tw. Weierstrassa</div></div>
+    <div class="ev m down fragment" data-fragment-index="1" style="left:30.5%"><span class="pin"></span><div class="yr">1946</div><div class="who">I. J. Schoenberg</div><div class="what">nazwa <i>spline functions</i>; wcześniej: tablice balistyczne w Aberdeen</div></div>
+    <div class="ev m up fragment" data-fragment-index="1" style="left:38.3%"><span class="pin"></span><div class="yr">1957</div><div class="who">J. C. Holladay</div><div class="what">splajn naturalny minimalizuje $\int f''^2$</div></div>
+    <div class="ev p down fragment" data-fragment-index="2" style="left:46.1%"><span class="pin"></span><div class="yr">1959–1962</div><div class="who">P. de Casteljau, P. Bézier</div><div class="what">Citroën i Renault: krzywe do projektowania karoserii</div></div>
+    <div class="ev p up fragment" data-fragment-index="2" style="left:53.9%"><span class="pin"></span><div class="yr">1964</div><div class="who">J. Ferguson; G. Birkhoff, C. de Boor</div><div class="what">Boeing i General Motors: krzywe i powierzchnie sklejane</div></div>
+    <div class="ev m down fragment" data-fragment-index="2" style="left:61.7%"><span class="pin"></span><div class="yr">1967–1970</div><div class="who">C. Reinsch; G. Kimeldorf, G. Wahba</div><div class="what">splajny wygładzające ↔ estymacja bayesowska</div></div>
+    <div class="ev c up fragment" data-fragment-index="3" style="left:69.5%"><span class="pin"></span><div class="yr">1972</div><div class="who">M. Cox, C. de Boor</div><div class="what">stabilna rekurencja dla B-splajnów</div></div>
+    <div class="ev c down fragment" data-fragment-index="3" style="left:77.4%"><span class="pin"></span><div class="yr">1974–1978</div><div class="who">Catmull–Rom, Chaikin, Versprille, Catmull–Clark</div><div class="what">grafika komputerowa, NURBS (1975), podział powierzchni</div></div>
+    <div class="ev c up fragment" data-fragment-index="3" style="left:85.2%"><span class="pin"></span><div class="yr">1984 / 1991</div><div class="who">PostScript, TrueType</div><div class="what">czcionki jako krzywe 3. i 2. stopnia</div></div>
+    <div class="ev c down fragment" data-fragment-index="3" style="left:93%"><span class="pin"></span><div class="yr">2005–2024</div><div class="who">IGA; sieci ReLU; KAN</div><div class="what">MES na splajnach, „sieć = splajn”, sieci Kołmogorowa–Arnolda</div></div>
+  </div>
+  <aside class="notes">
+    ≈1:20. Trzy fale. (1) Matematyka: Bernoulli i Euler badali krzywą sprężystą; Runge pokazał w 1901,
+    że jeden wielomian wysokiego stopnia to zły pomysł; Schoenberg w 1946 nadał nazwę „spline functions” —
+    wcześniej w czasie wojny liczył tablice balistyczne w Aberdeen Proving Ground.
+    (2) Przemysł: lata 60. — de Casteljau w Citroënie i Bézier w Renault; Boeing, General Motors. Prace
+    de Casteljau były tajne, dlatego krzywe nazywamy imieniem Béziera.
+    (3) Informatyka: rekurencja Coxa–de Boora (1972), grafika, NURBS, czcionki (PostScript, TrueType), a dziś sieci neuronowe.
+  </aside>
+</section>
+
+<!-- ============================================================ 5. RUNGE -->
+<section class="std">
+  <div class="slide-head"><h2>Dlaczego nie jeden wielomian?</h2><span class="tag mat">matematyka</span></div>
+  <div class="cols l35">
+    <div class="col-text">
+      <p>$f(x) = \dfrac{1}{1+25x^2}$, $\;n+1$ węzłów równoodległych na $[-1,1]$.</p>
+      <ul>
+        <li><b>Runge (1901):</b> $\max_{[-1,1]}|f - p_n| \to \infty$ przy $n\to\infty$.</li>
+        <li><b>Faber (1914):</b> dla <i>każdego</i> układu węzłów istnieje $f \in C[a,b]$, dla której interpolacja się rozbiega.</li>
+      </ul>
+      <div class="box idea"><p><b>Pomysł:</b> nie podnosić stopnia — <b>podzielić przedział</b> i&nbsp;skleić kawałki niskiego stopnia.</p></div>
+    </div>
+    <div class="demo" data-demo="runge" data-w="736" data-h="440"></div>
+  </div>
+  <aside class="notes">
+    ≈1:10. Naturalny pomysł: przez n+1 punktów przeprowadzić wielomian stopnia n. [DEMO: suwak n w górę.]
+    Dla funkcji Rungego przy węzłach równoodległych wielomian zaczyna oscylować przy końcach i błąd rośnie do nieskończoności.
+    Węzły Czebyszewa pomagają [przełącznik], ale twierdzenie Fabera mówi, że nie ma układu węzłów dobrego dla wszystkich funkcji ciągłych.
+    Splajn (niebieski) — ten sam zestaw punktów, ale stopień 3 na każdym kawałku — po prostu działa.
+  </aside>
+</section>
+
+<!-- ============================================================ 6. DEFINICJA -->
+<section class="std">
+  <div class="slide-head"><h2>Definicja</h2><span class="tag mat">matematyka</span></div>
+  <div class="cols l55">
+    <div class="col-text">
+      <div class="box def">
+        <div class="box-title">Funkcja sklejana stopnia $k$</div>
+        <p>Niech $\Delta:\ a = x_0 &lt; x_1 &lt; \dots &lt; x_n = b$. Funkcja $s$ jest <b>funkcją sklejaną stopnia $k$</b> o&nbsp;węzłach $\Delta$, jeśli</p>
+        <p style="text-align:center">$s \in C^{k-1}[a,b]$ &nbsp;oraz&nbsp; $s|_{[x_{i-1},\,x_i]} \in \Pi_k$, $\;i = 1,\dots,n$.</p>
+      </div>
+      <p class="fragment"><b>Wymiar przestrzeni</b> $S_k(\Delta)$:
+        $$\dim S_k(\Delta) = \underbrace{n(k+1)}_{\text{współczynniki}} - \underbrace{(n-1)\,k}_{\text{warunki sklejenia}} = n + k.$$</p>
+      <div class="fragment"><p style="margin-bottom:0"><b>Baza potęg uciętych</b>, $\;(x-t)_+ = \max(0,\,x-t)$:</p>
+        $$1,\ x,\ \dots,\ x^k,\ \ (x-x_1)_+^k,\ \dots,\ (x-x_{n-1})_+^k$$
+        <p class="muted small">— zapamiętajmy $(x-t)_+$: wróci przy sieciach neuronowych.</p></div>
+    </div>
+    <div class="demo" data-demo="pieces" data-w="540" data-h="430"></div>
+  </div>
+  <aside class="notes">
+    ≈1:00. Definicja: na każdym przedziale wielomian stopnia k, a w węzłach sklejamy tak gładko, jak się da bez
+    stawania się jednym wielomianem — ciągłe pochodne do rzędu k−1. Liczenie wymiaru: n kawałków po k+1
+    współczynników, w każdym z n−1 węzłów wewnętrznych k warunków ciągłości → n+k.
+    [DEMO po prawej: każdy kawałek to INNY wielomian — przedłużony przerywaną linią rozjeżdża się, ale w swoim
+    przedziale styka się z sąsiadami gładko.] Baza potęg uciętych pokazuje, że każdy splajn to wielomian plus
+    „zawiasy” w węzłach. Ta funkcja max(0, x−t) to ReLU — wrócimy do tego.
+  </aside>
+</section>
+
+<!-- ============================================================ 7. SZEŚCIENNE + WARUNKI BRZEGOWE -->
+<section>
+<section class="std">
+  <div class="slide-head"><h2>Sześcienna funkcja sklejana interpolacyjna</h2><span class="tag mat">matematyka</span></div>
+  <div class="cols l35">
+    <div class="col-text">
+      <p>$\underbrace{n+3}_{\dim S_3} - \underbrace{(n+1)}_{s(x_i)=y_i} = $ <b>2 warunki brzegowe</b>:</p>
+      <ul>
+        <li><b class="hl">naturalne:</b> $s''(a) = s''(b) = 0$</li>
+        <li><b class="hl">zupełne:</b> $s'(a) = \alpha,\ s'(b) = \beta$</li>
+        <li><b class="hl"><i>not-a-knot</i>:</b> $s'''$ ciągła w $x_1$ i $x_{n-1}$</li>
+        <li><b class="hl">okresowe:</b> $s^{(j)}(a) = s^{(j)}(b)$, $j = 0,1,2$</li>
+      </ul>
+      <p class="small muted">Po prawej: $s$, $s'$, $s''$ (łamana!) i $s'''$ (schodki). Gładkość kończy się dokładnie na $C^2$.</p>
+    </div>
+    <div class="demo" data-demo="cubic" data-w="736" data-h="470"></div>
+  </div>
+  <div class="down-hint">jak to policzyć</div>
+  <aside class="notes">
+    ≈1:10. Najpopularniejszy przypadek: stopień 3. Wymiar n+3, warunków interpolacji n+1, brakuje dwóch —
+    to warunki brzegowe. [DEMO: przełączać warunki, przeciągać punkty.] Pod spodem widać pochodne:
+    s'' jest łamaną, a s''' — funkcją schodkową. Dlaczego akurat stopień 3? To najniższy stopień, przy którym
+    krzywizna jest ciągła — oko nie widzi łączeń. (↓ dodatek: jak to policzyć w O(n).)
+  </aside>
+</section>
+<section class="std">
+  <div class="slide-head"><h2>Jak to policzyć? Układ trójdiagonalny</h2><span class="tag deep">dodatek</span></div>
+  <div class="cols l55">
+    <div class="col-text" style="font-size:21px">
+      <p>Niewiadome: <b>momenty</b> $M_i = s''(x_i)$; $\;h_i = x_{i+1}-x_i$. Na $[x_i, x_{i+1}]$:</p>
+      $$\begin{aligned} s(x) = {}& M_i\frac{(x_{i+1}-x)^3}{6h_i} + M_{i+1}\frac{(x-x_i)^3}{6h_i} \\ &+ \Big(y_i - \tfrac{M_i h_i^2}{6}\Big)\frac{x_{i+1}-x}{h_i} + \Big(y_{i+1} - \tfrac{M_{i+1} h_i^2}{6}\Big)\frac{x-x_i}{h_i} \end{aligned}$$
+      <p>Ciągłość $s'$ w $x_i$, $\;i = 1,\dots,n-1$:</p>
+      $$h_{i-1}M_{i-1} + 2(h_{i-1}+h_i)\,M_i + h_i M_{i+1} = 6\left(\frac{y_{i+1}-y_i}{h_i} - \frac{y_i-y_{i-1}}{h_{i-1}}\right)$$
+      <ul>
+        <li>Macierz symetryczna, <b>ściśle diagonalnie dominująca</b> ⇒ rozwiązanie istnieje i jest jedyne.</li>
+        <li><b>Algorytm Thomasa:</b> $O(n)$ działań, stabilny bez wyboru elementu głównego.</li>
+      </ul>
+    </div>
+    <div>
+<pre><code class="language-python" data-trim data-noescape>
+def thomas(a, b, c, d):
+    """a — pod, b — na, c — nad przekątną"""
+    n = len(b); c, d = c.copy(), d.copy()
+    c[0] /= b[0]; d[0] /= b[0]
+    for i in range(1, n):        # eliminacja
+        m = b[i] - a[i] * c[i-1]
+        c[i] = c[i] / m if i &lt; n-1 else 0
+        d[i] = (d[i] - a[i] * d[i-1]) / m
+    for i in range(n-2, -1, -1): # wstecz
+        d[i] -= c[i] * d[i+1]
+    return d                     # M_0 … M_n
+</code></pre>
+      <p class="small muted" style="margin-top:10px">W praktyce: <code>scipy.interpolate.CubicSpline(x, y, bc_type="natural")</code></p>
+      <div class="demo" data-demo="thomas" data-w="540" data-h="120"></div>
+    </div>
+  </div>
+  <aside class="notes">
+    Dodatek. Zapisujemy splajn przez momenty M_i = s''(x_i) — wtedy wzór na kawałku automatycznie interpoluje
+    i ma ciągłe s''. Ciągłość s' daje układ trójdiagonalny, diagonalnie dominujący. Thomas: O(n).
+    [DEMO: przycisk — milion niewiadomych w przeglądarce w kilkadziesiąt milisekund.]
+  </aside>
+</section>
+</section>
+
+<!-- ============================================================ 8. HOLLADAY + FIZYKA -->
+<section>
+<section class="std">
+  <div class="slide-head"><h2>Najgładsza z możliwych</h2><span class="tag mat">matematyka</span></div>
+  <div class="cols l55">
+    <div class="col-text">
+      <div class="box thm">
+        <div class="box-title">Twierdzenie (Holladay, 1957)</div>
+        <p>Niech $s$ — naturalna sześcienna funkcja sklejana, $s(x_i) = y_i$. Dla każdej $f \in C^2[a,b]$ z&nbsp;$f(x_i) = y_i$:
+        $$\int_a^b s''(x)^2\,dx \;\le\; \int_a^b f''(x)^2\,dx,$$ z równością tylko dla $f = s$.</p>
+      </div>
+      <p class="fragment" style="font-size:21px"><b>Dowód.</b> $e = f - s$, $\;e(x_i) = 0$. $\;\int f''^2 = \int s''^2 + \int e''^2 + 2\!\int s''e''$, a&nbsp;przez części:
+      $$\begin{aligned}\int_a^b s''e'' &= \big[s''e'\big]_a^b - \sum_i \underbrace{s'''|_{[x_i,x_{i+1}]}}_{=\,c_i}\int_{x_i}^{x_{i+1}}\! e'\\ &= 0 - \sum_i c_i\,\big(e(x_{i+1}) - e(x_i)\big) = 0. \;\blacksquare\end{aligned}$$</p>
+    </div>
+    <div class="col-text">
+      <h3 style="margin-bottom:8px">Fizyka listwy</h3>
+      <svg viewBox="0 0 520 215" style="width:100%;height:auto" aria-hidden="true">
+        <path d="M10 150 L60 132 C 110 112, 150 50, 210 52 C 270 54, 300 150, 360 148 C 410 146, 440 100, 470 88 L 512 72" fill="none" stroke="var(--yellow)" stroke-width="9" stroke-linecap="round" opacity=".55"/>
+        <path d="M10 150 L60 132 C 110 112, 150 50, 210 52 C 270 54, 300 150, 360 148 C 410 146, 440 100, 470 88 L 512 72" fill="none" stroke="var(--ink)" stroke-width="1.6"/>
+        <g stroke="var(--orange)" stroke-width="2.4" fill="var(--orange)">
+          <path d="M60 92 L60 122"/><path d="M54 116 L60 128 L66 116 Z"/>
+          <path d="M210 12 L210 42"/><path d="M204 36 L210 48 L216 36 Z"/>
+          <path d="M360 188 L360 158"/><path d="M354 164 L360 152 L366 164 Z"/>
+          <path d="M470 48 L470 78"/><path d="M464 72 L470 84 L476 72 Z"/>
+        </g>
+        <g font-family="Inter" font-size="21" font-style="italic" fill="var(--orange)" font-weight="600">
+          <text x="70" y="104">F₁</text><text x="222" y="30">F₂</text><text x="372" y="196">F₃</text><text x="482" y="56">F₄</text>
+        </g>
+        <g font-family="Inter" font-size="19" fill="var(--ink)">
+          <text x="8" y="204">między kaczkami: y⁗ = 0</text>
+        </g>
+      </svg>
+      <ul style="font-size:20px">
+        <li>Belka Eulera–Bernoulliego: $E = \tfrac{EI}{2}\int \kappa^2\,ds \approx \tfrac{EI}{2}\int y''^2\,dx$.</li>
+        <li>Równanie równowagi: $EI\,y'''' = q(x)$; między kaczkami $q = 0$ ⇒ <b>wielomian stopnia 3</b>.</li>
+        <li>Kaczka = siła skupiona ⇒ <b>skok $y'''$</b>; swobodny koniec ⇒ moment $=0$ ⇒ $y'' = 0$ — <b>warunek naturalny</b>.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="down-hint">jak szybko zbiega</div>
+  <aside class="notes">
+    ≈1:20. Najważniejsze twierdzenie: spośród WSZYSTKICH funkcji klasy C² przechodzących przez punkty,
+    naturalny splajn sześcienny ma najmniejszą całkę z kwadratu drugiej pochodnej. Dowód w trzech linijkach:
+    rozpisujemy kwadrat, a wyraz mieszany znika po całkowaniu przez części — bo s''' jest stała na przedziałach,
+    e zeruje się w węzłach, a s'' zeruje się na końcach.
+    Fizyka: to dokładnie energia belki dla małych ugięć. Między kaczkami brak obciążenia → y'''' = 0 → wielomian
+    stopnia 3; kaczka to siła skupiona → skok trzeciej pochodnej; wolny koniec → zerowy moment → y'' = 0.
+    Matematyka i warsztat szkutnika mówią to samo. (↓ dodatek: szybkość zbieżności.)
+  </aside>
+</section>
+<section class="std">
+  <div class="slide-head"><h2>Jak dobrze przybliża? Rząd zbieżności</h2><span class="tag deep">dodatek</span></div>
+  <div class="cols l40">
+    <div class="col-text">
+      <div class="box thm">
+        <div class="box-title">Hall i Meyer (1976)</div>
+        <p>$f \in C^4[a,b]$, $s$ — splajn zupełny, $h = \max h_i$:</p>
+        $$\begin{aligned}\|f - s\|_\infty &\le \tfrac{5}{384}\,h^4\,\|f^{(4)}\|_\infty\\ \|f' - s'\|_\infty &\le \tfrac{1}{24}\,h^3\,\|f^{(4)}\|_\infty\\ \|f'' - s''\|_\infty &\le \tfrac{3}{8}\,h^2\,\|f^{(4)}\|_\infty\end{aligned}$$
+        <p class="small muted">Stałe są optymalne.</p>
+      </div>
+      <ul style="font-size:20px">
+        <li>Warunki naturalne przy $f''(a) \ne 0$: błąd przy brzegu tylko $O(h^2)$.</li>
+        <li>Dla funkcji analitycznych wielomian w węzłach Czebyszewa zbiega <b>wykładniczo</b> — splajny wygrywają lokalnością, stabilnością i odpornością na mało gładkie dane.</li>
+      </ul>
+    </div>
+    <div class="demo" data-demo="convergence" data-w="680" data-h="440"></div>
+  </div>
+  <aside class="notes">
+    Dodatek. Splajn zupełny (lub not-a-knot) ma błąd O(h⁴) — na wykresie log-log nachylenie −4. Warunki naturalne
+    psują rząd przy brzegu do O(h²), jeśli f''(a) ≠ 0 — widać to na wykresie. Uczciwie: dla funkcji analitycznych
+    interpolacja Czebyszewa jest wykładniczo zbieżna i wygrywa; splajny wygrywają lokalnością i odpornością.
+  </aside>
+</section>
+</section>
+
+<!-- ============================================================ 9. B-SPLAJNY -->
+<section>
+<section class="std">
+  <div class="slide-head"><h2>B-splajny: baza lokalna</h2><span class="tag mat">matematyka</span></div>
+  <div class="cols l35">
+    <div class="col-text" style="font-size:21px">
+      <p>Rekurencja Coxa–de Boora (1972), węzły $t_0 \le t_1 \le \dots$:</p>
+      $$B_{i,0}(x) = \begin{cases}1, & t_i \le x &lt; t_{i+1}\\ 0 & \text{w p.p.}\end{cases}$$
+      $$B_{i,k} = \tfrac{x-t_i}{t_{i+k}-t_i}\,B_{i,k-1} + \tfrac{t_{i+k+1}-x}{t_{i+k+1}-t_{i+1}}\,B_{i+1,k-1}$$
+      <ul>
+        <li><b>nośnik lokalny:</b> $\operatorname{supp} B_{i,k} = [t_i,\,t_{i+k+1}]$</li>
+        <li><b>nieujemność</b> i <b>rozkład jedynki</b>: $\sum_i B_{i,k} \equiv 1$</li>
+        <li><b>baza</b> przestrzeni splajnów (Curry–Schoenberg)</li>
+        <li>węzeł krotności $m$ ⇒ ciągłość $C^{k-m}$</li>
+      </ul>
+    </div>
+    <div class="demo" data-demo="basis" data-w="736" data-h="440"></div>
+  </div>
+  <div class="down-hint">B-splajn to splot</div>
+  <aside class="notes">
+    ≈1:10. Baza potęg uciętych jest źle uwarunkowana. Lepsza baza: B-splajny — każdy niezerowy tylko na k+1
+    przedziałach, nieujemny, sumują się do jedynki. Liczymy je rekurencyjnie: stopień k z dwóch stopnia k−1.
+    [DEMO: suwak stopnia; przeciągnąć węzeł na sąsiada — krotność rośnie, gładkość spada, przy krotności k+1 pojawia się skok.]
+    Lokalność to klucz: zmiana jednego współczynnika zmienia funkcję tylko lokalnie.
+  </aside>
+</section>
+<section class="std">
+  <div class="slide-head"><h2>B-splajn to splot → rozkład normalny</h2><span class="tag deep">dodatek</span></div>
+  <div class="cols l40">
+    <div class="col-text">
+      <p>Dla węzłów równoodległych (całkowitych):</p>
+      $$B_k = \underbrace{\chi_{[0,1)} * \chi_{[0,1)} * \dots * \chi_{[0,1)}}_{k+1\ \text{razy}}$$
+      <ul>
+        <li>$B_k$ = gęstość sumy $k+1$ niezależnych zmiennych $U[0,1]$ (rozkład Irwina–Halla).</li>
+        <li>CTG ⇒ $B_k \to \mathcal N\!\big(\tfrac{k+1}{2},\, \tfrac{k+1}{12}\big)$.</li>
+        <li>Transformata Fouriera: $\widehat{B_k}(\omega) = \Big(\tfrac{\sin(\omega/2)}{\omega/2}\Big)^{k+1} e^{-i\omega(k+1)/2}$.</li>
+        <li>Dlatego B-splajny lubi przetwarzanie sygnałów (Unser, 1999).</li>
+      </ul>
+    </div>
+    <div class="demo" data-demo="convolution" data-w="680" data-h="420"></div>
+  </div>
+  <aside class="notes">
+    Dodatek. Ładny fakt: B-splajn na węzłach całkowitych to wielokrotny splot funkcji prostokątnej, czyli gęstość
+    sumy k+1 niezależnych zmiennych jednostajnych. Z CTG zbiega do gęstości normalnej. [DEMO: suwak stopnia.]
+  </aside>
+</section>
+</section>
+
+<!-- ============================================================ 10. BÉZIER -->
+<section class="std">
+  <div class="slide-head"><h2>Krzywe Béziera i algorytm de Casteljau</h2><span class="tag inf">informatyka</span></div>
+  <div class="cols l35">
+    <div class="col-text" style="font-size:21px">
+      <p>Wielomiany Bernsteina (1912):</p>
+      $$b_{i,n}(t) = \binom{n}{i} t^i (1-t)^{n-i}$$ $$C(t) = \sum_{i=0}^n b_{i,n}(t)\,P_i$$
+      <p>de Casteljau (Citroën, 1959) — same interpolacje liniowe:</p>
+      $$P_i^{(r)} = (1-t)\,P_i^{(r-1)} + t\,P_{i+1}^{(r-1)}$$
+      <ul>
+        <li>krzywa w <b>otoczce wypukłej</b> punktów kontrolnych</li>
+        <li>przechodzi przez $P_0$, $P_n$; styczne wzdłuż $P_0P_1$, $P_{n-1}P_n$</li>
+        <li>$O(n^2)$ na punkt, <b>stabilny numerycznie</b></li>
+        <li>wada: <b>sterowanie globalne</b> — każdy $P_i$ wpływa na całą krzywą</li>
+      </ul>
+    </div>
+    <div class="demo" data-demo="casteljau" data-w="736" data-h="460"></div>
+  </div>
+  <aside class="notes">
+    ≈1:00. Przejście do grafiki. Krzywa Béziera to kombinacja punktów kontrolnych z wagami — wielomianami
+    Bernsteina, które Bernstein wymyślił w 1912, żeby udowodnić twierdzenie Weierstrassa.
+    De Casteljau w Citroënie zauważył, że punkt krzywej da się policzyć samymi interpolacjami liniowymi.
+    [DEMO: suwak t / odtwarzanie — widać konstrukcję; „+ punkt” podnosi stopień, a krzywa się nie zmienia.] Wada: zmiana dowolnego punktu zmienia całą krzywą.
+  </aside>
+</section>
+
+<!-- ============================================================ 11. KRZYWE B-SPLAJNOWE -->
+<section>
+<section class="std">
+  <div class="slide-head"><h2>Krzywe B-splajnowe: sterowanie lokalne</h2><span class="tag inf">informatyka</span></div>
+  <div class="cols l35">
+    <div class="col-text" style="font-size:21px">
+      $$C(t) = \sum_{i=0}^{n} B_{i,k}(t)\,P_i$$
+      <ul>
+        <li>przesunięcie $P_i$ zmienia krzywą tylko dla $t \in [t_i,\,t_{i+k+1}]$</li>
+        <li>lokalna otoczka wypukła, niezmienniczość afiniczna</li>
+        <li><b>zmniejszanie wariacji</b> (Schoenberg): prosta przecina krzywą nie częściej niż łamaną kontrolną</li>
+        <li>algorytm de Boora $O(k^2)$; wstawianie węzłów (Boehm, 1980)</li>
+      </ul>
+      <p class="small"><b>Ciągłość:</b> $C^k$ — parametryczna; $G^k$ — geometryczna (styczna, krzywizna). Grzebień krzywizny pokazuje $G^2$.</p>
+    </div>
+    <div class="demo" data-demo="bcurve" data-w="736" data-h="460"></div>
+  </div>
+  <div class="down-hint">NURBS, Catmull–Rom, podział</div>
+  <aside class="notes">
+    ≈0:50. Rozwiązanie problemu globalności: krzywa B-splajnowa. [DEMO: przeciągnąć punkt — podświetla się
+    tylko fragment, który się zmienia; przełączyć na Béziera — zmienia się wszystko.] Grzebień krzywizny to
+    narzędzie z programów CAD — projektanci karoserii patrzą na niego, żeby widzieć ciągłość krzywizny.
+    (↓ dodatki: NURBS i okrąg, Catmull–Rom, podział Chaikina.)
+  </aside>
+</section>
+<section class="std">
+  <div class="slide-head"><h2>NURBS: wagi i dokładny okrąg</h2><span class="tag deep">dodatek</span></div>
+  <div class="cols l45">
+    <div class="col-text">
+      $$C(t) = \frac{\sum_i w_i\,B_{i,k}(t)\,P_i}{\sum_i w_i\,B_{i,k}(t)}$$
+      <ul>
+        <li>Wielomianem <b>nie da się</b> dokładnie narysować okręgu; krzywą wymierną — tak.</li>
+        <li>Wymierna krzywa Béziera 2. stopnia, waga środkowa $w$: <span class="hl-o">$w&lt;1$ elipsa</span>, <span class="hl-g">$w=1$ parabola</span>, <span class="hl-p">$w&gt;1$ hiperbola</span>.</li>
+        <li>Łuk o kącie $\theta$: $w = \cos(\theta/2)$; ćwiartka okręgu: $w = \tfrac{\sqrt2}{2}$.</li>
+        <li>Dlatego standardy CAD (IGES, STEP) i silniki geometrii opierają się na NURBS (Versprille, 1975).</li>
+      </ul>
+    </div>
+    <div class="demo" data-demo="nurbs" data-w="600" data-h="440"></div>
+  </div>
+  <aside class="notes">Dodatek. Wagi pozwalają odtworzyć stożkowe dokładnie. [DEMO: suwak w; przycisk „okrąg”.]</aside>
+</section>
+<section class="std">
+  <div class="slide-head"><h2>Catmull–Rom: interpolacja i parametryzacja</h2><span class="tag deep">dodatek</span></div>
+  <div class="cols l40">
+    <div class="col-text">
+      <ul>
+        <li>Przechodzi <b>przez</b> punkty, lokalna, klasy $C^1$ (Catmull, Rom 1974) — standard w animacji i grach.</li>
+        <li>Węzły $t_{i+1} = t_i + |P_{i+1}-P_i|^\alpha$:
+          <span class="muted">równomierna</span> $\alpha=0$, <span class="hl">dośrodkowa</span> $\alpha=\tfrac12$, <span class="hl-g">cięciwowa</span> $\alpha=1$.</li>
+        <li>Wersja dośrodkowa nie ma ostrzy ani pętli wewnątrz segmentu (Yuksel i in., 2011).</li>
+      </ul>
+      <p class="small muted">Przeciągnij punkty blisko siebie — równomierna robi pętle.</p>
+    </div>
+    <div class="demo" data-demo="catmull" data-w="680" data-h="440"></div>
+  </div>
+  <aside class="notes">Dodatek. Ta sama krzywa, trzy parametryzacje. Równomierna potrafi zrobić pętlę lub ostrze przy nierównych odległościach punktów.</aside>
+</section>
+<section class="std">
+  <div class="slide-head"><h2>Ścinanie narożników → B-splajn</h2><span class="tag deep">dodatek</span></div>
+  <div class="cols l40">
+    <div class="col-text">
+      <p><b>Chaikin (1974):</b> każdy odcinek $P_iP_{i+1}$ zastąp punktami</p>
+      $$Q_i = \tfrac34 P_i + \tfrac14 P_{i+1},\qquad R_i = \tfrac14 P_i + \tfrac34 P_{i+1}.$$
+      <ul>
+        <li>Granica: <b>kwadratowa krzywa B-splajnowa</b> (Riesenfeld, 1975).</li>
+        <li>Uogólnienie na powierzchnie: <b>Catmull–Clark</b> (1978) — standard w animacji 3D; Pixar, <i>Geri's Game</i> (1997).</li>
+      </ul>
+    </div>
+    <div class="demo" data-demo="chaikin" data-w="680" data-h="440"></div>
+  </div>
+  <aside class="notes">Dodatek. Splajn można dostać bez żadnych wzorów — samym ścinaniem narożników. Tak działają powierzchnie podziałowe w filmach animowanych.</aside>
+</section>
+</section>
+
+<!-- ============================================================ 12. OKIEM INFORMATYKA -->
+<section class="std">
+  <div class="slide-head"><h2>Okiem informatyka: algorytmy i reprezentacje</h2><span class="tag inf">informatyka</span></div>
+  <div class="cols l55">
+    <div>
+      <table class="tbl">
+        <thead><tr><th>Zadanie</th><th>Algorytm</th><th>Koszt</th></tr></thead>
+        <tbody>
+          <tr><td>splajn interpolacyjny</td><td>układ trójdiagonalny (Thomas)</td><td>O(n)</td></tr>
+          <tr><td>wartość $s(x)$</td><td>wyszukiwanie binarne przedziału + Horner</td><td>O(log n + k)</td></tr>
+          <tr><td>punkt krzywej B-spline</td><td>de Boor</td><td>O(k²)</td></tr>
+          <tr><td>punkt krzywej Béziera</td><td>de Casteljau</td><td>O(n²)</td></tr>
+          <tr><td>zagęszczenie siatki</td><td>wstawianie węzłów (Boehm, Oslo)</td><td>O(k) / węzeł</td></tr>
+          <tr><td>wygładzanie $n$ punktów</td><td>Reinsch: układ pasmowy</td><td>O(n)</td></tr>
+          <tr><td>rysowanie</td><td>adaptacyjny podział → odcinki; GPU: Loop–Blinn (2005)</td><td>O(1) / piksel</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-text" style="font-size:21px">
+      <div class="box">
+        <div class="box-title">Dwie reprezentacje</div>
+        <p><b>pp-form</b> — współczynniki wielomianu na każdym przedziale: szybka ewaluacja.</p>
+        <p><b>B-form</b> — węzły + współczynniki B-splajnów: stabilna, lokalna, gotowa do edycji.</p>
+      </div>
+      <div class="box">
+        <div class="box-title">Gdzie w kodzie</div>
+        <p>SciPy (FITPACK, Dierckx) · OpenCASCADE (NURBS) · Skia, Cairo (ścieżki 2D) · FreeType (czcionki) · SVG: <code>Q</code>, <code>C</code> · CSS: <code>cubic-bezier()</code></p>
+      </div>
+    </div>
+  </div>
+  <aside class="notes">
+    ≈0:40 (można skrócić). Z punktu widzenia informatyka: wszystko jest liniowe lub prawie liniowe w liczbie
+    punktów. Dwie reprezentacje: współczynniki wielomianów na przedziałach (szybko liczyć) albo postać B
+    (stabilna, lokalna, łatwa do edycji). Na GPU krzywe Béziera rysuje się wprost w shaderze fragmentów (Loop–Blinn, 2005).
+  </aside>
+</section>
+
+<!-- ============================================================ 13. CZCIONKI -->
+<section>
+<section class="std">
+  <div class="slide-head"><h2>Litera to funkcja sklejana</h2><span class="tag inf">informatyka</span></div>
+  <div class="cols l35">
+    <div class="col-text" style="font-size:21px">
+      <ul>
+        <li><b>TrueType</b> (Apple, 1991): kontur = kwadratowe krzywe Béziera.</li>
+        <li>Punkty <span class="hl">na krzywej</span> ● i <span class="hl-o">poza nią</span> ○. Dwa kolejne punkty „poza” ⇒ niejawny punkt pośrodku.</li>
+        <li>Ciąg punktów „poza” = <b>kwadratowy B-splajn</b> o węzłach równoodległych — zapis zwięzły i z ciągłością $C^1$.</li>
+        <li><b>PostScript Type 1</b> (1984), dziś <b>CFF</b> w OpenType: krzywe 3. stopnia.</li>
+        <li>Skalowanie bez utraty jakości: przekształcamy tylko punkty kontrolne.</li>
+      </ul>
+      <p class="cite">Kontury: DejaVu Sans (wolna licencja).</p>
+    </div>
+    <div class="demo" data-demo="glyph" data-w="736" data-h="460"></div>
+  </div>
+  <div class="down-hint">krzywe w CSS</div>
+  <aside class="notes">
+    ≈0:50. Prawdziwe dane z pliku czcionki DejaVu Sans. Pełne kropki — punkty na konturze, puste — punkty
+    kontrolne. W TrueType dwa kolejne punkty kontrolne oznaczają niejawny punkt pośrodku — to dokładnie
+    kwadratowy B-splajn o równych węzłach. [DEMO: przeciągnąć punkt kontrolny, zmienić literę na „ą”.]
+    Dlatego litery skalują się bez pikselozy: skalujemy kilkadziesiąt punktów, a nie miliony pikseli.
+  </aside>
+</section>
+<section class="std">
+  <div class="slide-head"><h2>Krzywe w interfejsach: <code>cubic-bezier()</code></h2><span class="tag deep">dodatek</span></div>
+  <div class="cols l40">
+    <div class="col-text" style="font-size:21px">
+      <ul>
+        <li>CSS: krzywa Béziera 3. stopnia z $P_0 = (0,0)$, $P_3 = (1,1)$; użytkownik wybiera $P_1$, $P_2$.</li>
+        <li>Oś $x$ = czas, oś $y$ = postęp animacji.</li>
+        <li>Problem: mamy czas $x$, potrzebujemy $y$ ⇒ trzeba odwrócić $x(t)$ — <b>metoda Newtona</b> (z bisekcją jako asekuracją), tak robią przeglądarki.</li>
+        <li>$y \notin [0,1]$ ⇒ efekt „sprężyny”.</li>
+      </ul>
+    </div>
+    <div class="demo" data-demo="easing" data-w="680" data-h="440"></div>
+  </div>
+  <aside class="notes">Dodatek. Każda płynna animacja w przeglądarce to krzywa Béziera; przeglądarka co klatkę rozwiązuje równanie x(t) = czas metodą Newtona.</aside>
+</section>
+</section>
+
+<!-- ============================================================ 14. WYGŁADZANIE -->
+<section class="std">
+  <div class="slide-head"><h2>Statystyka: splajn wygładzający</h2><span class="tag ml">uczenie maszynowe</span></div>
+  <div class="cols l35">
+    <div class="col-text" style="font-size:21px">
+      $$\min_f\ \sum_{i=1}^n \big(y_i - f(x_i)\big)^2 + \lambda \int f''(x)^2\,dx$$
+      <ul>
+        <li>Rozwiązanie: <b>naturalny splajn sześcienny</b> z węzłami w $x_i$ (Schoenberg 1964, Reinsch 1967).</li>
+        <li>$\lambda \to 0$: interpolacja; $\;\lambda \to \infty$: regresja liniowa. Kompromis obciążenie–wariancja.</li>
+        <li><b>Kimeldorf i Wahba (1970):</b> to średnia a posteriori procesu gaussowskiego ⇒ <b>twierdzenie o reprezentacji</b> ⇒ metody jądrowe, SVM.</li>
+        <li>Modele addytywne (GAM): $f(\mathbf x) = \sum_j f_j(x_j)$, każde $f_j$ — splajn.</li>
+      </ul>
+    </div>
+    <div class="demo" data-demo="smoothing" data-w="736" data-h="440"></div>
+  </div>
+  <aside class="notes">
+    ≈1:10. Przejście do ML. Dane są zaszumione — nie chcemy interpolować. Karzemy krzywiznę: suma kwadratów
+    błędów plus λ razy energia zginania. Rozwiązanie w nieskończenie wymiarowej przestrzeni okazuje się
+    naturalnym splajnem sześciennym z węzłami w danych. [DEMO: suwak λ — od przeuczenia do prostej;
+    „efektywna liczba parametrów” spada.] Kimeldorf i Wahba pokazali, że to średnia a posteriori procesu
+    gaussowskiego — z tej pracy wyrosło twierdzenie o reprezentacji, na którym stoją metody jądrowe i SVM.
+  </aside>
+</section>
+
+<!-- ============================================================ 15. ReLU -->
+<section class="std">
+  <div class="slide-head"><h2>Sieć ReLU to funkcja sklejana</h2><span class="tag ml">uczenie maszynowe</span></div>
+  <div class="cols l35">
+    <div class="col-text" style="font-size:21px">
+      <p>Pamiętacie potęgę uciętą? <span style="white-space:nowrap">$\operatorname{ReLU}(x - t) = (x-t)_+$</span>.</p>
+      $$f(x) = c + \sum_{j=1}^{H} v_j\,\operatorname{ReLU}(w_j x + b_j)$$
+      <ul>
+        <li>Jedna warstwa ukryta, wejście 1D: <b>splajn liniowy</b> z węzłami $t_j = -b_j / w_j$ — węzły są <b>uczone</b>.</li>
+        <li>Głębokie sieci ReLU: funkcje ciągłe, kawałkami afiniczne — „max-affine spline operators” (Balestriero, Baraniuk 2018).</li>
+        <li>Liczba kawałków może rosnąć wykładniczo z głębokością.</li>
+      </ul>
+    </div>
+    <div class="demo" data-demo="relu" data-w="736" data-h="440"></div>
+  </div>
+  <aside class="notes">
+    ≈1:00. Wracamy do (x − t)₊ z definicji — to ReLU. Sieć z jedną warstwą ukrytą na wejściu 1D to dokładnie
+    splajn liniowy w bazie potęg uciętych, z tą różnicą, że węzły też się uczą. [DEMO: Trenuj — pionowe linie
+    to węzły, widać, jak wędrują tam, gdzie funkcja się zgina.] Dla głębokich sieci: wciąż kawałkami afiniczne —
+    praca „A Spline Theory of Deep Networks”.
+  </aside>
+</section>
+
+<!-- ============================================================ 16. KAN -->
+<section class="std">
+  <div class="slide-head"><h2>KAN: sieci Kołmogorowa–Arnolda (2024)</h2><span class="tag ml">uczenie maszynowe</span></div>
+  <div class="cols l40">
+    <div class="col-text" style="font-size:21px">
+      <p><b>Tw. Kołmogorowa–Arnolda (1957):</b> każdą ciągłą $f:[0,1]^n \to \mathbb R$ można zapisać jako
+      $$f(\mathbf x) = \sum_{q=0}^{2n} \Phi_q\Big(\sum_{p=1}^{n} \varphi_{q,p}(x_p)\Big).$$</p>
+      <svg viewBox="0 0 440 150" style="width:100%;height:auto;margin:2px 0 6px" aria-hidden="true">
+        <g font-family="Inter" font-size="14" fill="var(--muted)" text-anchor="middle"><text x="105" y="146">MLP: stałe σ w węzłach</text><text x="335" y="146">KAN: splajny na krawędziach</text></g>
+        <g stroke="var(--faint)" stroke-width="1.4"><path d="M45 30 L105 75 M45 75 L105 75 M45 120 L105 75 M45 30 L105 30 M45 75 L105 120 M45 120 L105 120 M45 30 L105 120 M45 75 L105 30 M45 120 L105 30 M105 30 L165 75 M105 75 L165 75 M105 120 L165 75"/></g>
+        <g fill="var(--card)" stroke="var(--ink)" stroke-width="1.6"><circle cx="45" cy="30" r="9"/><circle cx="45" cy="75" r="9"/><circle cx="45" cy="120" r="9"/><circle cx="165" cy="75" r="9"/></g>
+        <g fill="var(--blue)" stroke="var(--card)" stroke-width="1.6"><circle cx="105" cy="30" r="11"/><circle cx="105" cy="75" r="11"/><circle cx="105" cy="120" r="11"/></g>
+        <g fill="#fff" font-family="Inter" font-size="12" font-weight="700" text-anchor="middle"><text x="105" y="34">σ</text><text x="105" y="79">σ</text><text x="105" y="124">σ</text></g>
+        <g stroke="var(--green)" stroke-width="1.4" fill="none"><path d="M275 30 L335 75 M275 75 L335 75 M275 120 L335 75 M335 75 L395 75"/><path d="M275 30 L335 30 M275 120 L335 120 M335 30 L395 75 M335 120 L395 75"/></g>
+        <g stroke="var(--green)" stroke-width="2.2" fill="none"><path d="M296 44 q4 -8 8 0 t8 0"/><path d="M296 72 q4 -8 8 0 t8 0"/><path d="M296 100 q4 -8 8 0 t8 0"/><path d="M356 48 q4 -8 8 0 t8 0"/><path d="M356 72 q4 -8 8 0 t8 0"/><path d="M356 100 q4 -8 8 0 t8 0"/></g>
+        <g fill="var(--card)" stroke="var(--ink)" stroke-width="1.6"><circle cx="275" cy="30" r="9"/><circle cx="275" cy="75" r="9"/><circle cx="275" cy="120" r="9"/><circle cx="335" cy="30" r="8"/><circle cx="335" cy="75" r="8"/><circle cx="335" cy="120" r="8"/><circle cx="395" cy="75" r="9"/></g>
+      </svg>
+      <ul>
+        <li>Każda krawędź: $\varphi(x) = w_b\,\mathrm{silu}(x) + w_s \sum_i c_i B_i(x)$ — uczone współczynniki B-splajnów (Liu i in., 2024).</li>
+        <li>„Rozszerzanie siatki” = zagęszczanie węzłów; dokładnie: wstawianie węzłów.</li>
+      </ul>
+    </div>
+    <div class="demo" data-demo="kan" data-w="680" data-h="440"></div>
+  </div>
+  <aside class="notes">
+    ≈1:00. Najświeższe zastosowanie. W MLP funkcje aktywacji są stałe i siedzą w węzłach, a uczymy wag. KAN
+    odwraca to: na każdej krawędzi siedzi uczona funkcja jednej zmiennej — B-splajn z uczonymi współczynnikami.
+    [DEMO: przeciągać współczynniki; „zagęść siatkę” — funkcja się nie zmienia, a współczynników jest dwa razy
+    więcej — to wstawianie węzłów Boehma, dokładnie tak sieć KAN zwiększa rozdzielczość w trakcie uczenia.]
+  </aside>
+</section>
+
+<!-- ============================================================ 17. KOLEJKA GÓRSKA -->
+<section>
+<section class="std">
+  <div class="slide-head"><h2>Coś na koniec: kolejka górska</h2><span class="tag fun">zabawa</span></div>
+  <div class="cols l30">
+    <div class="col-text" style="font-size:21px">
+      <p>Przeciążenie odczuwane w wagonie:</p>
+      $$n = \cos\varphi + \frac{v^2\,\kappa}{g}$$
+      <ul>
+        <li><b class="hl-o">Catmull–Rom</b> ($C^1$): krzywizna skacze w węzłach ⇒ <b>skoki przeciążenia</b>.</li>
+        <li><b class="hl">splajn naturalny</b> ($C^2$): krzywizna ciągła ⇒ płynna jazda.</li>
+        <li>Stąd krzywe przejściowe (klotoidy) na kolei i drogach oraz wymóg $G^2$ w CAD.</li>
+      </ul>
+      <p class="small muted">Przeciągnij punkty toru.</p>
+    </div>
+    <div class="demo" data-demo="coaster" data-w="790" data-h="470"></div>
+  </div>
+  <div class="down-hint">splajn w 2D</div>
+  <aside class="notes">
+    ≈1:00. Dlaczego ciągłość drugiej pochodnej ma znaczenie w realnym świecie? Przeciążenie zależy od krzywizny.
+    Tor z krzywej C¹ (Catmull–Rom) ma skoki krzywizny w węzłach — pasażer dostaje szarpnięcie. Splajn C² daje
+    ciągłe przeciążenie. [DEMO: przełączyć tory, obserwować wykres.] Z tego samego powodu na kolei między prostą
+    a łukiem stosuje się krzywe przejściowe.
+  </aside>
+</section>
+<section class="std">
+  <div class="slide-head"><h2>Thin-plate spline: splajn w 2D</h2><span class="tag deep">dodatek</span></div>
+  <div class="cols l35">
+    <div class="col-text" style="font-size:21px">
+      <p>Cienka płyta zamiast listwy — minimalizujemy</p>
+      $$\iint \big(f_{xx}^2 + 2f_{xy}^2 + f_{yy}^2\big)\,dx\,dy$$
+      <ul>
+        <li>Rozwiązanie: $f(\mathbf x) = a_0 + \mathbf a^\top \mathbf x + \sum_i w_i\,U(\|\mathbf x - \mathbf p_i\|)$, $\;U(r) = r^2 \log r$ (Duchon, 1976).</li>
+        <li>Morfometria i morfing (Bookstein, 1989), rejestracja obrazów medycznych, <i>Spatial Transformer Networks</i>.</li>
+      </ul>
+      <p class="small muted">Przeciągnij punkty — obraz wygina się jak cienka płyta.</p>
+    </div>
+    <div class="demo" data-demo="tps" data-w="736" data-h="440"></div>
+  </div>
+  <aside class="notes">Dodatek. Uogólnienie twierdzenia Holladaya na dwa wymiary: zamiast listwy — cienka metalowa płyta.</aside>
+</section>
+</section>
+
+<!-- ============================================================ 18. PODSUMOWANIE -->
+<section class="std">
+  <div class="slide-head"><h2>Podsumowanie</h2><span class="tag">wnioski</span></div>
+  <div class="takeaways" style="margin-top:10px">
+    <div class="tk"><b>Kawałki zamiast stopnia</b>Wielomiany niskiego stopnia sklejone maksymalnie gładko: $\dim S_k(\Delta) = n+k$. Brak efektu Rungego, błąd $O(h^4)$.</div>
+    <div class="tk"><b>Najgładsza możliwa</b>Naturalny splajn sześcienny minimalizuje $\int f''^2$ — to matematyka listwy szkutnika. Liczymy w $O(n)$.</div>
+    <div class="tk"><b>B-splajny = lokalność</b>Nieujemna baza o lokalnym nośniku ⇒ stabilne algorytmy (de Casteljau, de Boor, Boehm), CAD i czcionki.</div>
+    <div class="tk"><b>Wszędzie w ML</b>Wygładzanie i procesy gaussowskie, metody jądrowe, sieci ReLU (splajny liniowe) i KAN (B-splajny).</div>
+  </div>
+  <div class="box idea" style="margin-top:38px; font-size:24px"><p>Funkcja sklejana to najprostszy sposób, by z kawałków niskiego stopnia zbudować krzywą <b>gładką</b>, <b>stabilną</b> i <b>lokalnie sterowaną</b> — od listwy szkutnika po sieci KAN.</p></div>
+  <aside class="notes">≈0:30. Cztery rzeczy do zapamiętania. [Przeczytać nagłówki.] Dziękuję.</aside>
+</section>
+
+<!-- ============================================================ 19. DZIĘKUJĘ -->
+<section class="std">
+  <div class="cols l55 center" style="height:100%">
+    <div>
+      <h1 style="font-size:72px">Dziękuję!</h1>
+      <p class="lead" style="margin-top:14px">Pytania?</p>
+      <div class="reticulate" data-demo="reticulate" style="margin-top:60px"></div>
+    </div>
+    <div style="text-align:center" class="qr-wrap">
+      <div class="qr" id="qr" data-url="https://wojtke.github.io/funkcje-sklejane/"></div>
+      <p class="small muted" style="margin-top:12px">Wszystkie dema działają w przeglądarce telefonu.</p>
+      <p class="tiny faint" id="qr-url"></p>
+      <p class="tiny"><a href="funkcje-sklejane.pdf">pobierz PDF</a></p>
+    </div>
+  </div>
+  <aside class="notes">Pytania. Kod QR prowadzi do tej prezentacji — każdy może pobawić się demami. Żart z paskiem: komunikat z ekranu ładowania SimCity 2000 (1993).</aside>
+</section>
+
+<!-- ============================================================ 20. LITERATURA -->
+<section class="std">
+  <div class="slide-head"><h2>Literatura</h2><span class="tag">źródła</span></div>
+  <div class="refs">
+    <p class="sec">Teoria</p>
+    <p>I. J. Schoenberg, <i>Contributions to the problem of approximation of equidistant data by analytic functions</i>, Quart. Appl. Math. 4 (1946), 45–99, 112–141.</p>
+    <p>J. C. Holladay, <i>A smoothest curve approximation</i>, Math. Tables Aids Comput. 11 (1957), 233–243.</p>
+    <p>C. A. Hall, W. W. Meyer, <i>Optimal error bounds for cubic spline interpolation</i>, J. Approx. Theory 16 (1976), 105–122.</p>
+    <p>M. G. Cox, <i>The numerical evaluation of B-splines</i>, IMA J. Appl. Math. 10 (1972), 134–149; C. de Boor, <i>On calculating with B-splines</i>, J. Approx. Theory 6 (1972), 50–62.</p>
+    <p>C. de Boor, <i>A Practical Guide to Splines</i>, Springer 1978 (wyd. popr. 2001).</p>
+    <p>Z. Fortuna, B. Macukow, J. Wąsowski, <i>Metody numeryczne</i>, WNT; D. Kincaid, W. Cheney, <i>Analiza numeryczna</i>, WNT 2006.</p>
+    <p class="sec">Grafika i CAD</p>
+    <p>G. Farin, <i>Curves and Surfaces for CAGD</i>, 5th ed., Morgan Kaufmann 2002; L. Piegl, W. Tiller, <i>The NURBS Book</i>, Springer 1997.</p>
+    <p>E. Catmull, R. Rom, <i>A class of local interpolating splines</i>, w: <i>Computer Aided Geometric Design</i>, Academic Press 1974; C. Yuksel, S. Schaefer, J. Keyser, <i>Parameterization and applications of Catmull–Rom curves</i>, CAD 43 (2011).</p>
+    <p>G. Chaikin, <i>An algorithm for high-speed curve generation</i>, CGIP 3 (1974); C. Loop, J. Blinn, <i>Resolution independent curve rendering using programmable graphics hardware</i>, SIGGRAPH 2005.</p>
+    <p class="sec">Statystyka i uczenie maszynowe</p>
+    <p>C. H. Reinsch, <i>Smoothing by spline functions</i>, Numer. Math. 10 (1967); G. Kimeldorf, G. Wahba, <i>A correspondence between Bayesian estimation on stochastic processes and smoothing by splines</i>, Ann. Math. Stat. 41 (1970).</p>
+    <p>G. Wahba, <i>Spline Models for Observational Data</i>, SIAM 1990; P. J. Green, B. W. Silverman, <i>Nonparametric Regression and GLMs</i>, 1994; Hastie, Tibshirani, Friedman, <i>ESL</i>, rozdz. 5.</p>
+    <p>F. L. Bookstein, <i>Principal warps: thin-plate splines and the decomposition of deformations</i>, IEEE TPAMI 11 (1989); M. Unser, <i>Splines: a perfect fit for signal and image processing</i>, IEEE SPM 16 (1999).</p>
+    <p>R. Balestriero, R. Baraniuk, <i>A spline theory of deep networks</i>, ICML 2018; Z. Liu i in., <i>KAN: Kolmogorov–Arnold Networks</i>, arXiv:2404.19756 (2024).</p>
+  </div>
+</section>
+
+</div>
+</div>
+
+<script src="vendor/reveal/reveal.js"></script>
+<script src="vendor/reveal/plugin/notes.js"></script>
+<script src="vendor/reveal/plugin/highlight.js"></script>
+<script src="vendor/katex/katex.min.js"></script>
+<script src="vendor/katex/contrib/auto-render.min.js"></script>
+<script src="vendor/qrcode/qrcode.js"></script>
+<script src="data/glyphs.js"></script>
+<script src="js/splines.js"></script>
+<script src="js/core.js"></script>
+<script src="js/demos/intro.js"></script>
+<script src="js/demos/numerics.js"></script>
+<script src="js/demos/bsplines.js"></script>
+<script src="js/demos/curves.js"></script>
+<script src="js/demos/ml.js"></script>
+<script src="js/demos/fun.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
