@@ -213,10 +213,10 @@
     const st = SPL.stage(el, W, H);
     // punkty przypięte (narożniki i środki boków) + ruchome
     const pinned = [[0, 0], [W / 2, 0], [W, 0], [0, H / 2], [W, H / 2], [0, H], [W / 2, H], [W, H]];
-    // ruchome: krańce napisu, punkt nad buźką, kąciki ust (preset: uśmiech)
+    // ruchome: krańce napisu, punkt nad okręgiem, trzy punkty odcinka w okręgu
     const FX = W / 2, FY = 0.72 * H;
     const srcFree = [[0.2 * W, 0.3 * H], [0.8 * W, 0.3 * H], [0.5 * W, 0.47 * H], [FX - 32, FY + 22], [FX, FY + 22], [FX + 32, FY + 22]];
-    const preset = [[-18, 34], [18, -34], [0, 0], [-6, -18], [0, 5], [6, -18]];
+    const preset = [[-18, 34], [18, -34], [0, 0], [-10, 18], [0, -8], [10, -14]];
     const presetDst = () => srcFree.map((p, i) => [p[0] + preset[i][0], p[1] + preset[i][1]]);
     let dst = presetDst();
     let src = null, srcKey = '', srcData = null, out = null, outImg = null;
@@ -244,13 +244,10 @@
       for (let y = 0; y <= H; y += 23) { c.strokeStyle = (y / 23) % 4 === 0 ? SPL.alpha(C.blue, 0.35) : C.grid; c.beginPath(); c.moveTo(0, y + 0.5); c.lineTo(W, y + 0.5); c.stroke(); }
       c.fillStyle = C.blue; c.font = SPL.font(118, 800); c.textAlign = 'center'; c.textBaseline = 'middle';
       c.fillText('SPLAJN', W / 2, 0.3 * H);
-      // buźka
+      // okrąg z odcinkiem
       const fx = FX, fy = FY, R = 74;
       c.lineWidth = 6; c.strokeStyle = C.orange; c.fillStyle = SPL.alpha(C.yellow, C.dark ? 0.25 : 0.3);
       c.beginPath(); c.arc(fx, fy, R, 0, 2 * Math.PI); c.fill(); c.stroke();
-      c.fillStyle = C.ink;
-      c.beginPath(); c.arc(fx - 26, fy - 18, 8, 0, 2 * Math.PI); c.fill();
-      c.beginPath(); c.arc(fx + 26, fy - 18, 8, 0, 2 * Math.PI); c.fill();
       c.lineWidth = 6; c.strokeStyle = C.ink; c.lineCap = 'round';
       c.beginPath(); c.moveTo(fx - 32, fy + 22); c.lineTo(fx + 32, fy + 22); c.stroke();
       // okręgi współśrodkowe po bokach

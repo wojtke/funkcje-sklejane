@@ -19,26 +19,26 @@ liczą się na żywo w przeglądarce.
 
 ## Ścieżka główna i dodatki
 
-Ścieżka główna (strzałka w prawo) to plan **ok. 12:30** — reszta do 15 min to zapas na dema i reakcje sali.
+Ścieżka główna (strzałka w prawo) to plan **ok. 12:50** — reszta do 15 min to zapas na dema i reakcje sali.
 Czas każdego slajdu jest w `data-timing` i w notatkach (`S`). Slajdy oznaczone „dodatek” leżą pod spodem
 (strzałka w dół) — na pytania i do PDF.
 
 | # | Slajd | Demo | Dodatki ↓ |
 |---|---|---|---|
 | 1 | Tytuł | animowana krzywa B-splajnowa | |
-| 2 | Co to jest funkcja sklejana? | łamana → gładkie kawałki | definicja formalna, wymiar $n+k$, potęgi ucięte |
-| 3 | Gdzie spotykamy funkcje sklejane? | | |
-| 4 | Listwa i kaczki | przeciąganie kaczek, energia zginania | oś czasu 1691–2024 |
-| 5 | Dlaczego nie jeden wielomian? | efekt Rungego vs splajn | |
+| 2 | Funkcja sklejana — idea | łamana → gładkie kawałki | definicja formalna, wymiar $n+k$, potęgi ucięte |
+| 3 | Zastosowania (czcionki, CAD, animacja, robotyka, ML, medycyna) | | |
+| 4 | Pochodzenie nazwy: listwa kreślarska | przeciąganie kaczek, energia zginania | rys historyczny 1691–2024 |
+| 5 | Interpolacja wielomianowa i efekt Rungego | efekt Rungego vs splajn | |
 | 6 | Splajn sześcienny i warunki brzegowe | $s, s', s'', s'''$ na żywo | układ trójdiagonalny + Thomas na $10^6$ |
-| 7 | Twierdzenie Holladaya + fizyka belki | | dowód; rząd zbieżności $O(h^4)$ |
+| 7 | Twierdzenie Holladaya i fizyka listwy | | dowód; rząd zbieżności $O(h^4)$ |
 | 8 | B-splajny | baza, krotność węzłów | splot → rozkład normalny |
 | 9 | Bézier, de Casteljau | konstrukcja na żywo | |
 | 10 | Krzywe B-splajnowe | sterowanie lokalne, grzebień krzywizny | NURBS i okrąg, Catmull–Rom, Chaikin |
-| 11 | Litera to funkcja sklejana | kontury TrueType (DejaVu Sans) | `cubic-bezier()` w CSS; tabela algorytmów |
+| 11 | Czcionki: kontury TrueType | kontury TrueType (DejaVu Sans) | `cubic-bezier()` w CSS; tabela algorytmów |
 | 12 | Splajn wygładzający | λ, GCV | |
 | 13 | Sieć neuronowa z ReLU to funkcja sklejana | trening na żywo, węzły | KAN |
-| 14 | Ciągła krzywizna: tory i drogi | przeciążenie $C^1$ vs $C^2$ | thin-plate spline |
+| 14 | Ciągłość krzywizny a przeciążenia | przeciążenie $C^1$ vs $C^2$ | thin-plate spline |
 | 15–17 | Podsumowanie, pytania (QR), literatura | | |
 
 ## Eksport do PDF
