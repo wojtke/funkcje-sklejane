@@ -219,7 +219,8 @@
       d2: t => [sx.d2(t), sy.d2(t)],
       curvature(t) {
         const x1 = sx.d1(t), y1 = sy.d1(t), x2 = sx.d2(t), y2 = sy.d2(t);
-        return (x1 * y2 - y1 * x2) / Math.pow(x1 * x1 + y1 * y1, 1.5);
+        const sp2 = x1 * x1 + y1 * y1;
+        return sp2 < 1e-18 ? 0 : (x1 * y2 - y1 * x2) / Math.pow(sp2, 1.5); // punkt stacjonarny: krzywizna nieokreślona
       }
     };
   };

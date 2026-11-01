@@ -274,7 +274,9 @@
         outImg = out.getContext('2d').createImageData(src.cw, src.ch);
       }
       const all = pinned.concat(dst), allSrc = pinned.concat(srcFree);
-      const inv = Sp.tpsFit(all, allSrc);           // cel → źródło (próbkowanie wsteczne)
+      let inv;
+      try { inv = Sp.tpsFit(all, allSrc); }         // cel → źródło (próbkowanie wsteczne)
+      catch (e) { return; }                         // układ osobliwy: zostaw poprzednią klatkę
       // odwzorowanie liczymy na rzadkiej siatce, między węzłami — interpolacja dwuliniowa
       const g = 12, nx = Math.ceil(W / g) + 1, ny = Math.ceil(H / g) + 1;
       const MX = new Float64Array(nx * ny), MY = new Float64Array(nx * ny);
@@ -321,7 +323,12 @@
     const drag = SPL.drag(st, {
       radius: 16,
       points: () => dst,
-      move(i, q) { dst[i] = [Sp.clamp(q[0], 6, W - 6), Sp.clamp(q[1], 6, H - 6)]; schedule(); },
+      move(i, q) {
+        const p = [Sp.clamp(q[0], 6, W - 6), Sp.clamp(q[1], 6, H - 6)];
+        // dwa pokrywające się punkty dają układ osobliwy — nie pozwalamy ich skleić
+        if (dst.some((d, j) => j !== i && Sp.dist(d, p) < 4) || pinned.some(d => Sp.dist(d, p) < 4)) return;
+        dst[i] = p; schedule();
+      },
       hover: () => schedule()
     });
     return { render };

@@ -216,7 +216,7 @@
     const res = document.createElement('div');
     res.className = 'thomas-res';
     res.innerHTML = SPL.print
-      ? 'Kliknij, aby rozwiązać układ trójdiagonalny z milionem niewiadomych <span class="faint">— na żywo, w przeglądarce.</span>'
+      ? 'W wersji online: milion niewiadomych w kilkadziesiąt milisekund <span class="faint">— na żywo, w przeglądarce.</span>'
       : '<span class="faint">Układ momentów naturalnego splajnu dla losowych danych — algorytm Thomasa w JavaScripcie.</span>';
     card.appendChild(res);
 

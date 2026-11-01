@@ -3,43 +3,43 @@
 Interaktywna prezentacja na **Seminarium dyplomowe 1** (MiNI PW, prowadzący prof. Bohdan Macukow),
 referat **02.11.2026**, ok. 15 min (±3) + dyskusja. Autor: Wojciech Jasiński.
 
-Od listwy szkutnika i „kaczek”, przez twierdzenie Holladaya, B-splajny i krzywe Béziera,
-po czcionki, wygładzanie, sieci ReLU i KAN. Wszystkie wykresy liczą się na żywo w przeglądarce.
+Od prostej intuicji („kawałki wielomianów sklejone bez szwów”), przez listwę szkutnika, twierdzenie
+Holladaya, B-splajny i krzywe Béziera, po czcionki, wygładzanie danych i sieci ReLU. Wszystkie wykresy
+liczą się na żywo w przeglądarce.
 
 ## Jak prezentować
 
 - Otwórz `index.html` (działa też offline, bez serwera — wszystkie biblioteki są w `vendor/`)
   albo wersję na GitHub Pages.
-- Klawisze: `→`/spacja — dalej, `↓` — dodatki (pionowe slajdy), `S` — widok prelegenta z notatkami
-  i czasem, `D` — tryb ciemny, `O` — przegląd, `F` — pełny ekran, `B` — wygaszenie ekranu.
+- Klawisze: `→`, spacja, PageDown (pilot) — dalej po ścieżce głównej; `↓` — dodatki (pionowe slajdy);
+  `S` — widok prelegenta z notatkami i licznikiem tempa; `D` — tryb ciemny; `O` — przegląd;
+  `F` — pełny ekran; `B` — wygaszenie ekranu.
 - Kontrolki w demach oddają fokus po kliknięciu, więc pilot do prezentacji działa dalej.
+- Notatki prelegenta do druku: `tools/build-notes.sh` → `../notatki-prelegenta.pdf`.
 
 ## Ścieżka główna i dodatki
 
-Ścieżka główna (strzałka w prawo) to ok. 16–17 min; w notatkach prelegenta (`S`) jest szacowany
-czas każdego slajdu. Slajdy oznaczone „dodatek” leżą pod spodem (strzałka w dół) — na pytania
-i do PDF.
+Ścieżka główna (strzałka w prawo) to plan **ok. 12:30** — reszta do 15 min to zapas na dema i reakcje sali.
+Czas każdego slajdu jest w `data-timing` i w notatkach (`S`). Slajdy oznaczone „dodatek” leżą pod spodem
+(strzałka w dół) — na pytania i do PDF.
 
 | # | Slajd | Demo | Dodatki ↓ |
 |---|---|---|---|
 | 1 | Tytuł | animowana krzywa B-splajnowa | |
-| 2 | Gdzie są funkcje sklejane? | | |
-| 3 | Listwa i kaczki | przeciąganie kaczek, energia zginania | |
-| 4 | Oś czasu 1691–2024 | | |
+| 2 | Co to jest funkcja sklejana? | łamana → gładkie kawałki | definicja formalna, wymiar $n+k$, potęgi ucięte |
+| 3 | Gdzie spotykamy funkcje sklejane? | | |
+| 4 | Listwa i kaczki | przeciąganie kaczek, energia zginania | oś czasu 1691–2024 |
 | 5 | Dlaczego nie jeden wielomian? | efekt Rungego vs splajn | |
-| 6 | Definicja, wymiar $n+k$ | kawałki wielomianów | |
-| 7 | Splajn sześcienny i warunki brzegowe | $s, s', s'', s'''$ na żywo | układ trójdiagonalny + Thomas na $10^6$ |
-| 8 | Twierdzenie Holladaya + fizyka belki | | rząd zbieżności $O(h^4)$ |
-| 9 | B-splajny (Cox–de Boor) | baza, krotność węzłów | splot → rozkład normalny |
-| 10 | Bézier, de Casteljau | konstrukcja na żywo | |
-| 11 | Krzywe B-splajnowe | sterowanie lokalne, grzebień krzywizny | NURBS i okrąg, Catmull–Rom, Chaikin |
-| 12 | Okiem informatyka | tabela algorytmów | |
-| 13 | Litera to funkcja sklejana | kontury TrueType (DejaVu Sans) | `cubic-bezier()` w CSS |
-| 14 | Splajn wygładzający | λ, df, GCV | |
-| 15 | Sieć ReLU to splajn | trening na żywo, węzły | |
-| 16 | KAN | współczynniki B-splajnu, zagęszczanie siatki | |
-| 17 | Kolejka górska $C^1$ vs $C^2$ | przeciążenie | thin-plate spline |
-| 18–20 | Podsumowanie, pytania (QR), literatura | | |
+| 6 | Splajn sześcienny i warunki brzegowe | $s, s', s'', s'''$ na żywo | układ trójdiagonalny + Thomas na $10^6$ |
+| 7 | Twierdzenie Holladaya + fizyka belki | | dowód; rząd zbieżności $O(h^4)$ |
+| 8 | B-splajny | baza, krotność węzłów | splot → rozkład normalny |
+| 9 | Bézier, de Casteljau | konstrukcja na żywo | |
+| 10 | Krzywe B-splajnowe | sterowanie lokalne, grzebień krzywizny | NURBS i okrąg, Catmull–Rom, Chaikin |
+| 11 | Litera to funkcja sklejana | kontury TrueType (DejaVu Sans) | `cubic-bezier()` w CSS; tabela algorytmów |
+| 12 | Splajn wygładzający | λ, GCV | |
+| 13 | Sieć ReLU to splajn | trening na żywo, węzły | KAN |
+| 14 | Ciągła krzywizna: tory i drogi | przeciążenie $C^1$ vs $C^2$ | thin-plate spline |
+| 15–17 | Podsumowanie, pytania (QR), literatura | | |
 
 ## Eksport do PDF
 
@@ -60,6 +60,8 @@ js/main.js            start: KaTeX, reveal.js, kod QR
 data/glyphs.js        kontury glifów DejaVu Sans
 vendor/               reveal.js 5.2.1, KaTeX 0.16.11, Inter, JetBrains Mono, qrcode-generator
 tools/build-pdf.sh    eksport PDF
+tools/build-notes.sh  notatki prelegenta do druku (../notatki-prelegenta.pdf)
+tools/deploy.sh       publikacja na GitHub Pages
 ```
 
 Biblioteka `js/splines.js` jest sprawdzona względem SciPy (`CubicSpline`, `BSpline`,

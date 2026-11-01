@@ -482,7 +482,7 @@
 
     const ui = SPL.ui.panel(el, 'bcurve-ctrls');
     const sl = SPL.ui.slider(ui, { label: 'k', min: 1, max: 5, step: 1, value: k, onInput: v => { k = v; render(); } });
-    SPL.ui.segmented(ui, [{ value: 'bspline', label: 'B-spline (lokalnie)' }, { value: 'bezier', label: 'Bézier (globalnie)' }], mode,
+    SPL.ui.segmented(ui, [{ value: 'bspline', label: 'B-splajn (lokalnie)' }, { value: 'bezier', label: 'Bézier (globalnie)' }], mode,
       v => { mode = v; sl.input.disabled = v === 'bezier'; sl.el.style.opacity = v === 'bezier' ? 0.4 : 1; render(); });
     SPL.ui.toggle(ui, 'grzebień krzywizny', false, v => { comb = v; render(); });
 
@@ -573,7 +573,7 @@
       // opis
       const head = mode === 'bezier'
         ? `Bézier: jeden wielomian stopnia ${S.n}`
-        : `B-spline stopnia ${S.kk}, węzły otwarte — klasa C${sup(S.kk - 1)}`;
+        : `B-splajn stopnia ${S.kk}, węzły otwarte — klasa C${sup(S.kk - 1)}`;
       SPL.text(c, head, 14, 22, { size: 14, weight: 650, color: C.ink });
       if (pct !== null) {
         const msg = `P${sub(act)} zmienia ${pct}% krzywej  ·  t ∈ [${a.toFixed(2)}, ${b.toFixed(2)}]`;

@@ -234,10 +234,11 @@
     const st = SPL.stage(el, W, H);
     const pl = SPL.plot(st, { x: 30, y: 14, w: W - 44, h: H - 40 }, { xmin: -0.3, xmax: 10.3, ymin: -0.5, ymax: 6.5 });
     let P = [[0.5, 2.2], [2.3, 4.6], [4.2, 2.0], [6.1, 3.4], [7.9, 5.2], [9.6, 2.6]];
-    let ext = true, deg = 3;
+    // data-deg / data-ext: stan początkowy (slajd „Co to jest” zaczyna od łamanej); w PDF zawsze stopień 3
+    let ext = o.ext !== '0', deg = SPL.print ? 3 : (+o.deg || 3);
     const ui = SPL.ui.panel(el);
-    SPL.ui.segmented(ui, [{ value: 1, label: 'k = 1' }, { value: 3, label: 'k = 3' }], deg, v => { deg = +v; render(); }, 'stopień');
-    SPL.ui.toggle(ui, 'przedłuż kawałki', true, v => { ext = v; render(); });
+    SPL.ui.segmented(ui, [{ value: 1, label: 'łamana (k = 1)' }, { value: 3, label: 'gładka (k = 3)' }], deg, v => { deg = +v; render(); }, 'stopień');
+    SPL.ui.toggle(ui, 'przedłuż kawałki', ext, v => { ext = v; render(); });
     SPL.ui.hint(ui, 'przeciągnij punkty');
 
     function render() {

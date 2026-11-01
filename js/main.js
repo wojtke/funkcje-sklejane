@@ -31,8 +31,15 @@
     pdfSeparateFragments: false,
     pdfMaxPagesPerSlide: 1,
     preloadIframes: false,
+    defaultTiming: 0, // czasy slajdów z data-timing → licznik tempa w widoku prelegenta (S)
     plugins: [RevealNotes, RevealHighlight],
-    keyboard: { 68: () => SPL.toggleTheme() } // D — tryb ciemny
+    keyboard: {
+      68: () => SPL.toggleTheme(), // D — tryb ciemny
+      // pilot (PageDown/PageUp) i spacja idą ścieżką główną, nie w dodatki ↓
+      34: () => Reveal.right(),
+      33: () => Reveal.left(),
+      32: () => Reveal.right()
+    }
   }).then(() => {
     SPL.initAll();
     SPL.renderAll();
