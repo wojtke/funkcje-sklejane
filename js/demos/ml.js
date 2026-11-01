@@ -1,4 +1,4 @@
-/* ml.js — dema: smoothing (splajn wygładzający), relu (sieć ReLU = splajn liniowy),
+/* ml.js — dema: smoothing (splajn wygładzający), relu (sieć neuronowa z ReLU = splajn liniowy),
  * kan (jedna krawędź sieci KAN: B-splajn z uczonymi współczynnikami). */
 (function () {
   'use strict';
@@ -316,7 +316,7 @@
       info(cx, pl.r.x + 8, pl.r.y + 6, `krok ${step}   ·   MSE = ${sci(mse)}   ·   kawałków liniowych: ${pieces(ks)}`);
       legend(cx, pl.r.x + pl.r.w - 8, pl.r.y + 6, [
         { color: C.faint, label: 'funkcja docelowa', dash: [7, 6], width: 2.5 },
-        { color: C.blue, label: `sieć ReLU (H = ${Hn})`, width: 3.5 },
+        { color: C.blue, label: `sieć neuronowa (H = ${Hn})`, width: 3.5 },
         { color: C.orange, label: 'węzły  t = −b / w', dash: [4, 5], width: 2 }
       ]);
     }

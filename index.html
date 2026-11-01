@@ -130,7 +130,7 @@
     <div class="tile">
       <svg viewBox="0 0 240 92" aria-hidden="true"><g fill="var(--faint)"><circle cx="16" cy="60" r="3"/><circle cx="30" cy="44" r="3"/><circle cx="42" cy="52" r="3"/><circle cx="56" cy="30" r="3"/><circle cx="70" cy="26" r="3"/><circle cx="84" cy="38" r="3"/><circle cx="98" cy="30" r="3"/><circle cx="112" cy="52" r="3"/><circle cx="126" cy="60" r="3"/><circle cx="140" cy="72" r="3"/><circle cx="154" cy="62" r="3"/><circle cx="168" cy="76" r="3"/><circle cx="182" cy="58" r="3"/><circle cx="196" cy="50" r="3"/><circle cx="210" cy="34" r="3"/><circle cx="224" cy="30" r="3"/></g><path d="M12 58 C 40 30, 70 18, 100 36 S 150 82, 180 64 S 215 28, 230 28" fill="none" stroke="currentColor" stroke-width="2.6"/></svg>
       <h3>Analiza danych i ML</h3>
-      <p>Wygładzanie pomiarów z&nbsp;szumem, uzupełnianie brakujących wartości; sieć z&nbsp;ReLU to splajn liniowy.</p>
+      <p>Wygładzanie pomiarów z&nbsp;szumem, uzupełnianie brakujących wartości; sieć neuronowa z&nbsp;aktywacją ReLU to splajn liniowy.</p>
     </div>
     <div class="tile">
       <svg viewBox="0 0 240 92" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.6"><path d="M60 8 C 70 30, 50 60, 62 86"/><path d="M95 8 C 108 30, 92 60, 100 86"/><path d="M130 8 C 146 32, 132 60, 138 86"/><path d="M165 8 C 178 30, 170 60, 176 86"/><path d="M50 14 C 90 24, 140 4, 186 16"/><path d="M50 36 C 96 50, 140 24, 186 38"/><path d="M50 60 C 96 72, 140 50, 186 62"/><path d="M50 82 C 92 88, 140 76, 186 84"/></g></svg>
@@ -197,14 +197,14 @@
     <div class="ev c up" style="left:69.5%"><span class="pin"></span><div class="yr">1972</div><div class="who">M. Cox, C. de Boor</div><div class="what">stabilna rekurencja dla B-splajnów</div></div>
     <div class="ev c down" style="left:77.4%"><span class="pin"></span><div class="yr">1974–1978</div><div class="who">Catmull–Rom, Chaikin, Versprille, Catmull–Clark</div><div class="what">grafika komputerowa, NURBS (1975), podział powierzchni</div></div>
     <div class="ev c up" style="left:85.2%"><span class="pin"></span><div class="yr">1984 / 1991</div><div class="who">PostScript, TrueType</div><div class="what">czcionki jako krzywe 3. i 2. stopnia</div></div>
-    <div class="ev c down" style="left:93%"><span class="pin"></span><div class="yr">2005–2024</div><div class="who">IGA; sieci ReLU; KAN</div><div class="what">MES na splajnach, „sieć = splajn”, sieci Kołmogorowa–Arnolda</div></div>
+    <div class="ev c down" style="left:93%"><span class="pin"></span><div class="yr">2005–2024</div><div class="who">IGA; sieci neuronowe; KAN</div><div class="what">MES na splajnach, „sieć = splajn”, sieci Kołmogorowa–Arnolda</div></div>
   </div>
   <aside class="notes">
     <p><b>Dodatek</b> (na pytania o historię)</p>
     <ul>
       <li>Matematyka: Bernoulli/Euler — krzywa sprężysta; Runge 1901 — jeden wielomian to zły pomysł; Schoenberg 1946 — nazwa (wcześniej tablice balistyczne w Aberdeen); Holladay 1957 — własność minimalna.</li>
       <li>Przemysł: de Casteljau (Citroën, 1959; prace tajne) i Bézier (Renault, publikował) — stąd „krzywe Béziera”; de Boor w GM od 1960, Ferguson w Boeingu.</li>
-      <li>Informatyka: rekurencja Coxa–de Boora 1972, NURBS 1975, PostScript 1984, TrueType 1991, dziś sieci ReLU i KAN.</li>
+      <li>Informatyka: rekurencja Coxa–de Boora 1972, NURBS 1975, PostScript 1984, TrueType 1991, dziś sieci neuronowe (ReLU, KAN).</li>
     </ul>
   </aside>
 </section>
@@ -732,7 +732,7 @@ def thomas(a, b, c, d):
 <!-- ============================================================ 15. ReLU (+ KAN ↓) -->
 <section>
 <section class="std" data-timing="60">
-  <div class="slide-head"><h2>Sieć ReLU to funkcja sklejana</h2><span class="tag ml">uczenie maszynowe</span></div>
+  <div class="slide-head"><h2>Sieć neuronowa z ReLU to funkcja sklejana</h2><span class="tag ml">uczenie maszynowe</span></div>
   <div class="cols l35">
     <div class="col-text" style="font-size:22px">
       <p>$\operatorname{ReLU}(x) = \max(0,\,x)$ — „zawias”. Sieć z&nbsp;jedną warstwą ukrytą:</p>
@@ -740,7 +740,7 @@ def thomas(a, b, c, d):
       <ul>
         <li>Dla wejścia 1D to <b>splajn liniowy</b> (łamana) z&nbsp;załamaniami w&nbsp;$t_j = -b_j / w_j$.</li>
         <li>Różnica względem klasycznych splajnów: <b>węzły też są uczone</b>.</li>
-        <li>Głębokie sieci ReLU: nadal funkcje kawałkami liniowe (Balestriero, Baraniuk 2018).</li>
+        <li>Więcej warstw: funkcja nadal kawałkami liniowa (Balestriero, Baraniuk 2018).</li>
       </ul>
     </div>
     <div class="demo" data-demo="relu" data-w="736" data-h="440"></div>
@@ -861,7 +861,7 @@ def thomas(a, b, c, d):
     <div class="tk"><b>Kawałki zamiast stopnia</b>Wielomiany niskiego stopnia sklejone gładko — bez efektu Rungego; dla gładkich funkcji błąd maleje jak $h^4$.</div>
     <div class="tk"><b>Najgładsza możliwa</b>Naturalny splajn sześcienny minimalizuje energię zginania — to matematyka listwy szkutnika. Liczy się go w czasie $O(n)$.</div>
     <div class="tk"><b>B-splajny = lokalność</b>Baza z lokalnych „garbów” ⇒ stabilne algorytmy i lokalna edycja: CAD, czcionki, grafika.</div>
-    <div class="tk"><b>Także w ML</b>Wygładzanie danych z szumem, sieci ReLU (splajny liniowe), sieci KAN (B-splajny).</div>
+    <div class="tk"><b>Także w ML</b>Wygładzanie danych z szumem, sieci neuronowe z&nbsp;aktywacją ReLU (splajny liniowe), sieci KAN (B-splajny).</div>
   </div>
   <div class="box idea" style="margin-top:38px; font-size:24px"><p>Funkcja sklejana to najprostszy sposób, by z kawałków niskiego stopnia zbudować krzywą <b>gładką</b>, <b>stabilną</b> i <b>lokalnie sterowaną</b>.</p></div>
   <aside class="notes">

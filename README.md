@@ -4,7 +4,7 @@ Interaktywna prezentacja na **Seminarium dyplomowe 1** (MiNI PW, prowadzący pro
 referat **02.11.2026**, ok. 15 min (±3) + dyskusja. Autor: Wojciech Jasiński.
 
 Od prostej intuicji („kawałki wielomianów sklejone bez szwów”), przez listwę szkutnika, twierdzenie
-Holladaya, B-splajny i krzywe Béziera, po czcionki, wygładzanie danych i sieci ReLU. Wszystkie wykresy
+Holladaya, B-splajny i krzywe Béziera, po czcionki, wygładzanie danych i sieci neuronowe. Wszystkie wykresy
 liczą się na żywo w przeglądarce.
 
 ## Jak prezentować
@@ -37,7 +37,7 @@ Czas każdego slajdu jest w `data-timing` i w notatkach (`S`). Slajdy oznaczone 
 | 10 | Krzywe B-splajnowe | sterowanie lokalne, grzebień krzywizny | NURBS i okrąg, Catmull–Rom, Chaikin |
 | 11 | Litera to funkcja sklejana | kontury TrueType (DejaVu Sans) | `cubic-bezier()` w CSS; tabela algorytmów |
 | 12 | Splajn wygładzający | λ, GCV | |
-| 13 | Sieć ReLU to splajn | trening na żywo, węzły | KAN |
+| 13 | Sieć neuronowa z ReLU to funkcja sklejana | trening na żywo, węzły | KAN |
 | 14 | Ciągła krzywizna: tory i drogi | przeciążenie $C^1$ vs $C^2$ | thin-plate spline |
 | 15–17 | Podsumowanie, pytania (QR), literatura | | |
 
