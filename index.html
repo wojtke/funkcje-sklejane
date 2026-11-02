@@ -852,18 +852,20 @@ def thomas(a, b, c, d):
 <!-- ============================================================ 18. PODSUMOWANIE -->
 <section class="std" data-timing="30">
   <div class="slide-head"><h2>Podsumowanie</h2><span class="tag">wnioski</span></div>
-  <div class="takeaways" style="margin-top:10px">
-    <div class="tk"><b>Niski stopień, wiele przedziałów</b>Wielomiany niskiego stopnia sklejone gładko, bez efektu Rungego; dla gładkich funkcji błąd maleje jak $h^4$.</div>
-    <div class="tk"><b>Minimalna energia zginania</b>Naturalny splajn sześcienny minimalizuje energię zginania; to matematyka listwy szkutnika. Liczy się go w czasie $O(n)$.</div>
-    <div class="tk"><b>Baza B-splajnów</b>Funkcje bazowe o&nbsp;lokalnym nośniku ⇒ stabilne algorytmy i lokalna edycja: CAD, czcionki, grafika.</div>
-    <div class="tk"><b>Uczenie maszynowe</b>Wygładzanie danych z szumem, sieci neuronowe z&nbsp;aktywacją ReLU (splajny liniowe), sieci KAN (B-splajny).</div>
+  <p class="lead" style="margin:2px 0 24px">Funkcja sklejana to kawałki wielomianów niskiego stopnia, połączone gładko w&nbsp;węzłach.</p>
+  <div class="takeaways">
+    <div class="tk"><b>Dokładność bez oscylacji</b>Więcej punktów daje mniejszy błąd. Jeden wielomian wysokiego stopnia przy wielu punktach oscyluje (efekt Rungego).</div>
+    <div class="tk"><b>Szybkie obliczenia</b>Układ trójdiagonalny: rozwiązanie zawsze istnieje, jest jedno, a&nbsp;koszt rośnie liniowo z&nbsp;liczbą punktów.</div>
+    <div class="tk"><b>Najmniejsza energia zginania</b>Spośród funkcji przechodzących przez dane punkty splajn naturalny wygina się najmniej. Taki kształt przyjmuje listwa kreślarska.</div>
+    <div class="tk"><b>Zmiany lokalne</b>Przesunięcie jednego punktu kontrolnego zmienia krzywą tylko w&nbsp;jego pobliżu; reszta zostaje bez zmian.</div>
   </div>
-  <div class="box idea" style="margin-top:38px; font-size:24px"><p>Funkcje sklejane opisują gładki kształt kawałkami wielomianów niskiego stopnia: obliczenia są <b>stabilne</b>, a&nbsp;kształt można zmieniać <b>lokalnie</b>.</p></div>
+  <div class="box idea" style="margin-top:30px; font-size:24px"><p>Dlatego funkcje sklejane są standardem w&nbsp;CAD, czcionkach, animacji i&nbsp;analizie danych.<br>Sieć neuronowa z&nbsp;ReLU też jest funkcją sklejaną.</p></div>
   <aside class="notes">
     <p><b>⏱ 0:30 · koniec 12:35</b></p>
     <ul>
-      <li>Cztery wnioski, po jednym zdaniu.</li>
-      <li>Na koniec zdanie z ramki.</li>
+      <li>Jedno zdanie: co to jest.</li>
+      <li>Cztery własności, po zdaniu: dokładność bez oscylacji, szybkie obliczenia, najmniejsza energia zginania, zmiany lokalne.</li>
+      <li>Ramka: dlatego standard w CAD, czcionkach, animacji, danych; sieć z ReLU też jest funkcją sklejaną.</li>
     </ul>
     <p>→ pytania.</p>
   </aside>
