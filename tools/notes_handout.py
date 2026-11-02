@@ -4,6 +4,7 @@ import re, sys, html
 from html.parser import HTMLParser
 src, out_html = sys.argv[1], sys.argv[2]
 FONTS = sys.argv[3] if len(sys.argv) > 3 else 'fonts'
+LABEL = sys.argv[4] if len(sys.argv) > 4 else ''  # np. ' (wersja 2)'
 doc = open(src, encoding='utf-8').read()
 
 class P(HTMLParser):
@@ -78,7 +79,7 @@ h3 {{ font-size: 10.6pt; margin: 0 0 2pt; }} h3 .under {{ font-weight: 400; colo
 .ex {{ font-size: 9.6pt; }} h2.part {{ font-size: 13pt; margin: 14pt 0 4pt; display: block; break-before: page; }}
 code {{ font-family: Menlo, monospace; font-size: .92em; }}
 </style></head><body>
-<h1>Funkcje sklejane i ich własności: notatki prelegenta</h1>
+<h1>Funkcje sklejane i ich własności: notatki prelegenta{LABEL}</h1>
 <p class="sub">SD1, 02.11.2026 · limit 15 min ±3 · plan ścieżki głównej {total//60}:{total%60:02d} (zapas na dema i pytania) ·
 klawisze: → lub pilot: dalej · ↓: dodatki · S: widok prelegenta · F: pełny ekran · C (przytrzymaj): zegar · O: przegląd · B: wygaszenie</p>
 {''.join(parts)}

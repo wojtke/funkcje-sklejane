@@ -36,8 +36,8 @@
     <p><b>⏱ 0:20 · koniec 0:20</b></p>
     <ul>
       <li>Przedstawić się, temat.</li>
-      <li>Plan w jednym zdaniu: skąd nazwa → dlaczego działają (matematyka) → jak się je liczy i gdzie są (informatyka, ML).</li>
-      <li>Wszystko na slajdach liczy się na żywo; na końcu kod QR do samodzielnego wypróbowania.</li>
+      <li>Plan: idea → zastosowania → listwa → matematyka → grafika, dane i ML.</li>
+      <li>Na końcu QR: dema do samodzielnego wypróbowania.</li>
     </ul>
     <p>→ idea funkcji sklejanej.</p>
   </aside>
@@ -66,14 +66,12 @@
   <aside class="notes">
     <p><b>⏱ 1:00 · koniec 1:20</b></p>
     <ul>
-      <li>Definicja w jednym zdaniu: kawałki wielomianów niskiego stopnia połączone gładko w węzłach.</li>
-      <li>Trzy kroki z&nbsp;listy: punkty (węzły) → osobny wielomian na każdym odcinku → gładkie sklejenie.</li>
-      <li>„Gładko” = w węźle zgadza się wartość, nachylenie (1. pochodna) i krzywizna (2. pochodna).</li>
-      <li>Stopień 1 = łamana, widać „kanty”; stopień 3 = gładka krzywa, jak wygięta giętka linijka.</li>
-      <li>Ramka „Formalnie” to cała definicja; stopień k, ciągłe pochodne do rzędu k−1.</li>
+      <li>Kawałki wielomianów niskiego stopnia, sklejone gładko w węzłach.</li>
+      <li>Gładko: zgadza się wartość, nachylenie i krzywizna.</li>
+      <li>Ramka „Formalnie” to cała definicja.</li>
     </ul>
-    <p><b>DEMO:</b> zacząć od „łamana” (kanty w węzłach) → przełączyć na „gładka” → przeciągnąć jeden punkt. Każdy kolor = inny wielomian.</p>
-    <p>↓ dodatek: definicja formalna, wymiar n+k, baza potęg uciętych.</p>
+    <p><b>DEMO:</b> „łamana” (kanty) → „gładka”; przeciągnąć punkt.</p>
+    <p>↓ definicja formalna, wymiar n+k.</p>
     <p>→ zastosowania.</p>
   </aside>
 </section>
@@ -138,20 +136,17 @@
     <div class="tile">
       <svg viewBox="0 0 240 92" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.6"><path d="M60 8 C 70 30, 50 60, 62 86"/><path d="M95 8 C 108 30, 92 60, 100 86"/><path d="M130 8 C 146 32, 132 60, 138 86"/><path d="M165 8 C 178 30, 170 60, 176 86"/><path d="M50 14 C 90 24, 140 4, 186 16"/><path d="M50 36 C 96 50, 140 24, 186 38"/><path d="M50 60 C 96 72, 140 50, 186 62"/><path d="M50 82 C 92 88, 140 76, 186 84"/></g></svg>
       <h3>Obrazowanie medyczne</h3>
-      <p>Nakładanie skanów CT i&nbsp;MRI z&nbsp;różnych badań: deformację opisuje siatka <span style="white-space:nowrap">B-splajnów</span> (Rueckert i&nbsp;in. 1999, pakiet elastix).</p>
+      <p>Nakładanie skanów CT i&nbsp;MRI z&nbsp;różnych badań: deformację opisuje siatka <span style="white-space:nowrap">B-splajnów</span> (<span class="ref">Rueckert i&nbsp;in. 1999</span>, pakiet elastix).</p>
     </div>
   </div>
   <aside class="notes">
     <p><b>⏱ 0:50 · koniec 2:10</b></p>
     <ul>
-      <li>Omówić 2–3 przykłady, resztę tylko wskazać (np. czcionki, roboty, medycyna).</li>
-      <li>Czcionki: litera w pliku to kilkadziesiąt punktów kontrolnych; przy zmianie rozmiaru skaluje się punkty i rysuje kontur od nowa, dlatego tekst jest ostry w każdym rozmiarze. Szczegóły na osobnym slajdzie.</li>
-      <li>CAD: karoserię opisuje zestaw płatów NURBS; ten sam opis trafia do obliczeń wytrzymałościowych i do frezarki CNC. Krzywe Béziera powstały w Renault i Citroënie właśnie do projektowania karoserii.</li>
-      <li>Animacja: animator ustawia kilka klatek kluczowych, program wyznacza pozostałe z krzywej Béziera; ścieżka kamery przez zadane punkty to krzywa Catmulla–Roma.</li>
-      <li>Roboty: w sterownikach KUKA jest blok ruchu SPLINE: robot przechodzi przez kolejne punkty bez zatrzymywania. Baidu Apollo (otwarty system jazdy autonomicznej) planował tor jako splajn z kawałków 5. stopnia, wyznaczany programowaniem kwadratowym.</li>
-      <li>Statystyka i ML: splajn wygładzający (będzie dalej); cechy splajnowe pozwalają modelowi liniowemu uchwycić nieliniową zależność; sieć z ReLU pod koniec.</li>
-      <li>Medycyna: żeby porównać dwa skany tego samego pacjenta, jeden trzeba odkształcić do drugiego; odkształcenie opisuje siatka punktów kontrolnych B-splajnu.</li>
-      <li>Co łączy te przykłady: kilka parametrów opisuje gładki kształt, zmiana działa lokalnie, gładkość jest gwarantowana, obliczenia są tanie.</li>
+      <li>Wybrać 2–3 przykłady: czcionki, roboty, medycyna; resztę tylko wskazać.</li>
+      <li>Czcionki: litera to kilkadziesiąt punktów kontrolnych; skaluje się punkty, nie piksele.</li>
+      <li>Roboty: ruch SPLINE w sterownikach KUKA; Baidu Apollo planował tor jako splajn 5. stopnia.</li>
+      <li>Medycyna: odkształcenie jednego skanu do drugiego opisuje siatka B-splajnów.</li>
+      <li>Wspólne: mało parametrów, edycja lokalna, gwarantowana gładkość, tanie obliczenia.</li>
     </ul>
     <p>→ skąd nazwa „spline”.</p>
   </aside>
@@ -166,7 +161,7 @@
       <p><b><i>spline</i></b> (ang.): giętka listwa kreślarska z drewna lub metalu, dociskana ołowianymi ciężarkami, tzw. <b>„kaczkami”</b> (<i>ducks</i>).</p>
       <figure class="photo">
         <img src="img/listwa-rohr-1956.jpg" width="1000" height="401" alt="Kreślarz prowadzi pióro wzdłuż listwy wygiętej w łuk i dociśniętej rzędem ołowianych kaczek">
-        <figcaption>Wykreślanie w skali 1:1, zakłady lotnicze Rohr, Chula Vista, 1956 (San Diego Air &amp; Space Museum, domena publiczna)</figcaption>
+        <figcaption>Wykreślanie w skali 1:1, zakłady lotnicze Rohr, Chula Vista, 1956 <span class="ref">(San Diego Air &amp; Space Museum, domena publiczna)</span></figcaption>
       </figure>
       <ul>
         <li>Szkutnictwo, potem lotnictwo i motoryzacja: kształty rysowane w skali 1:1 (<i>lofting</i>).</li>
@@ -182,16 +177,14 @@
   <aside class="notes">
     <p><b>⏱ 0:50 · koniec 3:00</b></p>
     <ul>
-      <li><i>Spline</i> = giętka listwa kreślarska; dociskana ołowianymi ciężarkami, „kaczkami”.</li>
-      <li>Zdjęcie: zakłady lotnicze Rohr, 1956. Listwa wygięta w łuk, przytrzymana rzędem kaczek; kreślarz prowadzi pióro wzdłuż niej. Tak rysowano kształty kadłubów i skrzydeł przed CAD.</li>
-      <li>Szkutnicy, potem przemysł lotniczy i samochodowy: kształty rysowane w skali 1:1 (lofting).</li>
-      <li>Listwa przyjmuje kształt o <b>najmniejszej energii zginania</b> (∫κ²).</li>
-      <li>Za ostatnią kaczką listwa jest prosta. Zapamiętać: to będą warunki „naturalne”.</li>
-      <li>Matematyczna nazwa: Schoenberg, 1946.</li>
+      <li><i>Spline</i> = giętka listwa dociskana ołowianymi „kaczkami”.</li>
+      <li>Zdjęcie: trasernia zakładów lotniczych Rohr, 1956; tak rysowano kadłuby i skrzydła przed CAD.</li>
+      <li>Listwa przyjmuje kształt o najmniejszej energii zginania (∫κ²).</li>
+      <li>Za ostatnią kaczką listwa jest prosta: to będą warunki naturalne.</li>
     </ul>
-    <p><b>DEMO:</b> przeciągnąć jedną kaczkę; listwa układa się gładko.</p>
-    <p>↓ dodatek: rys historyczny (oś czasu).</p>
-    <p>→ dlaczego nie interpoluje się jednym wielomianem (efekt Rungego).</p>
+    <p><b>DEMO:</b> przeciągnąć kaczkę.</p>
+    <p>↓ rys historyczny.</p>
+    <p>→ dlaczego nie jeden wielomian (efekt Rungego).</p>
   </aside>
 </section>
 <section class="std">
@@ -230,8 +223,8 @@
     <div class="col-text">
       <p>Przez $n+1$ punktów przechodzi dokładnie jeden wielomian stopnia <span style="white-space:nowrap">$\le n$.</span> Przy wielu punktach to zły wybór:</p>
       <ul>
-        <li><b>Runge (1901):</b> dla $f(x) = \dfrac{1}{1+25x^2}$ i&nbsp;punktów równoodległych błąd przy końcach <b>rośnie</b> wraz z&nbsp;$n$.</li>
-        <li>Lepiej rozstawione punkty (Czebyszewa) pomagają, ale nie ma rozstawienia dobrego dla każdej funkcji ciągłej (Faber, 1914).</li>
+        <li><b>Runge <span class="ref">(1901)</span>:</b> dla $f(x) = \dfrac{1}{1+25x^2}$ i&nbsp;punktów równoodległych błąd przy końcach <b>rośnie</b> wraz z&nbsp;$n$.</li>
+        <li>Lepiej rozstawione punkty (Czebyszewa) pomagają, ale nie ma rozstawienia dobrego dla każdej funkcji ciągłej <span class="ref">(Faber, 1914)</span>.</li>
       </ul>
       <div class="box idea"><p><b>Rozwiązanie:</b> zamiast podnosić stopień, <b>dzielimy przedział</b> na części i&nbsp;na każdej stosujemy wielomian niskiego stopnia.</p></div>
     </div>
@@ -240,13 +233,13 @@
   <aside class="notes">
     <p><b>⏱ 0:50 · koniec 3:50</b></p>
     <ul>
-      <li>Naturalny pomysł: jeden wielomian przez wszystkie punkty (interpolacja Lagrange’a).</li>
-      <li>Runge: więcej punktów ⇒ <b>gorzej</b>: oscylacje przy końcach, błąd rośnie do nieskończoności.</li>
-      <li>Węzły Czebyszewa pomagają, ale nie ma rozstawienia dobrego dla wszystkich funkcji (Faber).</li>
-      <li>Splajn (niebieski) na tych samych punktach nie oscyluje, bo stopień pozostaje niski.</li>
+      <li>Naturalny pomysł: jeden wielomian przez wszystkie punkty.</li>
+      <li>Runge: więcej punktów ⇒ gorzej, oscylacje przy końcach.</li>
+      <li>Splajn (niebieski) na tych samych punktach nie oscyluje.</li>
+      <li>Gdy pytają o węzły Czebyszewa: pomagają, ale nie dla każdej funkcji ciągłej (Faber).</li>
     </ul>
-    <p><b>DEMO:</b> suwak n do ok. 15 → oscylacje; (opcjonalnie) przełącznik Czebyszewa.</p>
-    <p>→ jaki stopień wybrać? Najczęściej 3.</p>
+    <p><b>DEMO:</b> suwak n do ok. 15; opcjonalnie węzły Czebyszewa.</p>
+    <p>→ splajn sześcienny.</p>
   </aside>
 </section>
 
@@ -271,15 +264,14 @@
   <aside class="notes">
     <p><b>⏱ 0:55 · koniec 4:45</b></p>
     <ul>
-      <li>Dlaczego 3: najniższy stopień z&nbsp;ciągłą krzywizną (2. pochodną).</li>
-      <li>Liczenie: n+3 niewiadomych, n+1 warunków interpolacji ⇒ potrzebne 2 warunki brzegowe.</li>
-      <li>Naturalne = s″ = 0 na końcach (listwa za ostatnią kaczką); zupełne = znamy nachylenia na końcach.</li>
-      <li>Wykresy pod spodem: s″ jest łamaną, s‴ schodkami ⇒ splajn jest C², ale nie C³.</li>
-      <li>Liczy się szybko: układ trójdiagonalny, O(n) (↓).</li>
+      <li>Stopień 3: najniższy z ciągłą krzywizną.</li>
+      <li>n+3 niewiadomych, n+1 warunków interpolacji ⇒ 2 warunki brzegowe.</li>
+      <li>Naturalne: s″ = 0 (listwa za ostatnią kaczką); zupełne: znane nachylenia.</li>
+      <li>Gdy pytają o wady: przy skoku w danych lekkie przestrzelenie; wtedy PCHIP albo Akima.</li>
     </ul>
-    <p><b>DEMO:</b> przełączyć naturalne ↔ zupełne, pokazać zmianę przy końcach; przeciągnąć jeden punkt.</p>
-    <p>↓ dodatek: układ trójdiagonalny, algorytm Thomasa, milion niewiadomych na żywo.</p>
-    <p>→ co jest wyjątkowego w splajnie naturalnym?</p>
+    <p><b>DEMO:</b> naturalne ↔ zupełne; przeciągnąć punkt.</p>
+    <p>↓ układ trójdiagonalny, algorytm Thomasa.</p>
+    <p>→ twierdzenie Holladaya.</p>
   </aside>
 </section>
 <section class="std">
@@ -332,7 +324,7 @@ def thomas(a, b, c, d):
   <div class="cols l55">
     <div class="col-text">
       <div class="box thm">
-        <div class="box-title">Twierdzenie (Holladay, 1957)</div>
+        <div class="box-title">Twierdzenie <span class="ref">(Holladay, 1957)</span></div>
         <p>Spośród <b>wszystkich</b> funkcji klasy $C^2$ przechodzących przez dane punkty najmniejszą „energię zginania” ma <b>naturalny splajn sześcienny</b>:
         $$\int_a^b s''(x)^2\,dx \;\le\; \int_a^b f''(x)^2\,dx.$$</p>
       </div>
@@ -368,16 +360,14 @@ def thomas(a, b, c, d):
   </div>
   <div class="down-hint">dowód, zbieżność</div>
   <aside class="notes">
-    <p><b>⏱ 1:00 · koniec 5:45</b> · najważniejszy slajd matematyczny</p>
+    <p><b>⏱ 1:00 · koniec 5:45</b></p>
     <ul>
-      <li>Twierdzenie słowami: ze wszystkich funkcji C² przez te punkty naturalny splajn ma najmniejszą ∫f″², czyli „energię zginania”.</li>
-      <li>Interpretacja: wśród funkcji przez te punkty splajn naturalny ma najmniejszą całkowitą krzywiznę (mierzoną ∫f″²).</li>
-      <li>Fizyka: dla małych ugięć energia listwy to ta sama całka; między kaczkami brak siły ⇒ y⁗ = 0 ⇒ wielomian stopnia 3; wolny koniec ⇒ y″ = 0.</li>
-      <li>Model fizyczny listwy i twierdzenie dają ten sam wynik, stąd nazwa.</li>
+      <li>Naturalny splajn ma najmniejszą ∫f″² wśród funkcji C² przez te punkty.</li>
+      <li>To energia zginania listwy ⇒ listwa jest splajnem; stąd nazwa.</li>
+      <li>Między kaczkami brak siły ⇒ y⁗ = 0 ⇒ stopień 3; wolny koniec ⇒ y″ = 0.</li>
     </ul>
-    <p>Gdy pytają o dowód → ↓ (idea: f = s + e, wyraz mieszany ∫s″e″ = 0 przez części).</p>
-    <p>↓ dodatki: dowód; rząd zbieżności O(h⁴).</p>
-    <p>→ jak to wygodnie zapisać w komputerze: B-splajny.</p>
+    <p>↓ dowód (przez części); rząd zbieżności O(h⁴).</p>
+    <p>→ B-splajny.</p>
   </aside>
 </section>
 <section class="std">
@@ -407,7 +397,7 @@ def thomas(a, b, c, d):
   <div class="cols l40">
     <div class="col-text">
       <div class="box thm">
-        <div class="box-title">Hall i Meyer (1976)</div>
+        <div class="box-title"><span class="ref">Hall i Meyer (1976)</span></div>
         <p>$f \in C^4[a,b]$, $s$ to splajn zupełny z&nbsp;$s'(a) = f'(a)$, $s'(b) = f'(b)$; <span style="white-space:nowrap">$h = \max h_i$:</span></p>
         $$\begin{aligned}\|f - s\|_\infty &\le \tfrac{5}{384}\,h^4\,\|f^{(4)}\|_\infty\\ \|f' - s'\|_\infty &\le \tfrac{1}{24}\,h^3\,\|f^{(4)}\|_\infty\\ \|f'' - s''\|_\infty &\le \tfrac{3}{8}\,h^2\,\|f^{(4)}\|_\infty\end{aligned}$$
         <p class="small muted">Stałe $\tfrac{5}{384}$ i $\tfrac{1}{24}$ są optymalne.</p>
@@ -442,7 +432,7 @@ def thomas(a, b, c, d):
       <ul>
         <li>każdy $B_{i,k}$ jest niezerowy tylko na $k+1$ sąsiednich przedziałach (<b>lokalność</b>),</li>
         <li>są nieujemne i&nbsp;sumują się do 1,</li>
-        <li>liczy się je prostą, stabilną rekurencją (Cox, de Boor 1972),</li>
+        <li>liczy się je prostą, stabilną rekurencją <span class="ref">(Cox, de Boor 1972)</span>,</li>
         <li>zbiegające się węzły ⇒ mniejsza gładkość (załamanie).</li>
       </ul>
       <p class="small muted">Rekurencja: $B_{i,k} = \tfrac{x-t_i}{t_{i+k}-t_i}\,B_{i,k-1} + \tfrac{t_{i+k+1}-x}{t_{i+k+1}-t_{i+1}}\,B_{i+1,k-1}$</p>
@@ -453,14 +443,13 @@ def thomas(a, b, c, d):
   <aside class="notes">
     <p><b>⏱ 0:50 · koniec 6:35</b></p>
     <ul>
-      <li>Reprezentacja w komputerze: kombinacja B-splajnów ze współczynnikami c_i.</li>
-      <li>Kluczowa własność: <b>lokalność</b>. Zmiana jednego c_i zmienia splajn tylko na k+1 przedziałach.</li>
-      <li>Nieujemne, sumują się do 1 ⇒ obliczenia stabilne numerycznie.</li>
-      <li>Liczymy je rekurencyjnie: stopień k z dwóch stopnia k−1 (wzór na dole, nie omawiać).</li>
+      <li>Zapis w komputerze: suma B-splajnów ze współczynnikami c_i.</li>
+      <li><b>Lokalność</b>: zmiana c_i działa tylko na k+1 przedziałach.</li>
+      <li>Dla porównania splajn interpolacyjny: zmiana punktu rusza całość, ale wpływ maleje ok. 4× na przedział.</li>
     </ul>
-    <p><b>DEMO:</b> suwak stopnia 0 → 3; przeciągnąć węzeł na sąsiada, pojawia się załamanie.</p>
-    <p>↓ dodatek: B-splajn to splot, w granicy rozkład normalny.</p>
-    <p>→ to samo w grafice: krzywe z punktów kontrolnych.</p>
+    <p><b>DEMO:</b> stopień 0 → 3; przeciągnąć węzeł na sąsiada: pojawia się załamanie.</p>
+    <p>↓ B-splajn jako splot.</p>
+    <p>→ krzywe z punktów kontrolnych: Bézier.</p>
   </aside>
 </section>
 <section class="std">
@@ -473,7 +462,7 @@ def thomas(a, b, c, d):
         <li>$B_k$ = gęstość sumy $k+1$ niezależnych zmiennych $U[0,1]$ (rozkład Irwina–Halla).</li>
         <li>Średnia $\tfrac{k+1}{2}$, wariancja $\tfrac{k+1}{12}$; z&nbsp;CTG po standaryzacji gęstość dąży do gęstości $\mathcal N(0,1)$.</li>
         <li>Transformata Fouriera: $\widehat{B_k}(\omega) = \Big(\tfrac{\sin(\omega/2)}{\omega/2}\Big)^{k+1} e^{-i\omega(k+1)/2}$.</li>
-        <li>Dlatego B-splajny dobrze sprawdzają się w&nbsp;przetwarzaniu sygnałów (Unser, 1999).</li>
+        <li>Dlatego B-splajny dobrze sprawdzają się w&nbsp;przetwarzaniu sygnałów <span class="ref">(Unser, 1999)</span>.</li>
       </ul>
     </div>
     <div class="demo" data-demo="convolution" data-w="680" data-h="420"></div>
@@ -508,14 +497,12 @@ def thomas(a, b, c, d):
   <aside class="notes">
     <p><b>⏱ 0:50 · koniec 7:25</b></p>
     <ul>
-      <li>Przejście do grafiki: krzywe parametryczne (x(t), y(t)), sterowane punktami kontrolnymi.</li>
-      <li>Wagi to wielomiany Bernsteina (1912); wzór na slajdzie, nie trzeba go rozbierać.</li>
-      <li>de Casteljau: dzielimy każdy odcinek w proporcji t, powtarzamy, aż zostanie jeden punkt na krzywej.</li>
-      <li>Ciekawostka historyczna: prace de Casteljau w Citroënie były tajne, Bézier (Renault) publikował, stąd nazwa.</li>
-      <li>Wada: ruszenie dowolnego punktu zmienia całą krzywą.</li>
+      <li>Krzywa parametryczna sterowana punktami kontrolnymi; wagi Bernsteina.</li>
+      <li>de Casteljau (Citroën): dzielenie odcinków w proporcji t; nazwa od Béziera (Renault).</li>
+      <li>Wada: każdy punkt zmienia całą krzywą.</li>
     </ul>
-    <p><b>DEMO:</b> konstrukcja animuje się sama (przycisk pauzy), widać odcinki; przeciągnąć jeden punkt kontrolny.</p>
-    <p>→ jak dostać sterowanie lokalne? B-splajny.</p>
+    <p><b>DEMO:</b> konstrukcja animuje się sama; przeciągnąć punkt.</p>
+    <p>→ sterowanie lokalne: krzywe B-splajnowe.</p>
   </aside>
 </section>
 
@@ -538,13 +525,13 @@ def thomas(a, b, c, d):
   <aside class="notes">
     <p><b>⏱ 0:50 · koniec 8:15</b></p>
     <ul>
-      <li>Ten sam pomysł co Bézier, ale wagami są B-splajny ⇒ każdy punkt wpływa tylko na swój fragment.</li>
-      <li>To standard w CAD i grafice (w wersji wymiernej: NURBS, ↓).</li>
-      <li>Grzebień krzywizny: kreski prostopadłe do krzywej, długość = krzywizna; projektanci karoserii sprawdzają nim, czy krzywizna nie skacze.</li>
+      <li>Te same punkty kontrolne, wagami B-splajny ⇒ edycja lokalna.</li>
+      <li>Standard w CAD (wersja wymierna: NURBS ↓).</li>
+      <li>Grzebień krzywizny: od razu widać, czy krzywizna skacze.</li>
     </ul>
-    <p><b>DEMO:</b> przeciągnąć punkt: podświetla się tylko zmieniany fragment. Przełączyć na Béziera: zmienia się wszystko.</p>
-    <p>↓ dodatki: NURBS i dokładny okrąg, Catmull–Rom, podział Chaikina.</p>
-    <p>→ najbliższy przykład: litera na ekranie.</p>
+    <p><b>DEMO:</b> przeciągnąć punkt; przełączyć na „Bézier”: zmienia się wszystko.</p>
+    <p>↓ NURBS, Catmull–Rom, Chaikin.</p>
+    <p>→ czcionki.</p>
   </aside>
 </section>
 <section class="std">
@@ -556,7 +543,7 @@ def thomas(a, b, c, d):
         <li>Wielomianem <b>nie da się</b> dokładnie narysować okręgu; krzywą wymierną można.</li>
         <li>Wymierna krzywa Béziera 2. stopnia, wagi końcowe 1, środkowa $w&gt;0$: <span class="hl-o">$w&lt;1$ elipsa</span>, <span class="hl-g">$w=1$ parabola</span>, <span class="hl-p">$w&gt;1$ hiperbola</span>.</li>
         <li>Łuk o kącie $\theta$: $w = \cos(\theta/2)$; ćwiartka okręgu: $w = \tfrac{\sqrt2}{2}$.</li>
-        <li>Dlatego standardy CAD (IGES, STEP) i silniki geometrii opierają się na NURBS (Versprille, 1975).</li>
+        <li>Dlatego standardy CAD (IGES, STEP) i silniki geometrii opierają się na NURBS <span class="ref">(Versprille, 1975)</span>.</li>
       </ul>
     </div>
     <div class="demo" data-demo="nurbs" data-w="600" data-h="440"></div>
@@ -576,10 +563,10 @@ def thomas(a, b, c, d):
   <div class="cols l40">
     <div class="col-text">
       <ul>
-        <li>Przechodzi <b>przez</b> punkty, lokalna, klasy $C^1$ (Catmull, Rom 1974); standard w animacji i grach.</li>
+        <li>Przechodzi <b>przez</b> punkty, lokalna, klasy $C^1$ <span class="ref">(Catmull, Rom 1974)</span>; standard w animacji i grach.</li>
         <li>Węzły $t_{i+1} = t_i + |P_{i+1}-P_i|^\alpha$:
           <span class="muted">równomierna</span> $\alpha=0$, <span class="hl">dośrodkowa</span> <span style="white-space:nowrap">$\alpha=\tfrac12$,</span> <span class="hl-g">cięciwowa</span> $\alpha=1$.</li>
-        <li>Wersja dośrodkowa nie ma ostrzy ani pętli wewnątrz segmentu (Yuksel i in., 2011).</li>
+        <li>Wersja dośrodkowa nie ma ostrzy ani pętli wewnątrz segmentu <span class="ref">(Yuksel i in., 2011)</span>.</li>
       </ul>
       <p class="small muted">Przeciągnij punkty blisko siebie: wersja równomierna robi pętle.</p>
     </div>
@@ -599,11 +586,11 @@ def thomas(a, b, c, d):
   <div class="slide-head"><h2>Algorytm Chaikina</h2><span class="tag deep">dodatek</span></div>
   <div class="cols l40">
     <div class="col-text">
-      <p><b>Chaikin (1974):</b> każdy odcinek $P_iP_{i+1}$ zastąp punktami</p>
+      <p><b>Chaikin <span class="ref">(1974)</span>:</b> każdy odcinek $P_iP_{i+1}$ zastąp punktami</p>
       $$Q_i = \tfrac34 P_i + \tfrac14 P_{i+1},\qquad R_i = \tfrac14 P_i + \tfrac34 P_{i+1}.$$
       <ul>
-        <li>Granica: <b>kwadratowa krzywa B-splajnowa</b> (Riesenfeld, 1975).</li>
-        <li>Uogólnienie na powierzchnie: <b>Catmull–Clark</b> (1978), standard w animacji 3D; Pixar, <i>Geri's Game</i> (1997).</li>
+        <li>Granica: <b>kwadratowa krzywa B-splajnowa</b> <span class="ref">(Riesenfeld, 1975)</span>.</li>
+        <li>Uogólnienie na powierzchnie: <b>Catmull–Clark</b> <span class="ref">(1978)</span>, standard w animacji 3D; Pixar, <i>Geri's Game</i> (1997).</li>
       </ul>
     </div>
     <div class="demo" data-demo="chaikin" data-w="680" data-h="440"></div>
@@ -640,14 +627,14 @@ def thomas(a, b, c, d):
   <aside class="notes">
     <p><b>⏱ 0:50 · koniec 9:05</b></p>
     <ul>
-      <li>Prawdziwe dane z pliku czcionki DejaVu Sans (TrueType).</li>
-      <li>Pełne kropki to punkty na konturze, puste to punkty kontrolne; kontur = kwadratowe krzywe Béziera.</li>
-      <li>Dwa puste punkty z rzędu ⇒ niejawny punkt pośrodku ⇒ to kwadratowy B-splajn.</li>
-      <li>Litera skaluje się bez „pikselozy”: przekształcamy kilkadziesiąt punktów, nie miliony pikseli.</li>
+      <li>Prawdziwe kontury czcionki DejaVu Sans.</li>
+      <li>TrueType: krzywe 2. stopnia; PostScript i CFF: 3. stopnia.</li>
+      <li>Skalowanie: przekształca się kilkadziesiąt punktów, nie piksele.</li>
+      <li>Gdy pytają: dwa punkty „poza” z rzędu dają niejawny punkt pośrodku (kwadratowy B-splajn).</li>
     </ul>
-    <p><b>DEMO:</b> przeciągnąć punkt kontrolny; zmienić literę na „ą”.</p>
-    <p>↓ dodatki: <code>cubic-bezier()</code> w CSS; tabela algorytmów i złożoności.</p>
-    <p>→ z grafiki do analizy danych.</p>
+    <p><b>DEMO:</b> przeciągnąć punkt; zmienić literę na „ą”.</p>
+    <p>↓ <code>cubic-bezier()</code> w CSS; algorytmy.</p>
+    <p>→ analiza danych.</p>
   </aside>
 </section>
 <section class="std">
@@ -685,7 +672,7 @@ def thomas(a, b, c, d):
           <tr><td>punkt krzywej Béziera</td><td>de Casteljau</td><td>O(n²)</td></tr>
           <tr><td>zagęszczenie siatki</td><td>wstawianie węzłów (Boehm, Oslo)</td><td>O(k) / węzeł</td></tr>
           <tr><td>wygładzanie $n$ punktów</td><td>Reinsch: układ pasmowy</td><td>O(n)</td></tr>
-          <tr><td>rysowanie</td><td>adaptacyjny podział → odcinki; GPU: Loop–Blinn (2005)</td><td>O(1) / fragment</td></tr>
+          <tr><td>rysowanie</td><td>adaptacyjny podział → odcinki; GPU: Loop–Blinn <span class="ref">(2005)</span></td><td>O(1) / fragment</td></tr>
         </tbody>
       </table>
     </div>
@@ -721,7 +708,7 @@ def thomas(a, b, c, d):
       <p>Pomiary mają szum, więc nie chcemy przechodzić <b>przez</b> punkty, tylko <b>blisko</b> nich:</p>
       $$\min_f\ \underbrace{\sum_{i} \big(y_i - f(x_i)\big)^2}_{\text{dopasowanie}} + \lambda \underbrace{\int f''(x)^2\,dx}_{\text{krzywizna}}$$
       <ul>
-        <li>Rozwiązanie to znowu <b>naturalny splajn sześcienny</b> z&nbsp;węzłami w&nbsp;$x_i$ (Reinsch, 1967). To wniosek z&nbsp;tw. Holladaya.</li>
+        <li>Rozwiązanie to znowu <b>naturalny splajn sześcienny</b> z&nbsp;węzłami w&nbsp;$x_i$ <span class="ref">(Reinsch, 1967)</span>. To wniosek z&nbsp;tw. Holladaya.</li>
         <li>$\lambda \to 0$: interpolacja (przeuczenie); $\;\lambda \to \infty$: prosta regresji.</li>
         <li>$\lambda$ dobiera się automatycznie z danych (walidacja krzyżowa, GCV).</li>
       </ul>
@@ -731,14 +718,12 @@ def thomas(a, b, c, d):
   <aside class="notes">
     <p><b>⏱ 1:00 · koniec 10:05</b></p>
     <ul>
-      <li>Przejście do danych: pomiary z szumem; interpolacja „goni” szum.</li>
-      <li>Dwa składniki: dopasowanie do danych + λ × krzywizna (ta sama energia zginania co u Holladaya).</li>
-      <li>Rozwiązanie spośród <b>wszystkich</b> funkcji to naturalny splajn z węzłami w punktach danych (wniosek z Holladaya).</li>
-      <li>λ to suwak kompromisu: małe daje przeuczenie, duże prostą; dobiera się z danych (GCV).</li>
-      <li>(Jeśli pytają) Kimeldorf–Wahba: to też estymator bayesowski dla odpowiedniego procesu gaussowskiego → tw. o reprezentacji → metody jądrowe.</li>
+      <li>Dane z szumem: nie przez punkty, tylko blisko nich.</li>
+      <li>Kompromis: dopasowanie + λ · krzywizna; wynik to znów naturalny splajn (Reinsch).</li>
+      <li>λ małe: interpolacja; duże: prosta; dobór z danych (GCV).</li>
     </ul>
-    <p><b>DEMO:</b> suwak λ od przeuczenia do prostej; potem przycisk „λ z GCV”.</p>
-    <p>→ splajny w sieciach neuronowych.</p>
+    <p><b>DEMO:</b> „λ z GCV”, potem „interpolacja” i „prosta”.</p>
+    <p>→ sieci neuronowe.</p>
   </aside>
 </section>
 
@@ -753,7 +738,7 @@ def thomas(a, b, c, d):
       <ul>
         <li>Dla wejścia 1D to <b>splajn liniowy</b> (łamana) z&nbsp;załamaniami w&nbsp;$t_j = -b_j / w_j$.</li>
         <li>Różnica względem klasycznych splajnów: <b>węzły też są uczone</b>.</li>
-        <li>Więcej warstw: funkcja nadal kawałkami liniowa (Balestriero, Baraniuk 2018).</li>
+        <li>Więcej warstw: funkcja nadal kawałkami liniowa <span class="ref">(Balestriero, Baraniuk 2018)</span>.</li>
       </ul>
     </div>
     <div class="demo" data-demo="relu" data-w="736" data-h="440"></div>
@@ -762,14 +747,13 @@ def thomas(a, b, c, d):
   <aside class="notes">
     <p><b>⏱ 1:00 · koniec 11:05</b></p>
     <ul>
-      <li>ReLU = max(0, x); suma przesuniętych i przeskalowanych funkcji ReLU to łamana.</li>
-      <li>Sieć z jedną warstwą ukrytą na wejściu 1D to dokładnie splajn liniowy; załamanie neuronu j w punkcie −b_j/w_j.</li>
-      <li>Nowość względem splajnów: położenia węzłów nie są dane z góry, uczą się gradientowo.</li>
-      <li>Głębsze sieci: dalej kawałkami liniowe, kawałków może być wykładniczo wiele.</li>
+      <li>Jedna warstwa ReLU, wejście 1D: wynik to łamana, czyli splajn liniowy.</li>
+      <li>Węzły w t = −b/w; różnica wobec klasycznych splajnów: węzły też się uczą.</li>
+      <li>Głębsze sieci: nadal kawałkami liniowe.</li>
     </ul>
-    <p><b>DEMO:</b> kliknąć „Trenuj” od razu i mówić dalej; pionowe linie (węzły) wędrują tam, gdzie funkcja się zgina.</p>
-    <p>↓ dodatek: KAN (2024), sieci z uczonymi B-splajnami na krawędziach.</p>
-    <p>→ po co w praktyce ciągła krzywizna?</p>
+    <p><b>DEMO:</b> „Trenuj”; pionowe linie to węzły.</p>
+    <p>↓ KAN.</p>
+    <p>→ po co w praktyce ciągła krzywizna.</p>
   </aside>
 </section>
 
@@ -778,7 +762,7 @@ def thomas(a, b, c, d):
   <div class="slide-head"><h2>KAN: sieci Kołmogorowa–Arnolda (2024)</h2><span class="tag deep">dodatek</span></div>
   <div class="cols l40">
     <div class="col-text" style="font-size:21px">
-      <p><b>Tw. Kołmogorowa–Arnolda (1957):</b> każdą ciągłą $f:[0,1]^n \to \mathbb R$ można zapisać jako
+      <p><b>Tw. Kołmogorowa–Arnolda <span class="ref">(1957)</span>:</b> każdą ciągłą $f:[0,1]^n \to \mathbb R$ można zapisać jako
       $$f(\mathbf x) = \sum_{q=0}^{2n} \Phi_q\Big(\sum_{p=1}^{n} \varphi_{q,p}(x_p)\Big).$$</p>
       <svg viewBox="0 0 440 150" style="width:100%;height:auto;margin:2px 0 6px" aria-hidden="true">
         <g font-family="Inter" font-size="14" fill="var(--muted)" text-anchor="middle"><text x="105" y="146">MLP: stałe σ w węzłach</text><text x="335" y="146">KAN: splajny na krawędziach</text></g>
@@ -791,7 +775,7 @@ def thomas(a, b, c, d):
         <g fill="var(--card)" stroke="var(--ink)" stroke-width="1.6"><circle cx="275" cy="30" r="9"/><circle cx="275" cy="75" r="9"/><circle cx="275" cy="120" r="9"/><circle cx="335" cy="30" r="8"/><circle cx="335" cy="75" r="8"/><circle cx="335" cy="120" r="8"/><circle cx="395" cy="75" r="9"/></g>
       </svg>
       <ul>
-        <li>Każda krawędź: $\varphi(x) = w_b\,\mathrm{silu}(x) + w_s \sum_i c_i B_i(x)$, gdzie $c_i$ to uczone współczynniki B-splajnów (Liu i in., 2024).</li>
+        <li>Każda krawędź: $\varphi(x) = w_b\,\mathrm{silu}(x) + w_s \sum_i c_i B_i(x)$, gdzie $c_i$ to uczone współczynniki B-splajnów <span class="ref">(Liu i in., 2024)</span>.</li>
         <li>Zagęszczanie siatki zwiększa liczbę współczynników. W&nbsp;demie: dokładne wstawianie węzłów; w&nbsp;pracy o&nbsp;KAN: dopasowanie splajnu na nowej siatce.</li>
       </ul>
     </div>
@@ -830,14 +814,12 @@ def thomas(a, b, c, d):
   <aside class="notes">
     <p><b>⏱ 1:00 · koniec 12:05</b></p>
     <ul>
-      <li>Po co ciągłość 2. pochodnej w praktyce? Przeciążenie zależy od krzywizny (v²κ/g).</li>
-      <li>Krzywa C¹: krzywizna skacze w węzłach ⇒ przeciążenie skacze ⇒ szarpnięcie (na wykresie skok do ok. 2 g).</li>
-      <li>Splajn C²: krzywizna ciągła ⇒ przeciążenie zmienia się płynnie.</li>
-      <li>Ta sama zasada: krzywe przejściowe (klotoidy) na kolei i drogach, wymóg ciągłości krzywizny w CAD.</li>
-      <li>Związek z listwą: ta sama miara, ∫κ².</li>
+      <li>Przeciążenie zależy od krzywizny toru.</li>
+      <li>C¹ (Catmull–Rom): krzywizna skacze ⇒ szarpnięcia; C² (splajn naturalny): płynnie.</li>
+      <li>Stąd krzywe przejściowe na kolei i drogach.</li>
     </ul>
-    <p><b>DEMO:</b> „start”: wagon jedzie po obu torach; pokazać wykres przeciążenia.</p>
-    <p>↓ dodatek: thin-plate spline, czyli splajn w 2D.</p>
+    <p><b>DEMO:</b> „start”; pokazać wykres przeciążenia.</p>
+    <p>↓ thin-plate spline.</p>
     <p>→ podsumowanie.</p>
   </aside>
 </section>
@@ -848,8 +830,8 @@ def thomas(a, b, c, d):
       <p>Cienka płyta zamiast listwy: przy warunkach $f(\mathbf p_i) = y_i$ minimalizujemy</p>
       $$\iint \big(f_{xx}^2 + 2f_{xy}^2 + f_{yy}^2\big)\,dx\,dy$$
       <ul>
-        <li>Rozwiązanie: $f(\mathbf x) = a_0 + \mathbf a^\top \mathbf x + \sum_i w_i\,U(\|\mathbf x - \mathbf p_i\|)$, $\;U(r) = r^2 \log r$ (Duchon, 1976).</li>
-        <li>Morfometria i morfing (Bookstein, 1989), rejestracja obrazów medycznych, <i>Spatial Transformer Networks</i>.</li>
+        <li>Rozwiązanie: $f(\mathbf x) = a_0 + \mathbf a^\top \mathbf x + \sum_i w_i\,U(\|\mathbf x - \mathbf p_i\|)$, $\;U(r) = r^2 \log r$ <span class="ref">(Duchon, 1976)</span>.</li>
+        <li>Morfometria i morfing <span class="ref">(Bookstein, 1989)</span>, rejestracja obrazów medycznych, <i>Spatial Transformer Networks</i>.</li>
       </ul>
       <p class="small muted">Przeciągnij punkty: obraz wygina się jak cienka płyta.</p>
     </div>
@@ -880,10 +862,10 @@ def thomas(a, b, c, d):
   <aside class="notes">
     <p><b>⏱ 0:30 · koniec 12:35</b></p>
     <ul>
-      <li>Cztery wnioski, po jednym zdaniu do każdego.</li>
-      <li>Na koniec zdanie z ramki na dole.</li>
+      <li>Cztery wnioski, po jednym zdaniu.</li>
+      <li>Na koniec zdanie z ramki.</li>
     </ul>
-    <p>→ dziękuję, pytania.</p>
+    <p>→ pytania.</p>
   </aside>
 </section>
 
@@ -905,8 +887,7 @@ def thomas(a, b, c, d):
     <p><b>⏱ 0:15 · koniec ok. 12:50</b> · zostaje ok. 2 min zapasu do 15:00</p>
     <ul>
       <li>Podziękować; QR prowadzi do prezentacji i PDF.</li>
-      <li>Na pytania: dodatki pod strzałką ↓ (O = przegląd wszystkich slajdów):</li>
-      <li>definicja i wymiar (pod ideą) · rys historyczny (pod listwą) · Thomas (pod sześciennym) · dowód Holladaya i zbieżność O(h⁴) · B-splajny jako sploty · NURBS, Catmull–Rom, Chaikin · CSS i tabela algorytmów (pod czcionkami) · KAN (pod ReLU) · thin-plate spline (pod przeciążeniami).</li>
+      <li>Na pytania: dodatki pod strzałką ↓, <kbd>O</kbd> = przegląd wszystkich slajdów.</li>
     </ul>
   </aside>
 </section>

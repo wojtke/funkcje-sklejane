@@ -7,6 +7,21 @@ Od prostej intuicji („kawałki wielomianów sklejone bez szwów”), przez lis
 Holladaya, B-splajny i krzywe Béziera, po czcionki, wygładzanie danych i sieci neuronowe. Wszystkie wykresy
 liczą się na żywo w przeglądarce.
 
+## Wersje
+
+| Wersja | Adres | Plik | Kolejność | Czas |
+|---|---|---|---|---|
+| 1 | <https://wojtke.github.io/funkcje-sklejane/> | `index.html` | idea → zastosowania → listwa → Runge → splajn sześcienny → Holladay → B-splajny → Bézier → krzywe → czcionki → dane → ReLU → przeciążenia | ok. 12:50 |
+| 2 | <https://wojtke.github.io/funkcje-sklejane/v2/> | `v2/index.html` | idea → Runge → splajn sześcienny (4n warunków) → układ trójdiagonalny → listwa i Holladay → B-splajny → krzywe Béziera i B-splajnowe → zastosowania → czcionki → dane → ReLU → przeciążenia | ok. 12:05 |
+
+Obie wersje korzystają z tych samych `css/`, `js/`, `vendor/`, `img/`. Wersja 2 powstała z wersji 1
+(02.11.2026): problem na start, liczenie warunków 4n − (4n − 2) = 2, wyznaczanie (układ trójdiagonalny)
+na ścieżce głównej, listwa połączona z twierdzeniem Holladaya, de Casteljau, fizyka listwy i dowód w dodatkach.
+PDF wersji 2: `tools/build-pdf.sh` uruchomiony w `v2/` (`node ../tools/build-pdf.mjs funkcje-sklejane-v2.pdf`);
+notatki: `tools/build-notes-v2.sh` → `../notatki-prelegenta-v2.pdf`.
+
+Odwołania do literatury i źródła na slajdach mają klasę `ref` (krój szeryfowy Charter, przygaszony kolor).
+
 ## Jak prezentować
 
 - Otwórz `index.html` (działa też offline, bez serwera; wszystkie biblioteki są w `vendor/`)

@@ -297,3 +297,17 @@ html.dark .reveal figure.photo img { filter: brightness(.9); }
 .talk-clock { position: fixed; top: 10px; right: 16px; z-index: 40; display: flex; gap: 10px; align-items: baseline; font: 500 14px/1 Inter, sans-serif; font-variant-numeric: tabular-nums; color: var(--faint); opacity: 0; transition: opacity .15s; pointer-events: none; user-select: none; -webkit-user-select: none; }
 .talk-clock.on { opacity: .7; }
 .talk-clock b { font-weight: 600; font-size: 16px; color: var(--muted); }
+
+/* odwołania do literatury i źródła: krój szeryfowy, lekko przygaszony */
+.ref, .cite, .reveal .refs p:not(.sec) { font-family: Charter, "Iowan Old Style", Georgia, "Times New Roman", serif; }
+.ref { font-weight: 400; font-style: normal; font-size: .96em; color: var(--muted); letter-spacing: 0; text-transform: none; }
+.box-title .ref { font-size: 1.08em; }
+
+/* v2: zliczanie warunków (slajd o splajnie sześciennym) */
+.reveal table.count { width: 100%; margin: 4px 0 12px; border-collapse: collapse; font-size: 19px; }
+.reveal table.count td { padding: 4px 0; border-bottom: 1px solid var(--line); vertical-align: baseline; }
+.reveal table.count td + td { text-align: right; white-space: nowrap; padding-left: 12px; font-weight: 600; }
+.reveal table.count tr.total td { border-bottom: 0; color: var(--blue); font-weight: 700; }
+/* v2: wzór macierzy trójdiagonalnej */
+.mat-pattern { text-align: center; }
+.mat-pattern .katex-display { margin: 0 0 4px; }
