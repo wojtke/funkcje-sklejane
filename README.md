@@ -33,6 +33,7 @@ Odwołania do literatury i źródła na slajdach mają klasę `ref` (krój szery
   | `→`, spacja, PageDown (pilot) | dalej po ścieżce głównej |
   | `↓` | dodatki (pionowe slajdy) |
   | `S` | widok prelegenta: notatki, licznik tempa, podgląd następnego slajdu ścieżki głównej |
+  | `A` (w oknie prelegenta) | przełącza notatki: zwięzłe ↔ proste (tekst z `na-chlopski-rozum.md`); to samo robi przycisk przy „Notes” |
   | `F`, F5 (pilot), przycisk w lewym dolnym rogu | pełny ekran (włącz/wyłącz) |
   | `C` (przytrzymaj) | słabo widoczny zegar w prawym górnym rogu: czas od wyjścia ze slajdu tytułowego (powrót na tytuł zeruje) i godzina |
   | `D` | tryb ciemny |

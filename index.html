@@ -40,6 +40,7 @@
       <li>Na końcu QR: dema do samodzielnego wypróbowania.</li>
     </ul>
     <p>→ idea funkcji sklejanej.</p>
+    <div class="alt-notes"><p>Slajd tytułowy. Funkcja sklejana (ang. <i>spline</i>, po polsku też „splajn”) to gładka krzywa złożona z wielu prostych kawałków.</p></div><!--/alt-->
   </aside>
 </section>
 
@@ -73,6 +74,7 @@
     <p><b>DEMO:</b> suwak stopnia k od 1 do 4: k = 1 łamana z kantami, k = 2 bez załamań, k = 3 bez skoków krzywizny; przeciągnąć punkt.</p>
     <p>↓ definicja formalna, wymiar n+k.</p>
     <p>→ zastosowania.</p>
+    <div class="alt-notes"><p><b>Co to jest:</b> Mamy kilka punktów, na przykład temperaturę mierzoną co godzinę, i chcemy przez nie poprowadzić gładką krzywą. Funkcja sklejana robi to po kawałku: między każdymi dwoma sąsiednimi punktami jest osobny, prosty łuk. W miejscach styku (węzłach) łuki są dopasowane tak, że krzywa nie ma przerwy, nie ma ostrego kąta i nie zmienia nagle wygięcia.</p><p><b>Do czego się tego używa:</b> Wszędzie tam, gdzie z pojedynczych punktów trzeba zrobić ciągły, gładki kształt albo przebieg: wykres z pomiarów, obrys litery, kształt karoserii, ruch ramienia robota.</p><p><b>Zapamiętaj:</b> stopień mówi, jak gładko kawałki są połączone. Stopień 1 to łamana z ostrymi kątami, stopień 3 to krzywa bez kątów i bez nagłych zmian wygięcia.</p></div><!--/alt-->
   </aside>
 </section>
 <section class="std">
@@ -100,6 +102,7 @@
       <li>Baza potęg uciętych: wielomian + funkcje (x−t)₊^k w węzłach; źle uwarunkowana → w praktyce B-splajny.</li>
       <li>DEMO: przedłużone kawałki (przerywane) rozjeżdżają się, bo każdy kawałek to inny wielomian.</li>
     </ul>
+    <div class="alt-notes"><p><b>Co to jest:</b> Dokładna wersja poprzedniego slajdu: na każdym przedziale jest wielomian danego stopnia, a w węzłach zgadzają się wartość i kolejne pochodne. Slajd liczy też, ile liczb trzeba podać, żeby taką funkcję opisać jednoznacznie: tyle, ile jest kawałków, plus stopień.</p><p><b>Dlaczego to istnieje:</b> Ta liczba mówi, ile warunków trzeba narzucić, żeby wybrać jedną konkretną krzywą. Z niej wynika na przykład, że przy splajnie sześciennym trzeba dodać dwa warunki na końcach.</p></div><!--/alt-->
   </aside>
 </section>
 </section>
@@ -154,6 +157,7 @@
       <li>Wspólne: mało parametrów, gładkość z definicji, lokalna edycja.</li>
     </ul>
     <p>→ skąd nazwa „spline”.</p>
+    <div class="alt-notes"><p><b>Co to jest:</b> Sześć dziedzin, w których splajny są używane na co dzień. Na każdej karcie najpierw ogólnie, do czego służą, potem konkretny przykład.</p><p><b>Do czego się tego używa:</b></p><ul><li><b>Czcionki:</b> obrys każdej litery w komputerze i telefonie jest zapisany krzywymi, więc tekst jest ostry w każdym rozmiarze (formaty TrueType i OpenType).</li><li><b>CAD:</b> kształty karoserii, skrzydeł i kadłubów zapisuje się splajnami (NURBS), np. w programach CATIA i SolidWorks, i w tej postaci przekazuje do symulacji i obrabiarek.</li><li><b>Animacja i gry:</b> animator ustawia kilka kluczowych pozycji, a program wylicza ruch pomiędzy nimi krzywą (np. Blender, silnik gier Unity).</li><li><b>Roboty i pojazdy:</b> robot przemysłowy (np. firmy KUKA) prowadzi narzędzie po splajnie, żeby ruch był płynny; system jazdy autonomicznej Baidu Apollo wygładza w ten sposób tor jazdy.</li><li><b>Analiza danych:</b> splajn dopasowuje się do pomiarów, gdy zależność nie jest prostą linią (np. biblioteka scikit-learn w Pythonie, pakiet mgcv w R).</li><li><b>Medycyna:</b> żeby porównać dwa skany tego samego pacjenta, jeden obraz odkształca się według siatki B-splajnów (np. program elastix).</li></ul></div><!--/alt-->
   </aside>
 </section>
 
@@ -190,6 +194,7 @@
     <p><b>DEMO:</b> przeciągnąć kaczkę.</p>
     <p>↓ rys historyczny.</p>
     <p>→ dlaczego nie jeden wielomian (efekt Rungego).</p>
+    <div class="alt-notes"><p><b>Co to jest:</b> Angielskie słowo <i>spline</i> oznaczało cienką, giętką listwę z drewna lub metalu. Kreślarze w stoczniach i fabrykach samolotów przyciskali ją ołowianymi ciężarkami (zwanymi „kaczkami”) w wybranych punktach i rysowali wzdłuż niej gładką linię; zdjęcie pokazuje to w zakładach lotniczych Rohr w 1956 roku. Twierdzenie Holladaya (1957) mówi, że spośród wszystkich gładkich krzywych przez dane punkty naturalny splajn sześcienny wygina się najmniej. Taki kształt przyjmuje swobodna listwa, dlatego funkcja dostała tę samą nazwę.</p><p><b>Dlaczego to istnieje:</b> Przed komputerami tak projektowano kadłuby statków, skrzydła i karoserie w skali 1:1. Funkcje sklejane opisują matematycznie ten sam kształt, więc mogły zastąpić listwę w programach CAD.</p></div><!--/alt-->
   </aside>
 </section>
 <section class="std">
@@ -217,6 +222,7 @@
       <li>Przemysł: de Casteljau (Citroën, 1959; prace tajne) i Bézier (Renault, publikował), stąd „krzywe Béziera”; de Boor w GM od 1960, Ferguson w Boeingu.</li>
       <li>Informatyka: rekurencja Coxa–de Boora 1972, NURBS 1975, PostScript 1984, TrueType 1991, dziś sieci neuronowe (ReLU, KAN).</li>
     </ul>
+    <div class="alt-notes"><p><b>Co to jest:</b> Oś czasu: badania giętkich prętów (Bernoulli, Euler, XVIII w.), problem Rungego (1901), nazwa <i>spline functions</i> (Schoenberg, 1946), krzywe w Citroënie, Renault, General Motors i Boeingu (lata 60.), grafika komputerowa i czcionki (lata 70.–90.), sieci neuronowe (dziś).</p><p><b>Dlaczego to istnieje:</b> Pokazuje, że te same krzywe przeszły z deski kreślarskiej do programów komputerowych, a potem do uczenia maszynowego.</p></div><!--/alt-->
   </aside>
 </section>
 </section>
@@ -246,6 +252,7 @@
     </ul>
     <p><b>DEMO:</b> suwak n do ok. 15; opcjonalnie węzły Czebyszewa.</p>
     <p>→ splajn sześcienny.</p>
+    <div class="alt-notes"><p><b>Co to jest:</b> Najprostszy pomysł na krzywą przez wiele punktów to jeden wzór, czyli jeden wielomian, który przechodzi przez wszystkie punkty naraz. Przy wielu równo rozstawionych punktach taki wielomian zaczyna mocno falować przy końcach przedziału, i im więcej punktów, tym gorzej. Opisał to Carl Runge w 1901 roku. Funkcja sklejana na tych samych punktach nie faluje, bo każdy jej kawałek pozostaje prosty.</p><p><b>Dlaczego to istnieje:</b> To główny powód, dla którego używa się funkcji sklejanych: zamiast jednego coraz bardziej skomplikowanego wzoru bierze się wiele prostych kawałków.</p><p><b>Zapamiętaj:</b> falowanie bierze się z wysokiego stopnia, więc przy wielu punktach stopień musi zostać niski.</p></div><!--/alt-->
   </aside>
 </section>
 
@@ -285,6 +292,7 @@
     <p><b>DEMO:</b> naturalne ↔ zupełne; przeciągnąć punkt.</p>
     <p>↓ jak się go wyznacza (układ liniowy); wzory i kod.</p>
     <p>→ twierdzenie Holladaya.</p>
+    <div class="alt-notes"><p><b>Co to jest:</b> Najczęściej używana funkcja sklejana: każdy kawałek jest wielomianem trzeciego stopnia. To najniższy stopień, przy którym krzywa w węzłach nie zmienia nagle wygięcia. Tabela na slajdzie liczy, ile warunków dają przejście przez punkty i gładkie połączenia: wychodzi o dwa za mało. Te dwa warunki ustala się na końcach krzywej. Najczęściej krzywa ma się na końcach prostować (warunki naturalne); można też podać nachylenie na końcach, kazać dwóm skrajnym kawałkom być jednym wielomianem (tak domyślnie robi SciPy) albo, dla krzywej zamkniętej, gładko połączyć koniec z początkiem.</p><p><b>Do czego się tego używa:</b> To standardowy sposób prowadzenia gładkiej krzywej przez punkty w programach do obliczeń, na przykład w bibliotece SciPy (Python) i w funkcji <code>spline</code> w MATLAB-ie.</p></div><!--/alt-->
   </aside>
 </section>
 <section class="std">
@@ -317,6 +325,7 @@
       <li>Gdy pytają o inne stopnie: ten sam schemat, macierz pasmowa (baza B-splajnów), też O(n).</li>
     </ul>
     <p>↓ wzory dla nierównych odstępów i kod.</p>
+    <div class="alt-notes"><p><b>Co to jest:</b> Żeby komputer wyznaczył splajn sześcienny, wystarczy, że policzy, jak mocno krzywa ma być wygięta w każdym węźle; z tego wynika już każdy kawałek. Warunek gładkiego połączenia w węźle daje jedno proste równanie, w którym występuje tylko ten węzeł i jego dwaj sąsiedzi. Wszystkie równania razem tworzą jeden układ równań liniowych. „Liniowy” znaczy tu: jeśli dodamy do siebie dwa zestawy danych, splajn dla sumy jest sumą dwóch splajnów. Układ zawsze ma dokładnie jedno rozwiązanie, a czas liczenia rośnie proporcjonalnie do liczby punktów. Dla innych stopni jest tak samo, tylko każde równanie obejmuje kilku sąsiadów.</p><p><b>Dlaczego to istnieje:</b> Dzięki temu splajn przez milion punktów liczy się w ułamku sekundy, więc można go używać przy dużych zbiorach pomiarów i w programach, które rysują krzywe na bieżąco.</p></div><!--/alt-->
   </aside>
 </section>
 <section class="std">
@@ -355,6 +364,7 @@ def thomas(a, b, c, d):
       <li>Jedyny brakujący warunek to ciągłość s′ w węzłach wewnętrznych ⇒ układ trójdiagonalny.</li>
       <li>Ściśle diagonalnie dominujący ⇒ jednoznaczność; eliminacja Gaussa bez wyboru elementu głównego jest stabilna ⇒ algorytm Thomasa, O(n).</li>
     </ul>
+    <div class="alt-notes"><p><b>Co to jest:</b> Pełne wzory dla punktów rozstawionych nierówno i krótki program, który rozwiązuje ten układ (algorytm Thomasa). Algorytm przechodzi przez równania raz od początku do końca i raz z powrotem, więc na każdy punkt wykonuje tylko kilka działań.</p><p><b>Do czego się tego używa:</b> Ten sam algorytm jest w bibliotekach numerycznych (np. LAPACK) i rozwiązuje też inne zadania, w których każde równanie dotyczy tylko sąsiadów, na przykład symulacje przepływu ciepła.</p></div><!--/alt-->
   </aside>
 </section>
 </section>
@@ -410,6 +420,7 @@ def thomas(a, b, c, d):
     </ul>
     <p>↓ dowód (przez części); rząd zbieżności O(h⁴).</p>
     <p>→ B-splajny.</p>
+    <div class="alt-notes"><p><b>Co to jest:</b> Fizyczne uzasadnienie twierdzenia. Giętka listwa układa się tak, żeby zgromadzić jak najmniej energii zginania. Między ciężarkami nic na nią nie działa, a z praw zginania wynika, że wtedy jej kształt jest wielomianem trzeciego stopnia. Za ostatnim ciężarkiem listwa jest prosta, co odpowiada warunkom naturalnym.</p><p><b>Dlaczego to istnieje:</b> Wyjaśnia, dlaczego w praktyce wybiera się stopień 3 i warunki naturalne: dają kształt, który inżynierowie od dawna uznawali za najgładszy.</p></div><!--/alt-->
   </aside>
 </section>
 <section class="std">
@@ -432,6 +443,7 @@ def thomas(a, b, c, d):
       <li>Reszta ∫e″² ≥ 0 ⇒ teza; równość ⇔ e liniowa i zerowa w ≥ 2 punktach ⇔ e ≡ 0.</li>
       <li>Wersja dla splajnu zupełnego: to samo wśród f o tych samych nachyleniach na końcach (wtedy e′(a) = e′(b) = 0).</li>
     </ul>
+    <div class="alt-notes"><p><b>Co to jest:</b> Krótki dowód, że żadna inna gładka krzywa przez te same punkty nie wygina się mniej niż splajn naturalny. Każdą taką krzywą zapisuje się jako splajn plus poprawkę i pokazuje, że poprawka może energię zginania tylko zwiększyć.</p><p><b>Dlaczego to istnieje:</b> To gwarancja, że splajn naturalny jest najgładszym możliwym wyborem, a nie tylko wygodnym przybliżeniem.</p></div><!--/alt-->
   </aside>
 </section>
 <section class="std">
@@ -459,6 +471,7 @@ def thomas(a, b, c, d):
       <li>Warunki naturalne przy f″(a) ≠ 0: przy brzegu tylko O(h²), widać to na wykresie.</li>
       <li>Zastrzeżenie: dla funkcji analitycznych wielomian w węzłach Czebyszewa zbiega wykładniczo; splajny wygrywają lokalnością, stabilnością, odpornością na mało gładkie dane.</li>
     </ul>
+    <div class="alt-notes"><p><b>Co to jest:</b> Wykres pokazuje, jak szybko maleje błąd, gdy dokładamy punkty. Dla gładkiej funkcji splajn sześcienny przy dwa razy gęstszych punktach ma błąd mniej więcej 16 razy mniejszy. Jeden wielomian na równo rozstawionych punktach może się w tej samej sytuacji rozbiegać.</p><p><b>Do czego się tego używa:</b> Pozwala z góry ocenić, ilu punktów pomiarowych potrzeba do zadanej dokładności, na przykład gdy program inżynierski przybliża tablicę danych krzywą.</p></div><!--/alt-->
   </aside>
 </section>
 </section>
@@ -494,6 +507,7 @@ def thomas(a, b, c, d):
     <p><b>DEMO:</b> stopień 0 → 3; przeciągnąć węzeł na sąsiada: pojawia się załamanie.</p>
     <p>↓ B-splajn jako splot.</p>
     <p>→ krzywe z punktów kontrolnych: Bézier.</p>
+    <div class="alt-notes"><p><b>Co to jest:</b> Sposób zapisu splajnu w komputerze. Zamiast pamiętać wzór każdego kawałka, składa się splajn z gotowych funkcji bazowych (B-splajnów). Każda z nich jest różna od zera tylko na kilku sąsiednich przedziałach, a splajn to ich suma pomnożona przez współczynniki. Funkcje bazowe liczy się prostym przepisem: stopień 0 to wartość 1 na jednym przedziale, a każdy wyższy stopień powstaje jako średnia ważona dwóch sąsiednich funkcji niższego stopnia.</p><p><b>Do czego się tego używa:</b> Zmiana jednego współczynnika zmienia krzywą tylko w małym fragmencie, a obliczenia są szybkie i odporne na błędy zaokrągleń. Dlatego w tej postaci przechowują splajny programy CAD i biblioteki numeryczne, na przykład SciPy.</p></div><!--/alt-->
   </aside>
 </section>
 <section class="std">
@@ -519,6 +533,7 @@ def thomas(a, b, c, d):
       <li>Wykres: B-splajn przesunięty do środka (wycentrowany).</li>
       <li>DEMO: suwak stopnia.</li>
     </ul>
+    <div class="alt-notes"><p><b>Co to jest:</b> Dla równo rozstawionych węzłów B-splajn powstaje przez powtarzane uśrednianie (splot) funkcji prostokątnej. Ma ten sam kształt co rozkład sumy kilku liczb losowych wybieranych równomiernie z przedziału od 0 do 1, a przy wyższym stopniu coraz bardziej przypomina krzywą Gaussa.</p><p><b>Do czego się tego używa:</b> W przetwarzaniu obrazów i sygnałów, na przykład przy powiększaniu zdjęć i wygładzaniu: B-splajny działają podobnie do filtru Gaussa, ale liczą się szybciej i działają tylko na skończonym kawałku.</p></div><!--/alt-->
   </aside>
 </section>
 </section>
@@ -547,6 +562,7 @@ def thomas(a, b, c, d):
     </ul>
     <p><b>DEMO:</b> konstrukcja animuje się sama; przeciągnąć punkt.</p>
     <p>→ sterowanie lokalne: krzywe B-splajnowe.</p>
+    <div class="alt-notes"><p><b>Co to jest:</b> Sposób liczenia punktu na krzywej Béziera. Łączy się kolejne punkty kontrolne odcinkami, na każdym odcinku wybiera punkt w tej samej proporcji i powtarza to na nowych odcinkach, aż zostanie jeden punkt. To jest punkt krzywej.</p><p><b>Dlaczego to istnieje:</b> Algorytm wymyślił Paul de Casteljau w Citroënie (1959) do projektowania karoserii. Programy graficzne do dziś używają go do rysowania i dzielenia krzywych Béziera, bo jest prosty i odporny na błędy zaokrągleń.</p></div><!--/alt-->
   </aside>
 </section>
 
@@ -576,6 +592,7 @@ def thomas(a, b, c, d):
     <p><b>DEMO:</b> przeciągnąć punkt; przełączyć na „Bézier”: zmienia się wszystko.</p>
     <p>↓ NURBS, Catmull–Rom, Chaikin.</p>
     <p>→ czcionki.</p>
+    <div class="alt-notes"><p><b>Co to jest:</b> Krzywą na płaszczyźnie wyznacza kilka punktów kontrolnych. Krzywa przebiega w ich pobliżu, ale zwykle nie przez nie. W krzywej Béziera każdy punkt kontrolny wpływa na całą krzywą; w krzywej B-splajnowej przesunięcie punktu zmienia tylko pobliski fragment.</p><p><b>Do czego się tego używa:</b> Narzędzie „Pióro” w programach graficznych (Figma, Illustrator, Photoshop) rysuje krzywe Béziera. Programy CAD używają krzywych B-splajnowych, bo pozwalają poprawiać kształt fragmentami.</p></div><!--/alt-->
   </aside>
 </section>
 <section class="std">
@@ -600,6 +617,7 @@ def thomas(a, b, c, d):
       <li>Dlatego CAD (IGES, STEP) opiera się na NURBS.</li>
       <li>DEMO: suwak w; przycisk „okrąg”.</li>
     </ul>
+    <div class="alt-notes"><p><b>Co to jest:</b> Rozszerzenie krzywych B-splajnowych: każdy punkt kontrolny ma dodatkowo wagę, a im większa waga, tym bliżej tego punktu przechodzi krzywa. Dzięki wagom można dokładnie narysować okrąg i elipsę, czego zwykłe krzywe wielomianowe nie potrafią.</p><p><b>Do czego się tego używa:</b> To standard zapisu kształtów w programach CAD (CATIA, SolidWorks, Rhino) i w formatach wymiany plików między nimi (STEP, IGES).</p></div><!--/alt-->
   </aside>
 </section>
 <section class="std">
@@ -624,6 +642,7 @@ def thomas(a, b, c, d):
       <li>Równomierna (α = 0) robi pętle i ostrza przy nierównych odstępach; dośrodkowa (α = ½) nie (Yuksel i in., 2011).</li>
       <li>DEMO: zsunąć dwa punkty blisko siebie.</li>
     </ul>
+    <div class="alt-notes"><p><b>Co to jest:</b> Krzywa, która przechodzi dokładnie przez zadane punkty, a każdy jej fragment zależy tylko od kilku sąsiednich punktów. Slajd pokazuje, że liczy się sposób rozstawienia punktów wzdłuż krzywej: jeden wariant robi pętle przy blisko leżących punktach, wariant „dośrodkowy” nie.</p><p><b>Do czego się tego używa:</b> Ścieżki kamer i ruch obiektów w grach i animacji, gdzie projektant zaznacza punkty, przez które obiekt ma przejść.</p></div><!--/alt-->
   </aside>
 </section>
 <section class="std">
@@ -646,6 +665,7 @@ def thomas(a, b, c, d):
       <li>Granica = kwadratowa krzywa B-splajnowa (Riesenfeld, 1975).</li>
       <li>To samo w 3D: powierzchnie podziałowe Catmulla–Clarka, standard w animacji 3D.</li>
     </ul>
+    <div class="alt-notes"><p><b>Co to jest:</b> Prosty przepis na wygładzanie łamanej: każdy odcinek zastępuje się dwoma punktami leżącymi na jednej czwartej i trzech czwartych jego długości, i powtarza to kilka razy. Rogi znikają, a w granicy wychodzi krzywa B-splajnowa drugiego stopnia.</p><p><b>Do czego się tego używa:</b> Szybkie wygładzanie linii w grafice i na mapach (np. funkcja wygładzania w PostGIS). Wersja dla powierzchni (Catmull–Clark) jest standardem w modelowaniu postaci 3D, na przykład w filmach Pixara.</p></div><!--/alt-->
   </aside>
 </section>
 </section>
@@ -679,6 +699,7 @@ def thomas(a, b, c, d):
     <p><b>DEMO:</b> przeciągnąć punkt; zmienić literę na „ą”.</p>
     <p>↓ <code>cubic-bezier()</code> w CSS; algorytmy.</p>
     <p>→ analiza danych.</p>
+    <div class="alt-notes"><p><b>Co to jest:</b> Litera w pliku czcionki to nie obrazek z pikseli, tylko obrys zapisany jako ciąg krzywych Béziera, wyznaczonych przez kilkadziesiąt punktów. W formacie TrueType są to krzywe drugiego stopnia, w formatach PostScript i CFF trzeciego. Przy zmianie rozmiaru program przelicza tylko te punkty i rysuje obrys od nowa.</p><p><b>Do czego się tego używa:</b> Tak zapisane są czcionki w systemach Windows, macOS, Android i iOS oraz na stronach internetowych; dlatego ta sama czcionka jest ostra i na telefonie, i na plakacie.</p></div><!--/alt-->
   </aside>
 </section>
 <section class="std">
@@ -701,6 +722,7 @@ def thomas(a, b, c, d):
       <li>Znamy czas x, szukamy t z równania x(t) = x metodą Newtona z bisekcją jako asekuracją (tak robi demo).</li>
       <li>y poza [0, 1] ⇒ efekt „sprężyny”.</li>
     </ul>
+    <div class="alt-notes"><p><b>Co to jest:</b> Na stronach internetowych przebieg animacji (np. jak szybko rozwija się menu) opisuje krzywa Béziera: poziomo upływ czasu, pionowo postęp animacji. Przeglądarka w każdej chwili odczytuje z tej krzywej, jak daleko ma być animacja; robi to szybkim przybliżonym rozwiązaniem równania.</p><p><b>Do czego się tego używa:</b> Każde płynne przejście na stronach i w aplikacjach (rozwijanie, przesuwanie, zanikanie) korzysta z takiej krzywej. Gotowe ustawienia „ease” czy „ease-in-out” to konkretne krzywe Béziera.</p></div><!--/alt-->
   </aside>
 </section>
 <section class="std">
@@ -733,6 +755,7 @@ def thomas(a, b, c, d):
       <li>Wszystkie podstawowe operacje są liniowe w n albo szybsze.</li>
       <li>Gdy pytają o szczegóły: punkt krzywej B-splajnowej algorytmem de Boora, O(k²); rysowanie na GPU: Loop–Blinn (2005).</li>
     </ul>
+    <div class="alt-notes"><p><b>Co to jest:</b> Ten sam splajn można zapisać na dwa sposoby: jako listę wielomianów, po jednym na przedział, albo jako węzły i współczynniki B-splajnów. Pierwszy zapis pozwala najszybciej odczytać wartość, drugi jest wygodniejszy do zmian i odporniejszy na błędy zaokrągleń. Tabela pokazuje, że podstawowe operacje (wyznaczenie, odczyt wartości, wygładzenie, narysowanie) są tanie: czas rośnie najwyżej proporcjonalnie do liczby punktów.</p><p><b>Do czego się tego używa:</b> Biblioteki numeryczne (np. SciPy) i programy CAD wybierają zapis zależnie od tego, czy krzywą częściej się odczytuje, czy zmienia.</p></div><!--/alt-->
   </aside>
 </section>
 </section>
@@ -761,6 +784,7 @@ def thomas(a, b, c, d):
     </ul>
     <p><b>DEMO:</b> „λ z GCV”, potem „interpolacja” i „prosta”.</p>
     <p>→ sieci neuronowe.</p>
+    <div class="alt-notes"><p><b>Co to jest:</b> Prawdziwe pomiary mają szum, więc krzywa nie powinna przechodzić dokładnie przez każdy punkt, tylko blisko nich. Splajn wygładzający szuka kompromisu między bliskością punktów a gładkością, a jeden parametr ustawia, co jest ważniejsze. Przy jednym skrajnym ustawieniu krzywa przechodzi przez wszystkie punkty, przy drugim staje się prostą. Parametr można dobrać automatycznie z danych.</p><p><b>Do czego się tego używa:</b> Wygładzanie pomiarów w naukach przyrodniczych, medycynie i ekonomii, wyznaczanie trendów, modele statystyczne GAM (np. pakiet mgcv w R) i cechy splajnowe w uczeniu maszynowym (scikit-learn).</p></div><!--/alt-->
   </aside>
 </section>
 
@@ -801,6 +825,7 @@ def thomas(a, b, c, d):
     <p><b>DEMO:</b> „Trenuj”; pionowe linie to węzły.</p>
     <p>↓ KAN.</p>
     <p>→ po co w praktyce ciągła krzywizna.</p>
+    <div class="alt-notes"><p><b>Co to jest:</b> Sieć neuronowa z jedną warstwą ukrytą dostaje liczbę na wejściu i zwraca liczbę na wyjściu. Każdy neuron z funkcją ReLU daje zero, dopóki wejście nie przekroczy pewnego progu, a potem rośnie liniowo. Suma takich neuronów to linia łamana, czyli funkcja sklejana stopnia 1, a miejsca załamań to progi neuronów. W odróżnieniu od zwykłego splajnu sieć sama uczy się, gdzie postawić załamania.</p><p><b>Dlaczego to istnieje:</b> Sieci z ReLU są bardzo popularne, m.in. w rozpoznawaniu obrazów. Wiadomo o nich, że dzielą zakres danych wejściowych na kawałki i na każdym działają liniowo; to pomaga analizować, co sieć potrafi przybliżyć i jak się zachowuje.</p></div><!--/alt-->
   </aside>
 </section>
 
@@ -838,6 +863,7 @@ def thomas(a, b, c, d):
       <li>Zaleta: φ można narysować (interpretowalność). Wada: wolniejszy trening; w porównaniach MLP zwykle nie gorsze.</li>
       <li>DEMO: przeciągać współczynniki; „zagęść siatkę” dodaje węzły bez zmiany funkcji.</li>
     </ul>
+    <div class="alt-notes"><p><b>Co to jest:</b> Nowy rodzaj sieci neuronowej (2024). W zwykłej sieci na połączeniach między neuronami są liczby (wagi), a w każdym neuronie ta sama stała funkcja, np. ReLU. W KAN jest odwrotnie: na każdym połączeniu jest osobna funkcja jednej zmiennej, której kształt sieć uczy się sama, a neuron tylko sumuje to, co do niego dochodzi. Każda taka funkcja jest splajnem, więc uczenie polega na dobieraniu współczynników tych splajnów. Nazwa pochodzi od twierdzenia Kołmogorowa–Arnolda (1957): każdą ciągłą funkcję wielu zmiennych da się złożyć z funkcji jednej zmiennej i dodawania.</p><p><b>Do czego się tego używa:</b> Wyuczone funkcje na połączeniach można narysować i obejrzeć, więc łatwiej zrozumieć, czego sieć się nauczyła; autorzy używali tego do odczytywania wzorów z danych naukowych. Trening jest wolniejszy, a w zwykłych zadaniach dokładność jest zwykle podobna do klasycznych sieci.</p></div><!--/alt-->
   </aside>
 </section>
 </section>
@@ -870,6 +896,7 @@ def thomas(a, b, c, d):
     <p><b>DEMO:</b> przełączyć C¹ ↔ C², „start”; pokazać skoki na wykresie przeciążenia.</p>
     <p>↓ thin-plate spline.</p>
     <p>→ podsumowanie.</p>
+    <div class="alt-notes"><p><b>Co to jest:</b> Gdy pojazd jedzie po zakręcie, pasażera dociska siła, która zależy od tego, jak mocno tor jest wygięty (od krzywizny). Jeśli prosta przechodzi od razu w łuk okręgu, wygięcie zmienia się skokowo i siła pojawia się nagle: pasażer czuje szarpnięcie. Jeśli tor jest splajnem z ciągłą krzywizną, siła narasta płynnie. Demo pokazuje to na wykresie przeciążenia dla dwóch wersji tego samego toru.</p><p><b>Do czego się tego używa:</b> Na kolei i drogach między prostą a łukiem buduje się krzywe przejściowe (klotoidy), na których wygięcie rośnie stopniowo. Tory kolejek górskich projektuje się z ciągłą krzywizną z tego samego powodu.</p></div><!--/alt-->
   </aside>
 </section>
 <section class="std">
@@ -894,6 +921,7 @@ def thomas(a, b, c, d):
       <li>Zastosowania: nakładanie obrazów medycznych, morfometria (Bookstein), warstwy deformacji w sieciach.</li>
       <li>DEMO: przeciągnąć punkty; obraz wygina się jak płyta.</li>
     </ul>
+    <div class="alt-notes"><p><b>Co to jest:</b> Odpowiednik splajnu na płaszczyźnie: gładkie odkształcenie, które przenosi zadane punkty w zadane miejsca i przy tym wygina się jak najmniej. Nazwa pochodzi od fizyki cienkiej metalowej płyty, tak jak nazwa splajnu od listwy. W demie przesuwanie punktów wygina cały obraz.</p><p><b>Do czego się tego używa:</b> Nakładanie zdjęć medycznych, morfing twarzy, porównywanie kształtów w biologii, a w sieciach neuronowych moduły, które same prostują obraz przed rozpoznaniem (Spatial Transformer Networks).</p></div><!--/alt-->
   </aside>
 </section>
 </section>
@@ -917,6 +945,7 @@ def thomas(a, b, c, d):
       <li>Ramka: skąd te własności (niski stopień, gładkie sklejenie, podział na kawałki).</li>
     </ul>
     <p>→ pytania.</p>
+    <div class="alt-notes"><p><b>Co to jest:</b> Jedno zdanie, czym jest funkcja sklejana, i cztery jej najważniejsze własności:</p><ul><li>dla gładkiej funkcji więcej punktów zawsze daje dokładniejszy wynik, bez falowania;</li><li>wyznacza się ją szybko z jednego układu równań, który zawsze ma jedno rozwiązanie;</li><li>splajn naturalny jest najgładszą krzywą przez dane punkty;</li><li>w zapisie B-splajnowym przesunięcie jednego punktu zmienia krzywą tylko w pobliżu.</li></ul><p>Ramka na dole mówi, skąd te własności: niski stopień chroni przed falowaniem, gładkie sklejenie usuwa ostre kąty, a podział na kawałki daje lokalność i szybkie obliczenia.</p></div><!--/alt-->
   </aside>
 </section>
 
@@ -940,6 +969,7 @@ def thomas(a, b, c, d):
       <li>Podziękować; QR prowadzi do prezentacji i PDF.</li>
       <li>Na pytania: dodatki pod strzałką ↓, <kbd>O</kbd> = przegląd wszystkich slajdów.</li>
     </ul>
+    <div class="alt-notes"><p>Koniec referatu. Kod QR prowadzi do prezentacji online z interaktywnymi demami.</p></div><!--/alt-->
   </aside>
 </section>
 
@@ -964,6 +994,9 @@ def thomas(a, b, c, d):
     <p>F. L. Bookstein, <i>Principal warps: thin-plate splines and the decomposition of deformations</i>, IEEE TPAMI 11 (1989); M. Unser, <i>Splines: a perfect fit for signal and image processing</i>, IEEE SPM 16 (1999).</p>
     <p>R. Balestriero, R. Baraniuk, <i>A spline theory of deep networks</i>, ICML 2018; Z. Liu i in., <i>KAN: Kolmogorov–Arnold Networks</i>, arXiv:2404.19756 (2024).</p>
   </div>
+  <aside class="notes">
+    <div class="alt-notes"><p>Źródła: oryginalne prace (Schoenberg, Holladay, de Boor), podręczniki (m.in. Fortuna, Macukow, Wąsowski) i prace o sieciach neuronowych.</p></div><!--/alt-->
+  </aside>
 </section>
 
 </div>

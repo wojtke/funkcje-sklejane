@@ -41,6 +41,8 @@ class P(HTMLParser):
     def handle_charref(s, n): s.handle_entityref('#' + n)
 
 p = P(); p.feed(doc)
+for x in p.slides:  # bez notatek „prostych” (te są w na-chlopski-rozum.pdf)
+    x['notes'] = re.sub(r'\s*<div class="alt-notes">.*?</div>', '', x['notes'], flags=re.S)
 slides = [x for x in p.slides if x['notes'].strip()]
 main = [x for x in slides if x['timing']]
 extra = [x for x in slides if not x['timing']]
