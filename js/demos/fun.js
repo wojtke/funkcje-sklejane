@@ -29,8 +29,8 @@
 
     const ui = SPL.ui.panel(el);
     SPL.ui.segmented(ui, [
-      { value: 'cr', label: 'Catmull–Rom C¹' },
-      { value: 'nat', label: 'splajn naturalny C²' }
+      { value: 'cr', label: 'krzywa C¹' },
+      { value: 'nat', label: 'splajn C²' }
     ], method, m => { method = m; rebuild(); render(); });
     SPL.ui.button(ui, 'start', () => { s = 0; v = V0; render(); });
     const gOut = SPL.ui.readout(ui, 'n');

@@ -234,19 +234,63 @@
     const st = SPL.stage(el, W, H);
     const pl = SPL.plot(st, { x: 30, y: 14, w: W - 44, h: H - 40 }, { xmin: -0.3, xmax: 10.3, ymin: -0.5, ymax: 6.5 });
     let P = [[0.5, 2.2], [2.3, 4.6], [4.2, 2.0], [6.1, 3.4], [7.9, 5.2], [9.6, 2.6]];
-    // data-deg / data-ext: stan początkowy (slajd „Co to jest” zaczyna od łamanej); w PDF zawsze stopień 3
-    let ext = o.ext !== '0', deg = SPL.print ? 3 : (+o.deg || 3);
+    // data-deg / data-ext: stan początkowy (slajd „Idea” zaczyna od łamanej); w PDF zawsze stopień 3
+    let ext = o.ext !== '0', deg = SPL.print ? 3 : Math.min(4, Math.max(1, +o.deg || 3));
+    const SMOOTH = ['', 's', 's, s′', 's, s′, s″', 's, s′, s″, s‴'];
     const ui = SPL.ui.panel(el);
-    SPL.ui.segmented(ui, [{ value: 1, label: 'łamana (k = 1)' }, { value: 3, label: 'gładka (k = 3)' }], deg, v => { deg = +v; render(); }, 'stopień');
+    const kSl = SPL.ui.slider(ui, { label: 'stopień k', min: 1, max: 4, step: 1, value: deg, fmt: v => String(v), onInput: v => { deg = v; render(); } });
+    kSl.input.style.width = '96px';
+    const smOut = SPL.ui.readout(ui, 'ciągłe:');
+    smOut.el.querySelector('.val').style.cssText = 'display:inline-block; min-width:8.2em; text-align:left';  // stała szerokość: panel nie skacze
     SPL.ui.toggle(ui, 'przedłuż kawałki', ext, v => { ext = v; render(); });
-    SPL.ui.hint(ui, 'przeciągnij punkty');
+
+    /**
+     * Splajn interpolacyjny stopnia k z węzłami w punktach danych, kawałki p_i(t) = Σ a_ij t^j, t = x − x_i.
+     * Warunki: interpolacja (2n) i ciągłość pochodnych 1..k−1 w węzłach wewnętrznych; brakujące k−1 stopni
+     * swobody wybieramy tak, by ∫ s″² była najmniejsza (dla k = 3 to dokładnie splajn naturalny, tw. Holladaya).
+     */
+    function splineK(xs, ys, k) {
+      const n = xs.length - 1, m = k + 1, N = n * m;
+      const h = xs.slice(1).map((x, i) => x - xs[i]);
+      const dcoef = (j, d) => { let c = 1; for (let r = 0; r < d; r++) c *= (j - r); return c; };
+      const rows = [], rhs = [];
+      const row = () => new Array(N).fill(0);
+      for (let i = 0; i < n; i++) {
+        let r = row(); r[i * m] = 1; rows.push(r); rhs.push(ys[i]);
+        r = row(); for (let j = 0; j < m; j++) r[i * m + j] = Math.pow(h[i], j); rows.push(r); rhs.push(ys[i + 1]);
+      }
+      for (let i = 1; i < n; i++) for (let d = 1; d <= k - 1; d++) {
+        const r = row();
+        for (let j = d; j < m; j++) r[(i - 1) * m + j] = dcoef(j, d) * Math.pow(h[i - 1], j - d);
+        r[i * m + d] -= dcoef(d, d);
+        rows.push(r); rhs.push(0);
+      }
+      // KKT: min aᵀQa przy Aa = b, Q = ∫ s″² (blokowo-diagonalna)
+      const L = rows.length, T = N + L;
+      const M = Array.from({ length: T }, () => new Array(T + 1).fill(0));
+      for (let i = 0; i < n; i++) for (let j = 2; j < m; j++) for (let l = 2; l < m; l++) {
+        M[i * m + j][i * m + l] = 2 * j * (j - 1) * l * (l - 1) * Math.pow(h[i], j + l - 3) / (j + l - 3);
+      }
+      for (let q = 0; q < L; q++) for (let c = 0; c < N; c++) { M[N + q][c] = rows[q][c]; M[c][N + q] = rows[q][c]; }
+      for (let q = 0; q < L; q++) M[N + q][T] = rhs[q];
+      for (let c = 0; c < T; c++) {               // eliminacja Gaussa z częściowym wyborem
+        let p = c; for (let r = c + 1; r < T; r++) if (Math.abs(M[r][c]) > Math.abs(M[p][c])) p = r;
+        if (p !== c) { const t = M[p]; M[p] = M[c]; M[c] = t; }
+        const piv = M[c][c] || 1e-14;
+        for (let r = c + 1; r < T; r++) { const f = M[r][c] / piv; if (f) for (let q = c; q <= T; q++) M[r][q] -= f * M[c][q]; }
+      }
+      const z = new Array(T).fill(0);
+      for (let r = T - 1; r >= 0; r--) { let sum = M[r][T]; for (let q = r + 1; q < T; q++) sum -= M[r][q] * z[q]; z[r] = sum / (M[r][r] || 1e-14); }
+      const a = z.slice(0, N);
+      return i => x => { const t = x - xs[i]; let v = 0; for (let j = m - 1; j >= 0; j--) v = v * t + a[i * m + j]; return v; };
+    }
 
     function render() {
       st.clear();
       pl.grid({ dx: 1, dy: 1, labels: false });
       const xs = P.map(p => p[0]), ys = P.map(p => p[1]);
-      const s = Sp.cubicSpline(xs, ys, 'natural');
-      const pieceFn = i => deg === 3 ? (x => s.pieceEval(i, x)) : (x => ys[i] + (ys[i + 1] - ys[i]) * (x - xs[i]) / (xs[i + 1] - xs[i]));
+      const pieceFn = splineK(xs, ys, deg);
+      smOut.set(SMOOTH[deg]);
       const c = st.ctx;
       // węzły
       c.save(); c.strokeStyle = C.grid; c.setLineDash([3, 4]); c.lineWidth = 1.2;
@@ -276,7 +320,7 @@
 
   // =============================================================== reticulate
   SPL.register('reticulate', function (el) {
-    el.innerHTML = '<div class="msg">Reticulating splines…</div><div class="bar"><i></i></div><div class="tiny faint" style="margin-top:6px">— ekran ładowania SimCity 2000 (Maxis, 1993)</div>';
+    el.innerHTML = '<div class="msg">Reticulating splines…</div><div class="bar"><i></i></div><div class="tiny faint" style="margin-top:6px">ekran ładowania SimCity 2000 (Maxis, 1993)</div>';
     const msg = el.querySelector('.msg'), bar = el.querySelector('.bar i');
     const steps = ['Reticulating splines…', 'Wstawianie węzłów…', 'Rozwiązywanie układu trójdiagonalnego…', 'Minimalizowanie ∫ f″² …', 'Gotowe ✓'];
     let t = 0;

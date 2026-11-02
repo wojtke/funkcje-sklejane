@@ -311,3 +311,13 @@ html.dark .reveal figure.photo img { filter: brightness(.9); }
 /* v2: wzór macierzy trójdiagonalnej */
 .mat-pattern { text-align: center; }
 .mat-pattern .katex-display { margin: 0 0 4px; }
+
+/* Zastosowania: najpierw do czego, potem przykład */
+.tiles.apps svg { height: 56px; }
+.tiles.apps .tile { gap: 4px; padding: 12px 18px 14px; }
+.tiles.apps .tile h3 { font-size: 22px; }
+.tiles.apps .tile p { font-size: 17px; }
+.tiles.apps .tile p.ex { font-size: 15.5px; color: var(--ink); margin-top: 4px; }
+.tiles.apps .tile p.ex b { font-weight: 600; }
+/* schemat obliczeń pod macierzą */
+.reveal p.flow { text-align: center; font-size: 19px; color: var(--muted); margin: 6px 0 12px; }
