@@ -931,21 +931,21 @@ def thomas(a, b, c, d):
   <div class="slide-head"><h2>Podsumowanie</h2><span class="tag">wnioski</span></div>
   <p class="lead" style="margin:2px 0 24px">Funkcja sklejana to kawałki wielomianów niskiego stopnia, połączone gładko w&nbsp;węzłach.</p>
   <div class="takeaways">
-    <div class="tk"><b>Dokładność bez oscylacji</b>Dla gładkiej funkcji gęstsze węzły zawsze zmniejszają błąd (sześcienny: 2× gęściej, ok. 16× mniej). Jeden wielomian może się rozbiegać.</div>
-    <div class="tk"><b>Szybkie obliczenia</b>Każdy splajn interpolacyjny to rzadki układ liniowy: sześcienny trójdiagonalny, inne stopnie pasmowy. Jedno rozwiązanie, koszt $O(n)$.</div>
-    <div class="tk"><b>Najmniejsza energia zginania</b>Spośród funkcji przechodzących przez dane punkty splajn naturalny wygina się najmniej. Taki kształt przyjmuje listwa kreślarska.</div>
-    <div class="tk"><b>Zmiany lokalne</b>W zapisie B-splajnowym przesunięcie punktu kontrolnego zmienia tylko $k+1$ sąsiednich kawałków; reszta krzywej zostaje bez zmian.</div>
+    <div class="tk"><b>Dokładność bez oscylacji</b>Chcemy gładkiej krzywej, która wiernie oddaje dane. Splajn to daje: im więcej punktów, tym dokładniej, bez oscylacji.</div>
+    <div class="tk"><b>Szybkie obliczenia</b>Jeden układ równań liniowych: zawsze jedno rozwiązanie, liczone szybko nawet dla milionów punktów.</div>
+    <div class="tk"><b>Najmniejsza energia zginania</b>Splajn naturalny to najgładsza krzywa przez dane punkty; taki kształt przyjmuje listwa kreślarska.</div>
+    <div class="tk"><b>Zmiany lokalne</b>Przesunięcie jednego punktu kontrolnego zmienia krzywą tylko w&nbsp;pobliżu.</div>
   </div>
-  <div class="box idea" style="margin-top:26px; font-size:22px"><p><b>Skąd te własności:</b> niski stopień chroni przed oscylacjami, gładkie sklejenie usuwa załamania, a&nbsp;podział na kawałki daje lokalność i&nbsp;rzadki układ równań.</p></div>
+  <div class="box idea" style="margin-top:30px; font-size:24px"><p>Wszystkie cztery wynikają z&nbsp;jednego pomysłu: <b>wiele prostych kawałków</b> zamiast jednego skomplikowanego wzoru.</p></div>
   <aside class="notes">
     <p><b>⏱ 0:30 · koniec 12:35</b></p>
     <ul>
       <li>Jedno zdanie: co to jest.</li>
-      <li>Cztery własności, po zdaniu każda; przy każdej warunek: gładka funkcja, każdy stopień, splajn naturalny, zapis B-splajnowy.</li>
-      <li>Ramka: skąd te własności (niski stopień, gładkie sklejenie, podział na kawałki).</li>
+      <li>Cztery własności, po krótkim zdaniu: dokładność bez oscylacji, szybkie obliczenia, najgładsza krzywa, zmiany lokalne.</li>
+      <li>Ramka: wszystko z jednego pomysłu, wiele prostych kawałków.</li>
     </ul>
     <p>→ pytania.</p>
-    <div class="alt-notes"><p><b>Co to jest:</b> Jedno zdanie, czym jest funkcja sklejana, i cztery jej najważniejsze własności:</p><ul><li>dla gładkiej funkcji więcej punktów zawsze daje dokładniejszy wynik, bez falowania;</li><li>wyznacza się ją szybko z jednego układu równań, który zawsze ma jedno rozwiązanie;</li><li>splajn naturalny jest najgładszą krzywą przez dane punkty;</li><li>w zapisie B-splajnowym przesunięcie jednego punktu zmienia krzywą tylko w pobliżu.</li></ul><p>Ramka na dole mówi, skąd te własności: niski stopień chroni przed falowaniem, gładkie sklejenie usuwa ostre kąty, a podział na kawałki daje lokalność i szybkie obliczenia.</p></div><!--/alt-->
+    <div class="alt-notes"><p><b>Co to jest:</b> Jedno zdanie, czym jest funkcja sklejana, i cztery jej najważniejsze własności, każda w jednym zdaniu:</p><ul><li>chcemy gładkiej krzywej, która wiernie oddaje dane, i splajn to daje: im więcej punktów, tym dokładniej, bez falowania;</li><li>wyznacza się ją szybko z jednego układu równań, który zawsze ma jedno rozwiązanie;</li><li>splajn naturalny jest najgładszą krzywą przez dane punkty;</li><li>przesunięcie jednego punktu kontrolnego zmienia krzywą tylko w pobliżu.</li></ul><p>Ramka na dole: wszystkie cztery wynikają z jednego pomysłu, czyli wielu prostych kawałków zamiast jednego skomplikowanego wzoru.</p></div><!--/alt-->
   </aside>
 </section>
 
