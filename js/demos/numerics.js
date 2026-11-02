@@ -51,9 +51,9 @@
 
     const NOTE = {
       natural: 's″(a) = s″(b) = 0',
-      clamped: 'przeciągnij ◆ — zadaje s′(a) i s′(b)',
+      clamped: 'przeciągnij ◆, aby zadać s′(a) i s′(b)',
       notaknot: 's‴ ciągła w x₁ i xₙ₋₁ (ten sam stopień)',
-      periodic: 'y₀ = yₙ — końce poruszają się razem'
+      periodic: 'y₀ = yₙ, końce poruszają się razem'
     };
 
     function spline(kind) {
@@ -216,8 +216,8 @@
     const res = document.createElement('div');
     res.className = 'thomas-res';
     res.innerHTML = SPL.print
-      ? 'W wersji online: milion niewiadomych w kilkadziesiąt milisekund <span class="faint">— na żywo, w przeglądarce.</span>'
-      : '<span class="faint">Układ momentów naturalnego splajnu dla losowych danych — algorytm Thomasa w JavaScripcie.</span>';
+      ? 'W wersji online: milion niewiadomych w kilkadziesiąt milisekund, <span class="faint">na żywo w przeglądarce.</span>'
+      : '<span class="faint">Układ momentów naturalnego splajnu dla losowych danych, rozwiązany algorytmem Thomasa w JavaScripcie.</span>';
     card.appendChild(res);
 
     function run() {
@@ -326,7 +326,7 @@
       for (let k = -16; k <= 0; k += 2) c.fillText('10' + sup(k), pl.r.x - 6, pl.Y(k));
       c.font = SPL.font(13.5, 600); c.fillStyle = C.ink;
       c.textAlign = 'center'; c.textBaseline = 'bottom';
-      c.fillText('n — liczba przedziałów (skala log.)', pl.r.x + pl.r.w / 2, H - 4);
+      c.fillText('n: liczba przedziałów (skala log.)', pl.r.x + pl.r.w / 2, H - 4);
       c.translate(15, pl.r.y + pl.r.h / 2); c.rotate(-Math.PI / 2);
       c.textBaseline = 'middle';
       c.fillText('max |f − interpolant|', 0, 0);

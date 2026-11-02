@@ -60,7 +60,7 @@ for x in extra:
     ex.append(f'<section class="sl ex"><h3>↓ {html.escape(clean_title(x["title"]))} '
               f'<span class="under">(pod: {html.escape(clean_title(parent["title"]))})</span></h3>{body}</section>')
 total = sum(int(x['timing']) for x in main)
-page = f'''<!doctype html><html lang="pl"><head><meta charset="utf-8"><title>Notatki prelegenta — Funkcje sklejane</title>
+page = f'''<!doctype html><html lang="pl"><head><meta charset="utf-8"><title>Notatki prelegenta: Funkcje sklejane</title>
 <style>
 @font-face {{ font-family: Inter; font-weight: 400; src: url({FONTS}/inter-latin-400-normal.woff2) format("woff2"); unicode-range: U+0000-00FF, U+2000-206F, U+2191, U+2193, U+2212; }}
 @font-face {{ font-family: Inter; font-weight: 400; src: url({FONTS}/inter-latin-ext-400-normal.woff2) format("woff2"); unicode-range: U+0100-02BA, U+1E00-1E9F; }}
@@ -78,11 +78,11 @@ h3 {{ font-size: 10.6pt; margin: 0 0 2pt; }} h3 .under {{ font-weight: 400; colo
 .ex {{ font-size: 9.6pt; }} h2.part {{ font-size: 13pt; margin: 14pt 0 4pt; display: block; break-before: page; }}
 code {{ font-family: Menlo, monospace; font-size: .92em; }}
 </style></head><body>
-<h1>Funkcje sklejane i ich własności — notatki prelegenta</h1>
+<h1>Funkcje sklejane i ich własności: notatki prelegenta</h1>
 <p class="sub">SD1, 02.11.2026 · limit 15 min ±3 · plan ścieżki głównej {total//60}:{total%60:02d} (zapas na dema i pytania) ·
-klawisze: → / pilot — dalej, ↓ — dodatki, S — widok prelegenta, O — przegląd, B — wygaszenie</p>
+klawisze: → lub pilot: dalej · ↓: dodatki · S: widok prelegenta · F: pełny ekran · O: przegląd · B: wygaszenie</p>
 {''.join(parts)}
-<h2 class="part">Dodatki pod strzałką ↓ — na pytania</h2>
+<h2 class="part">Dodatki pod strzałką ↓ (na pytania)</h2>
 {''.join(ex)}
 </body></html>'''
 open(out_html, 'w', encoding='utf-8').write(page)

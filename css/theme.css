@@ -252,8 +252,19 @@ html.dark .takeaways .tk::before { color: #0b0d12; }
 /* reveal: kontrolki i pasek postępu w kolorach motywu */
 .reveal .controls { color: var(--blue); }
 .reveal .progress { color: var(--blue); height: 4px; }
-.reveal .slide-number { background: transparent; color: var(--faint); font: 500 14px Inter, sans-serif; right: 18px; bottom: 14px; }
+/* numer slajdu na lewo od strzałek (strzałki zajmują ok. 100 px w prawym dolnym rogu) */
+.reveal .slide-number { background: transparent; color: var(--faint); font: 500 14px Inter, sans-serif; right: 122px; bottom: 16px; }
+.reveal .slide-number-delimiter { margin: 0 .3em; }
 .reveal .slide-number a { border: 0; color: var(--faint); }
+
+/* przycisk pełnego ekranu (lewy dolny róg); w trybie pełnoekranowym widoczny dopiero po najechaniu */
+.fs-btn { position: fixed; left: 10px; bottom: 10px; z-index: 40; width: 34px; height: 34px; padding: 6px; border: 0; border-radius: 8px; background: transparent; color: var(--faint); cursor: pointer; opacity: .75; transition: opacity .2s, background-color .2s, color .2s; }
+.fs-btn:hover, .fs-btn:focus-visible { opacity: 1; color: var(--ink); background: var(--grid); }
+.fs-btn svg { display: block; width: 100%; height: 100%; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.fs-btn .fs-exit, html.is-fullscreen .fs-btn .fs-enter { display: none; }
+html.is-fullscreen .fs-btn .fs-exit { display: block; }
+html.is-fullscreen .fs-btn { opacity: 0; }
+html.is-fullscreen .fs-btn:hover, html.is-fullscreen .fs-btn:focus-visible { opacity: 1; }
 
 /* podświetlanie kodu (highlight.js) */
 .hljs-keyword, .hljs-built_in { color: var(--purple); font-weight: 600; }
@@ -271,3 +282,13 @@ html.print-pdf .down-hint, html.print-pdf .ctrls .hint, html.print-pdf .title-sl
 /* punkty glifu na kafelku */
 .glyph-s .pts .on { fill: var(--blue); }
 .glyph-s .pts .off { fill: var(--card); stroke: var(--orange); stroke-width: 1.2; }
+
+/* zdjęcie z podpisem (slajd „Pochodzenie nazwy”) */
+.reveal figure.photo { margin: .5em 0 .55em; }
+.reveal figure.photo img { display: block; width: 100%; height: auto; max-width: none; max-height: none; margin: 0; border-radius: 10px; border: 1px solid var(--line); box-shadow: var(--shadow); }
+.reveal figure.photo figcaption { margin-top: 6px; font-size: 13px; line-height: 1.35; color: var(--muted); }
+html.dark .reveal figure.photo img { filter: brightness(.9); }
+/* kolumna z demem i ramką pod spodem; płótno dema skalowane do szerokości kolumny */
+.col-demo { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.demo.fit .spl-canvas { width: 100% !important; height: auto !important; }
+.col-demo .box { font-size: 20px; padding-top: 10px; padding-bottom: 10px; }

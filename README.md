@@ -9,26 +9,37 @@ liczą się na żywo w przeglądarce.
 
 ## Jak prezentować
 
-- Otwórz `index.html` (działa też offline, bez serwera — wszystkie biblioteki są w `vendor/`)
+- Otwórz `index.html` (działa też offline, bez serwera; wszystkie biblioteki są w `vendor/`)
   albo wersję na GitHub Pages.
-- Klawisze: `→`, spacja, PageDown (pilot) — dalej po ścieżce głównej; `↓` — dodatki (pionowe slajdy);
-  `S` — widok prelegenta z notatkami i licznikiem tempa; `D` — tryb ciemny; `O` — przegląd;
-  `F` — pełny ekran; `B` — wygaszenie ekranu.
+- Klawisze:
+
+  | Klawisz | Działanie |
+  |---|---|
+  | `→`, spacja, PageDown (pilot) | dalej po ścieżce głównej |
+  | `↓` | dodatki (pionowe slajdy) |
+  | `S` | widok prelegenta: notatki, licznik tempa, podgląd następnego slajdu ścieżki głównej |
+  | `F`, F5 (pilot), przycisk w lewym dolnym rogu | pełny ekran (włącz/wyłącz) |
+  | `D` | tryb ciemny |
+  | `O` | przegląd wszystkich slajdów |
+  | `B` | wygaszenie ekranu |
+
+- Z widokiem prelegenta pełny ekran włącz w oknie prezentacji (na projektorze); `F` w oknie notatek go nie włączy.
+- Numer slajdu liczy tylko ścieżkę główną (np. 4 / 17); dodatki mają numery 4.1, 4.2.
 - Kontrolki w demach oddają fokus po kliknięciu, więc pilot do prezentacji działa dalej.
 - Notatki prelegenta do druku: `tools/build-notes.sh` → `../notatki-prelegenta.pdf`.
 
 ## Ścieżka główna i dodatki
 
-Ścieżka główna (strzałka w prawo) to plan **ok. 12:50** — reszta do 15 min to zapas na dema i reakcje sali.
+Ścieżka główna (strzałka w prawo) to plan **ok. 12:50**; reszta do 15 min to zapas na dema i reakcje sali.
 Czas każdego slajdu jest w `data-timing` i w notatkach (`S`). Slajdy oznaczone „dodatek” leżą pod spodem
-(strzałka w dół) — na pytania i do PDF.
+(strzałka w dół), na pytania i do PDF.
 
 | # | Slajd | Demo | Dodatki ↓ |
 |---|---|---|---|
 | 1 | Tytuł | animowana krzywa B-splajnowa | |
-| 2 | Funkcja sklejana — idea | łamana → gładkie kawałki | definicja formalna, wymiar $n+k$, potęgi ucięte |
+| 2 | Idea funkcji sklejanej | łamana → gładkie kawałki | definicja formalna, wymiar $n+k$, potęgi ucięte |
 | 3 | Zastosowania (czcionki, CAD, animacja, robotyka, ML, medycyna) | | |
-| 4 | Pochodzenie nazwy: listwa kreślarska | przeciąganie kaczek, energia zginania | rys historyczny 1691–2024 |
+| 4 | Pochodzenie nazwy: listwa kreślarska (zdjęcie trasernii, 1956) | przeciąganie kaczek, energia zginania | rys historyczny 1691–2024 |
 | 5 | Interpolacja wielomianowa i efekt Rungego | efekt Rungego vs splajn | |
 | 6 | Splajn sześcienny i warunki brzegowe | $s, s', s'', s'''$ na żywo | układ trójdiagonalny + Thomas na $10^6$ |
 | 7 | Twierdzenie Holladaya i fizyka listwy | | dowód; rząd zbieżności $O(h^4)$ |
@@ -58,6 +69,8 @@ js/core.js            infrastruktura dem: płótno, wykresy, przeciąganie, kont
 js/demos/*.js         dema (intro, numerics, bsplines, curves, ml, fun)
 js/main.js            start: KaTeX, reveal.js, kod QR
 data/glyphs.js        kontury glifów DejaVu Sans
+img/                  zdjęcie listwy z kaczkami (1956)
+favicon.svg, *.png    ikona strony
 vendor/               reveal.js 5.2.1, KaTeX 0.16.11, Inter, JetBrains Mono, qrcode-generator
 tools/build-pdf.sh    eksport PDF
 tools/build-notes.sh  notatki prelegenta do druku (../notatki-prelegenta.pdf)
@@ -65,10 +78,15 @@ tools/deploy.sh       publikacja na GitHub Pages
 ```
 
 Biblioteka `js/splines.js` jest sprawdzona względem SciPy (`CubicSpline`, `BSpline`,
-`make_smoothing_spline`, `insert`) — zgodność do błędu maszynowego.
+`make_smoothing_spline`, `insert`): zgodność do błędu maszynowego.
 
 ## Licencje
 
-Biblioteki w `vendor/` zachowują swoje licencje (reveal.js — MIT,
-KaTeX — MIT, Inter i JetBrains Mono — SIL OFL 1.1, qrcode-generator — MIT, DejaVu Sans — licencja
-Bitstream Vera/DejaVu).
+Biblioteki w `vendor/` zachowują swoje licencje: reveal.js (MIT), KaTeX (MIT), Inter i JetBrains Mono
+(SIL OFL 1.1), qrcode-generator (MIT), DejaVu Sans (licencja Bitstream Vera/DejaVu).
+`vendor/reveal/plugin/notes.js` ma jedną zmianę: podgląd w widoku prelegenta pokazuje następny slajd ścieżki
+głównej (`right`), a nie następny w kolejności liniowej (`next`), który byłby dodatkiem.
+
+Zdjęcie `img/listwa-rohr-1956.jpg`: trasernia zakładów lotniczych Rohr, Chula Vista, 4.06.1956,
+San Diego Air & Space Museum Archives, domena publiczna
+([Wikimedia Commons](https://commons.wikimedia.org/wiki/File:26_0000167_Piction_ID-402291551_--Main_Lofting_Room_at_Rohr_Engineering_Chula_Vista_06-04-1956_(55558904083).jpg)); kadr przycięty.

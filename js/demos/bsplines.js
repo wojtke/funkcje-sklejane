@@ -329,7 +329,7 @@
       let w = subText(c, 'B', String(k), pl.r.x + 12, pl.r.y + 26, { size: 20, color: C.blue });
       const conv = k === 0 ? ' = χ' : k <= 4 ? ' = ' + Array(k + 1).fill('χ').join(' ∗ ') : ` = χ ∗ χ ∗ … ∗ χ  (${k + 1} razy)`;
       SPL.text(c, conv, pl.r.x + 12 + w, pl.r.y + 26, { size: 20, weight: 600, color: C.blue });
-      SPL.text(c, 'χ — funkcja prostokątna na [−½, ½), gęstość U(−½, ½)', pl.r.x + 12, pl.r.y + 50, { size: 14, color: C.muted });
+      SPL.text(c, 'χ: funkcja prostokątna na [−½, ½), gęstość U(−½, ½)', pl.r.x + 12, pl.r.y + 50, { size: 14, color: C.muted });
       // legenda
       const lx = pl.r.x + pl.r.w - 228, ly = pl.r.y + 18;
       roundBox(c, lx - 12, ly - 14, 232, 56, 8, SPL.alpha(C.dark ? '#1a1d24' : '#ffffff', 0.9), C.grid);
@@ -416,7 +416,7 @@
         subText(c, 'P', String(i), lx, ly, { size: 16, color: PC(i), weight: 700 });
       });
       SPL.text(c, `stopień n = ${n}`, TOP.x + 4, TOP.y + 12, { size: 14, weight: 650, color: C.muted });
-      SPL.text(c, '„+ punkt” podnosi stopień — krzywa się nie zmienia', W - 16, TOP.y + 12, { size: 12, color: C.faint, align: 'right' });
+      SPL.text(c, '„+ punkt” podnosi stopień, krzywa się nie zmienia', W - 16, TOP.y + 12, { size: 12, color: C.faint, align: 'right' });
 
       // pasek: wielomiany Bernsteina
       c.save(); c.strokeStyle = C.grid; c.lineWidth = 1; c.beginPath();
@@ -433,7 +433,7 @@
       for (let i = 0; i <= n; i++) bp.dot([t, Sp.bernstein(n, i, t)], { r: 4.5, fill: PC(i) });
       const bw = subText(c, 'b', `i,${n}`, bp.r.x + 6, bp.r.y + 4, { size: 15, color: C.muted, weight: 650 });
       SPL.text(c, '(t)', bp.r.x + 8 + bw, bp.r.y + 4, { size: 15, color: C.muted, weight: 650 });
-      SPL.text(c, 'wagi punktów kontrolnych — przeciągnij, by zmienić t', bp.r.x + bp.r.w, bp.r.y + 2, { size: 12, color: C.faint, align: 'right' });
+      SPL.text(c, 'wagi punktów kontrolnych (przeciągnij, by zmienić t)', bp.r.x + bp.r.w, bp.r.y + 2, { size: 12, color: C.faint, align: 'right' });
     }
 
     SPL.drag(st, {
@@ -573,7 +573,7 @@
       // opis
       const head = mode === 'bezier'
         ? `Bézier: jeden wielomian stopnia ${S.n}`
-        : `B-splajn stopnia ${S.kk}, węzły otwarte — klasa C${sup(S.kk - 1)}`;
+        : `B-splajn stopnia ${S.kk}, węzły otwarte, klasa C${sup(S.kk - 1)}`;
       SPL.text(c, head, 14, 22, { size: 14, weight: 650, color: C.ink });
       if (pct !== null) {
         const msg = `P${sub(act)} zmienia ${pct}% krzywej  ·  t ∈ [${a.toFixed(2)}, ${b.toFixed(2)}]`;

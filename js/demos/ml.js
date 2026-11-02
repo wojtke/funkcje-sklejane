@@ -440,7 +440,7 @@
 
       const formula = withSilu ? 'φ(x) = silu(x) + Σ cᵢ Bᵢ(x)' : 'φ(x) = Σ cᵢ Bᵢ(x)';
       info(c, pl.r.x + 8, pl.r.y + 6, `${formula}   ·   G = ${G}   ·   współczynników: ${nb}`);
-      delta.set(lastDelta == null ? '—' : SPL.fmt(lastDelta, 2));
+      delta.set(lastDelta == null ? '–' : SPL.fmt(lastDelta, 2));
       refBtn.disabled = G >= GMAX;
       refBtn.style.opacity = G >= GMAX ? 0.5 : 1;
     }
