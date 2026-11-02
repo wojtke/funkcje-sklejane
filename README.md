@@ -19,6 +19,7 @@ liczą się na żywo w przeglądarce.
   | `↓` | dodatki (pionowe slajdy) |
   | `S` | widok prelegenta: notatki, licznik tempa, podgląd następnego slajdu ścieżki głównej |
   | `F`, F5 (pilot), przycisk w lewym dolnym rogu | pełny ekran (włącz/wyłącz) |
+  | `C` (przytrzymaj) | słabo widoczny zegar w prawym górnym rogu: czas od wyjścia ze slajdu tytułowego (powrót na tytuł zeruje) i godzina |
   | `D` | tryb ciemny |
   | `O` | przegląd wszystkich slajdów |
   | `B` | wygaszenie ekranu |

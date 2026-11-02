@@ -80,7 +80,7 @@ code {{ font-family: Menlo, monospace; font-size: .92em; }}
 </style></head><body>
 <h1>Funkcje sklejane i ich własności: notatki prelegenta</h1>
 <p class="sub">SD1, 02.11.2026 · limit 15 min ±3 · plan ścieżki głównej {total//60}:{total%60:02d} (zapas na dema i pytania) ·
-klawisze: → lub pilot: dalej · ↓: dodatki · S: widok prelegenta · F: pełny ekran · O: przegląd · B: wygaszenie</p>
+klawisze: → lub pilot: dalej · ↓: dodatki · S: widok prelegenta · F: pełny ekran · C (przytrzymaj): zegar · O: przegląd · B: wygaszenie</p>
 {''.join(parts)}
 <h2 class="part">Dodatki pod strzałką ↓ (na pytania)</h2>
 {''.join(ex)}

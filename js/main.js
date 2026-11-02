@@ -69,7 +69,7 @@
   Reveal.on('resize', () => SPL.renderAll());
   Reveal.on('pdf-ready', () => SPL.renderAll());
 
-  // Przycisk pełnego ekranu — nie w PDF i nie w podglądach widoku prelegenta (iframe)
+  // Przycisk pełnego ekranu: nie w PDF i nie w podglądach widoku prelegenta (iframe)
   let inFrame = true;
   try { inFrame = window.self !== window.top; } catch (e) {}
   if (fsEnabled && !inFrame && !/print-pdf/.test(location.search)) {
@@ -91,6 +91,52 @@
     document.addEventListener('fullscreenchange', sync);
     document.addEventListener('webkitfullscreenchange', sync);
     sync();
+  }
+
+  // Zegar: przytrzymaj C. Prawy górny róg, słabo widoczny: czas wystąpienia i godzina.
+  // Czas liczy się od wyjścia ze slajdu tytułowego; powrót na tytuł go zeruje (wygodne przy próbach).
+  // Start zapisany w sessionStorage, więc przypadkowe przeładowanie strony go nie gubi.
+  if (!inFrame && !/print-pdf/.test(location.search)) {
+    const clock = document.createElement('div');
+    clock.className = 'talk-clock';
+    clock.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(clock);
+    const KEY = 'spl-talk-start';
+    let start = null;
+    try { const v = +sessionStorage.getItem(KEY); if (v && Date.now() - v < 3 * 3600e3) start = v; } catch (e) {}
+    const setStart = v => {
+      start = v;
+      try { if (v) sessionStorage.setItem(KEY, String(v)); else sessionStorage.removeItem(KEY); } catch (e) {}
+    };
+    const onSlide = () => {
+      if (Reveal.getIndices().h === 0) setStart(null);
+      else if (start === null) setStart(Date.now());
+    };
+    Reveal.on('slidechanged', onSlide);
+    if (Reveal.isReady()) onSlide(); else Reveal.on('ready', onSlide);
+
+    const pad = n => String(n).padStart(2, '0');
+    const render = () => {
+      const s = start ? Math.max(0, Math.floor((Date.now() - start) / 1000)) : 0;
+      const now = new Date();
+      clock.innerHTML = `<b>${Math.floor(s / 60)}:${pad(s % 60)}</b><span>${pad(now.getHours())}:${pad(now.getMinutes())}</span>`;
+    };
+    let tick = null;
+    const show = on => {
+      if (on === clock.classList.contains('on')) return;
+      clock.classList.toggle('on', on);
+      clearInterval(tick); tick = null;
+      if (on) { render(); tick = setInterval(render, 250); }
+    };
+    const isC = e => e.code === 'KeyC' || e.key === 'c' || e.key === 'C';
+    document.addEventListener('keydown', e => {
+      if (!isC(e) || e.metaKey || e.ctrlKey || e.altKey) return; // Cmd+C itp. bez zmian
+      const a = document.activeElement;
+      if (a && (a.isContentEditable || /^(input|textarea|select)$/i.test(a.tagName))) return;
+      show(true);
+    });
+    document.addEventListener('keyup', e => { if (isC(e)) show(false); });
+    window.addEventListener('blur', () => show(false)); // puszczenie C w innym oknie
   }
 
   // Kod QR do adresu prezentacji (tylko gdy serwowana przez http/https)
